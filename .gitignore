@@ -32,3 +32,6 @@ _tmp
 uploaded_media/*
 build/*
 svg_templates/*
+.sqlite3
+.pyc
+.idea/
