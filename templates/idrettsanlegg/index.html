@@ -2,4 +2,8 @@
 
 {% block content %}
 Hello world
+
+    {% for anlegg in idrettsanlegg %}
+        <p>{{ anlegg.anlegg.anleggsnavn }}</p>
+    {% endfor %}
 {% endblock %}

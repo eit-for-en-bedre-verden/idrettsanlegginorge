@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'idrettsanlegg',
     'api',
     'tastypie',
+    'import_export',
+
 ]
 
 MIDDLEWARE_CLASSES = [
