@@ -4,6 +4,9 @@
 Hello world
 
     {% for anlegg in idrettsanlegg %}
-        <p>{{ anlegg.anlegg.anleggsnavn }}</p>
+
+        <p>{{ anlegg.anleggsnavn }} i {{ anlegg.kommune.name }} - {{ anlegg.kommune.fylke }}</p>
+
     {% endfor %}
+
 {% endblock %}
