@@ -25,35 +25,6 @@ class AnleggsType(models.Model):
     def __unicode__(self):
        return  self.type
 
-
-class Anlegg(models.Model):
-    #Kan normalisere Eier og Driver til Bruker ?
-
-    anleggsnavn = models.CharField(max_length=20, blank=True)
-    anleggsnummer = models.CharField(max_length=20, blank=True)
-    Status = models.ForeignKey(AnleggStatus, on_delete=models.SET_NULL, null=True)
-    Eier = models.CharField(max_length=20, blank=True)
-    Driver = models.CharField(max_length=20, blank=True)
-
-    Anleggsklasse = models.ForeignKey(AnleggsKlasse, on_delete=models.SET_NULL, null=True)
-    Anleggskategori = models.ForeignKey(AnleggsKategori, on_delete=models.SET_NULL, null=True)
-    Anleggstype = models.ForeignKey(AnleggsType, on_delete=models.SET_NULL, null=True)
-    uu = models.CharField(max_length=20, choices=[('Ja', 'Ja'), ('Nei', 'Nei'), ('Ikke Vurdert','Ikke Vurdert')],
-                          default='Ikke Vurdert')
-
-    Byggeaar = models.CharField(max_length=20, blank=True)
-    ombyggeaar = models.CharField(max_length=20, blank=True)
-    maaldata1 = models.CharField(max_length=20, blank=True)
-    maaldata2 = models.CharField(max_length=20, blank=True)
-    maaldata3 = models.CharField(max_length=20, blank=True)
-    maaldata4 = models.CharField(max_length=20, blank=True)
-    lengde = models.IntegerField(blank=True, default=0)
-    bredde = models.IntegerField(blank=True, default=0)
-    areal = models.IntegerField(blank=True, default=0)
-
-    def __unicode__(self):
-       return  self.anleggsnavn
-
 class Fylke(models.Model):
     name = models.CharField(max_length=50)
 
@@ -65,7 +36,7 @@ class Kommune(models.Model):
     fylke = models.ForeignKey(Fylke)
 
     def __unicode__(self):
-       return  self.name
+       return  self.fylke.name + ':' + self.name
 
 
 
@@ -86,10 +57,31 @@ class KartData(models.Model):
 
 
 class Idrettsanlegg(models.Model):
-    anlegg = models.OneToOneField(Anlegg, null=True)
+    #Anlegg
+    anleggsnavn = models.CharField(max_length=20, blank=True)
+    anleggsnummer = models.CharField(max_length=20, blank=True)
+    anleggStatus = models.ForeignKey(AnleggStatus, on_delete=models.SET_NULL, null=True)
+    anleggEier = models.CharField(max_length=20, blank=True)
+    anleggDriver = models.CharField(max_length=20, blank=True)
+
+    Anleggsklasse = models.ForeignKey(AnleggsKlasse, on_delete=models.SET_NULL, null=True)
+    Anleggskategori = models.ForeignKey(AnleggsKategori, on_delete=models.SET_NULL, null=True)
+    Anleggstype = models.ForeignKey(AnleggsType, on_delete=models.SET_NULL, null=True)
+    uu = models.CharField(max_length=20, choices=[('Ja', 'Ja'), ('Nei', 'Nei'), ('Ikke Vurdert','Ikke Vurdert')],
+                          default='Ikke Vurdert')
+
+    Byggeaar = models.CharField(max_length=20, blank=True)
+    ombyggeaar = models.CharField(max_length=20, blank=True)
+    maaldata1 = models.CharField(max_length=20, blank=True)
+    maaldata2 = models.CharField(max_length=20, blank=True)
+    maaldata3 = models.CharField(max_length=20, blank=True)
+    maaldata4 = models.CharField(max_length=20, blank=True)
+    lengde = models.IntegerField(blank=True, default=0)
+    bredde = models.IntegerField(blank=True, default=0)
+    areal = models.IntegerField(blank=True, default=0)
+
     nummer1 = models.IntegerField(blank=True, default=0)
     kommune = models.ForeignKey(Kommune, on_delete=models.SET_NULL, blank=True, null=True)
-
 
     tildelt = models.IntegerField(blank=True, default=0)
     utbetalt = models.IntegerField(blank=True, default=0)
@@ -98,4 +90,4 @@ class Idrettsanlegg(models.Model):
     kartdata = models.ForeignKey(KartData, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __unicode__(self):
-        return  self.anlegg.anleggsnavn
+        return  self.anleggsnavn

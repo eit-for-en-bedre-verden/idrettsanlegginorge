@@ -11,17 +11,7 @@ class HideAdmin(admin.ModelAdmin):
         """
         return {}
 
-class IdrettsAnleggForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(IdrettsAnleggForm, self).__init__(*args, **kwargs)
-        self.fields['anlegg'].queryset = Anlegg.objects.filter(Q(idrettsanlegg=None) | Q(idrettsanlegg=self.instance))
-        self.fields['kartdata'].queryset = KartData.objects.filter(Q(idrettsanlegg=None) | Q(idrettsanlegg=self.instance))
-
-class IdrettsAnleggAdmin(admin.ModelAdmin):
-    form = IdrettsAnleggForm
-
-admin.site.register(Idrettsanlegg, IdrettsAnleggAdmin)
-admin.site.register(Anlegg)
+admin.site.register(Idrettsanlegg)
 admin.site.register(Fylke, HideAdmin)
 admin.site.register(Kommune, HideAdmin)
 admin.site.register(AnleggsKlasse, HideAdmin)
