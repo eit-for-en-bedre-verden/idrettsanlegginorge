@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-default" style="background-color: #1C7D9E; margin-top: 1%">
+        <div class="container-fluid">
+            <a class="navbar-brand navbar-left" href="#"><span class="glyphicon glyphicon-home" style="color: white"></span></a>
+            <a class="navbar-brand" href="#" style="color: white">Idrettsanlegg</a>
+        </div>
+    </nav>
+
+    <div class="col-xs-4 filter">
+
+        <div class="form-group row">
+            <div class="col-xs-10 selectContainer">
+                <label class="control-label" for="type">Anleggstype</label>
+                <select class="combobox form-control" name="facility-type" id="type">
+                    <option></option>
+                    <option value="rallycross">RallyCross-Bane</option>
+                    <option value="swimming_hall">Svømmehall</option>
+                    <option value="pingpongtable">Pingpong-bord</option>
+                    <option value="racingcircuit">Racingbane</option>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Velg ønsket annleggstype for filtrering.">
+                    <!--span class="glyphicon glyphicon-tag" aria-hidden="True"></span-->
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-5">
+            <label class="control-label" for="fundsfrom">Fra</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="0" id="fundsfrom" aria-label="Funds From">
+                <div class="input-group-btn">
+                    <div class="input-group-btn">
+                        <span class="input-group-addon">NOK</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xs-5">
+                <label class="control-label" for="fundsto">Til</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="20.000.000" id="fundsto" aria-label="Funds To">
+                    <div class="input-group-btn">
+                        <span class="input-group-addon">NOK</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff for bevilgede midler.">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-5">
+            <label class="control-label" for="yearfrom">Fra</label>
+            <div class="input-group date">
+                    <input type="text" class="form-control" placeholder="År" id="yearfrom">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <label class="control-label" for="yearto">Til</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control" placeholder="År" id="yearto">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff for byggår.">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- END FILTER -->
+    </div>
+
+
+    <div class="col-xs-8 map" style="background-color: #1C7D9E"></div>
+
+    <!-- END CONTAINER -->
+</div>
