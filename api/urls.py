@@ -14,20 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
-from idrettsanlegg import views
 from tastypie.api import Api
 from api.resources import MyModelResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(MyModelResource())
 
-
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(v1_api.urls)),
-    url(r'^$', include('idrettsanlegg.urls')),
-
-
-
+  # ...more URLconf bits here...
+  # Then add:
+  url(r'^$', include(v1_api.urls)),
 ]

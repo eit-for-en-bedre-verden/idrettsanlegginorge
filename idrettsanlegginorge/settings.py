@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'idrettsanlegg',
+    'api',
+    'tastypie',
+    'import_export',
+
 ]
 
 MIDDLEWARE_CLASSES = [
