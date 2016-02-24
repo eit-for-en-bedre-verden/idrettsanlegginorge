@@ -5,23 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-combobox.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="js/bootstrap-combobox.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/bootstrap-datepicker.no.min.js"></script>
     <title>Idrettsanlegg</title>
 </head>
 
 <div class="container-fluid">
     <nav class="navbar navbar-default" style="background-color: #1C7D9E; margin-top: 1%">
         <div class="container-fluid">
+            <a class="navbar-brand navbar-left" href="#"><span class="glyphicon glyphicon-home" style="color: white"></span></a>
             <a class="navbar-brand" href="#" style="color: white">Idrettsanlegg</a>
         </div>
     </nav>
 
     <div class="col-xs-4 filter">
-        <div class="form-group">
-            <label class="col-xs-2 control-label" for="type">Input</label>
-            <div class="col-xs-8 selectContainer">
+
+        <div class="form-group row">
+            <div class="col-xs-10 selectContainer">
+                <label class="control-label" for="type">Anleggstype</label>
                 <select class="combobox form-control" name="facility-type" id="type">
                     <option></option>
                     <option value="rallycross">RallyCross-Bane</option>
@@ -38,19 +44,55 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="col-xs-2 control-label" for="yearfrom">Year</label>
-            <div class="col-xs-8 input-group">
-                <input type="text" class="form-control" placeholder="Year" id="yearfrom" aria-label="Year From">
+        <div class="form-group row">
+            <div class="col-xs-5">
+            <label class="control-label" for="fundsfrom">Fra</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="0" id="fundsfrom" aria-label="Funds From">
                 <div class="input-group-btn">
+                    <div class="input-group-btn">
+                        <span class="input-group-addon">NOK</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xs-5">
+                <label class="control-label" for="fundsto">Til</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="20.000.000" id="fundsto" aria-label="Funds To">
+                    <div class="input-group-btn">
+                        <span class="input-group-addon">NOK</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff for bevilgede midler.">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-5">
+            <label class="control-label" for="yearfrom">Fra</label>
+            <div class="input-group date">
+                    <input type="text" class="form-control" placeholder="År" id="yearfrom">
                     <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar">
-                        </span>
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <label class="control-label" for="yearto">Til</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control" placeholder="År" id="yearto">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
                     </span>
                 </div>
             </div>
             <div class="col-xs-2">
-                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff fra dette årstallet og utover.">
+                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff for byggår.">
                     <span class="label label-pill label-default">?</span>
                 </a>
             </div>
@@ -60,9 +102,7 @@
     </div>
 
 
-    <div class="col-xs-8 map" style="background-color: #1C7D9E">
-
-        </div>
+    <div class="col-xs-8 map" style="background-color: #1C7D9E"></div>
 
     <!-- END CONTAINER -->
 </div>
@@ -71,5 +111,19 @@
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
     $('.combobox').combobox();
+    $('.input-group.date').datepicker({
+    format: "yyyy",
+    startView: 1,
+    minViewMode: 2,
+    clearBtn: true,
+    language: "no"
+}   );
+    $(".funds-input").on("keyup", null, function () {
+        var $input = $(this),
+            value = $input.val(),
+            num = parseFloat(value).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+        $input.siblings('.add-on').text('NOK' + num);
+    });
 });
 </script>

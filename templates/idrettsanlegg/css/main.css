@@ -1,0 +1,4 @@
+.row:not(:last-child) {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ccc;
+}
