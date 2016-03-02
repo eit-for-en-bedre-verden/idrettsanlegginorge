@@ -20,7 +20,7 @@
                 </select>
             </div>
             <div class="col-xs-2">
-                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Velg ønsket annleggstype for filtrering.">
+                <a href="#" uib-tooltip="Velg ønsket annleggstype for filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <!--span class="glyphicon glyphicon-tag" aria-hidden="True"></span-->
                     <span class="label label-pill label-default">?</span>
                 </a>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col-xs-2">
-                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff for bevilgede midler.">
+                <a href="#" uib-tooltip="Vis treff for bevilgede midler." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <span class="label label-pill label-default">?</span>
                 </a>
             </div>
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="col-xs-2">
-                <a href="#" data-toggle="tooltip" data-placement="Right" disabled="true" title="Vis treff for byggår.">
+                <a href="#" uib-tooltip="Vis treff for byggår." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <span class="label label-pill label-default">?</span>
                 </a>
             </div>
@@ -91,11 +91,11 @@
     </div>
 
 
-    <div class="col-xs-8 map" style="background-color: #1C7D9E">
+    <div class="col-xs-8 map container-fluid">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
         <div ng-repeat="construction in constructions">
             {{construction}}
         </div>
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
     </div>
 
     <!-- END CONTAINER -->
