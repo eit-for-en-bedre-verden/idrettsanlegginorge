@@ -87,7 +87,7 @@ class Idrettsanlegg(models.Model):
     utbetalt = models.IntegerField(blank=True, default=0)
     inndratt = models.IntegerField(blank=True, default=0)
 
-    kartdata = models.ForeignKey(KartData, on_delete=models.SET_NULL, blank=True, null=True)
+    kartdata = models.OneToOneField(KartData, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __unicode__(self):
         return  self.anleggsnavn
