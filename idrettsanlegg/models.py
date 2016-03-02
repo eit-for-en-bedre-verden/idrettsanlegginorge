@@ -6,7 +6,7 @@ from django.db.models import Q
 
 
 class AnleggStatus(models.Model):
-    status = models.CharField(max_length=20, default='Status')
+    status = models.CharField(max_length=75, default='Status')
     def __unicode__(self):
        return  self.status
 
@@ -21,7 +21,7 @@ class AnleggsKategori(models.Model):
        return  self.kategori
 
 class AnleggsType(models.Model):
-    type = models.CharField(max_length=30, blank=True)
+    type = models.CharField(max_length=75, blank=True)
     def __unicode__(self):
        return  self.type
 
@@ -58,24 +58,24 @@ class KartData(models.Model):
 
 class Idrettsanlegg(models.Model):
     #Anlegg
-    anleggsnavn = models.CharField(max_length=20, blank=True)
-    anleggsnummer = models.CharField(max_length=20, blank=True)
+    anleggsnavn = models.CharField(max_length=150, blank=True)
+    anleggsnummer = models.CharField(max_length=75, blank=True)
     anleggStatus = models.ForeignKey(AnleggStatus, on_delete=models.SET_NULL, null=True)
-    anleggEier = models.CharField(max_length=20, blank=True)
-    anleggDriver = models.CharField(max_length=20, blank=True)
+    anleggEier = models.CharField(max_length=75, blank=True)
+    anleggDriver = models.CharField(max_length=150, blank=True)
 
     Anleggsklasse = models.ForeignKey(AnleggsKlasse, on_delete=models.SET_NULL, null=True)
     Anleggskategori = models.ForeignKey(AnleggsKategori, on_delete=models.SET_NULL, null=True)
     Anleggstype = models.ForeignKey(AnleggsType, on_delete=models.SET_NULL, null=True)
-    uu = models.CharField(max_length=20, choices=[('Ja', 'Ja'), ('Nei', 'Nei'), ('Ikke Vurdert','Ikke Vurdert')],
+    uu = models.CharField(max_length=75, choices=[('Ja', 'Ja'), ('Nei', 'Nei'), ('Ikke Vurdert','Ikke Vurdert')],
                           default='Ikke Vurdert')
 
-    Byggeaar = models.CharField(max_length=20, blank=True)
-    ombyggeaar = models.CharField(max_length=20, blank=True)
-    maaldata1 = models.CharField(max_length=20, blank=True)
-    maaldata2 = models.CharField(max_length=20, blank=True)
-    maaldata3 = models.CharField(max_length=20, blank=True)
-    maaldata4 = models.CharField(max_length=20, blank=True)
+    Byggeaar = models.CharField(max_length=75, blank=True)
+    ombyggeaar = models.CharField(max_length=75, blank=True)
+    maaldata1 = models.CharField(max_length=75, blank=True)
+    maaldata2 = models.CharField(max_length=75, blank=True)
+    maaldata3 = models.CharField(max_length=75, blank=True)
+    maaldata4 = models.CharField(max_length=75, blank=True)
     lengde = models.IntegerField(blank=True, default=0)
     bredde = models.IntegerField(blank=True, default=0)
     areal = models.IntegerField(blank=True, default=0)
