@@ -9,42 +9,20 @@
     <title>Idrettsanlegg</title>
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-combobox.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker3.css' %}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src=http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.1/ui-bootstrap-tpls.min.js"></script>
 
     <script src="{% static 'javascripts/app.js' %}"></script>
-    <script src="{% static 'javascripts/bootstrap-combobox.js' %}"></script>
-    <script src="{% static 'javascripts/bootstrap-datepicker.js' %}"></script>
-    <script src="{% static 'javascripts/bootstrap-datepicker.no.min.js' %}"></script>
-
-
  </head>
  <body>
     <ng-view></ng-view>
     {% block extra_javascript %}{% endblock extra_javascript %}
-    <script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-        $('.combobox').combobox();
-        $('.input-group.date').datepicker({
-        format: "yyyy",
-        startView: 1,
-        minViewMode: 2,
-        clearBtn: true,
-        language: "no"
-    }   );
-        $(".funds-input").on("keyup", null, function () {
-            var $input = $(this),
-                value = $input.val(),
-                num = parseFloat(value).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-            $input.siblings('.add-on').text('NOK' + num);
-        });
-    });
-    </script>
  </body>
  </html>

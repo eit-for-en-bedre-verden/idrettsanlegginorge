@@ -85,7 +85,11 @@
     </div>
 
 
-    <div class="col-xs-8 map" style="background-color: #1C7D9E"></div>
+    <div class="col-xs-8 map" style="background-color: #1C7D9E">
+        <div ng-repeat="construction in constructions">
+            {{construction}}
+        </div>
+    </div>
 
     <!-- END CONTAINER -->
 </div>
