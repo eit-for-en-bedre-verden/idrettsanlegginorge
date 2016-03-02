@@ -40,6 +40,15 @@ angular
         });
 
         $scope.constructions = ['1', '2', '3'];
+        $scope.construction = {
+            types : [
+                "RallyCross-Bane",
+                "Svømmehall",
+                "Pingpong-bord",
+                "Racingcircuit"
+            ],
+            selected : undefined
+        };
 
         // Datepickers
         $scope.callers = [];
@@ -67,7 +76,34 @@ angular
             placement: 'right-top'
         };
 
+        // Funds
+        $scope.funds = {
+            lower : null,
+            upper : null
+        };
+
     })
+    // Formatter for monetary units with thousands separator
+    .directive('format', ['$filter', function ($filter) {
+    return {
+        require: '?ngModel',
+        link : function (scope, elem, attrs, ctrl) {
+            if (!ctrl) return;
+
+
+            ctrl.$formatters.unshift(function () {
+                return $filter(attrs.format)(ctrl.$modelValue)
+            });
+
+
+            ctrl.$parsers.unshift(function (viewValue) {
+                var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
+                elem.val($filter(attrs.format)(plainNumber));
+                return plainNumber;
+            });
+        }
+    };
+}])
     // Interface with the REST API, inject Construction and use
     // .query, .get, .delete etc.
     .factory('Construction', function ($resource) {
