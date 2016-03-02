@@ -28,7 +28,7 @@ angular
         });
         $scope.constructions = ['1', '2', '3'];
 
-        // Datepicker From
+        // Datepickers
         $scope.callers = [];
         $scope.fromDate = new Date();
         $scope.toDate = new Date();
@@ -57,24 +57,6 @@ angular
             $scope.callers[caller] = true;
         };
 
-        // Datepicker To
-        //$scope.toDateOpts = {
-        //    datepickerMode : "year",
-        //    minMode : "year",
-        //    showWeeks : "false"
-        //};
-        //$scope.today = function () {
-        //    $scope.toDate = new Date();
-        //};
-        //$scope.clear = function () {
-        //    $scope.toDate = null;
-        //};
-        //$scope.openToDate = function () {
-        //    $scope.fromDate.opened = true;
-        //};
-        //$scope.setDate = function (year) {
-        //    $scope.toDate = new Date(year);
-        //};
     })
     // Interface with the REST API, inject Construction and use
     // .query, .get, .delete etc.
