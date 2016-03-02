@@ -1,0 +1,428 @@
+101;Østfold;Nr. 0101;Halden
+104;Østfold;Nr. 0104;Moss
+105;Østfold;Nr. 0105;Sarpsborg
+106;Østfold;Nr. 0106;Fredrikstad
+111;Østfold;Nr. 0111;Hvaler
+118;Østfold;Nr. 0118;Aremark
+119;Østfold;Nr. 0119;Marker
+121;Østfold;Nr. 0121;Rømskog
+122;Østfold;Nr. 0122;Trøgstad
+123;Østfold;Nr. 0123;Spydeberg
+124;Østfold;Nr. 0124;Askim
+125;Østfold;Nr. 0125;Eidsberg
+127;Østfold;Nr. 0127;Skiptvet
+128;Østfold;Nr. 0128;Rakkestad
+135;Østfold;Nr. 0135;Råde
+136;Østfold;Nr. 0136;Rygge
+137;Østfold;Nr. 0137;Våler
+138;Østfold;Nr. 0138;Hobøl
+211;Akershus;Nr. 0211;Vestby
+213;Akershus;Nr. 0213;Ski
+214;Akershus;Nr. 0214;Ås
+215;Akershus;Nr. 0215;Frogn
+216;Akershus;Nr. 0216;Nesodden
+217;Akershus;Nr. 0217;Oppegård
+219;Akershus;Nr. 0219;Bærum
+220;Akershus;Nr. 0220;Asker
+221;Akershus;Nr. 0221;Aurskog-Høland
+226;Akershus;Nr. 0226;Sørum
+227;Akershus;Nr. 0227;Fet
+228;Akershus;Nr. 0228;Rælingen
+229;Akershus;Nr. 0229;Enebakk
+230;Akershus;Nr. 0230;Lørenskog
+231;Akershus;Nr. 0231;Skedsmo
+233;Akershus;Nr. 0233;Nittedal
+234;Akershus;Nr. 0234;Gjerdrum
+235;Akershus;Nr. 0235;Ullensaker
+236;Akershus;Nr. 0236;Nes
+237;Akershus;Nr. 0237;Eidsvoll
+238;Akershus;Nr. 0238;Nannestad
+239;Akershus;Nr. 0239;Hurdal
+301;Oslo;Nr. 0301;Oslo
+402;Hedmark;NR. 0402;Kongsvinger
+403;Hedmark;Nr. 0403;Hamar
+412;Hedmark;Nr. 0412;Ringsaker
+415;Hedmark;Nr. 0415;Løten
+417;Hedmark;Nr. 0417;Stange
+418;Hedmark;Nr. 0418;Nord-Odal
+419;Hedmark;Nr. 0419;Sør-Odal
+420;Hedmark;Nr. 0420;Eidskog
+423;Hedmark;Nr. 0423;Grue
+425;Hedmark;Nr. 0425;Åsnes
+426;Hedmark;Nr. 0426;Våler
+427;Hedmark;Nr. 0427;Elverum
+428;Hedmark;Nr. 0428;Trysil
+429;Hedmark;Nr. 0429;Åmot
+430;Hedmark;Nr. 0430;Stor-Elvdal
+432;Hedmark;Nr. 0432;Rendalen
+434;Hedmark;Nr. 0434;Engerdal
+436;Hedmark;Nr. 0436;Tolga
+437;Hedmark;Nr. 0437;Tynset
+438;Hedmark;Nr. 0438;Alvdal
+439;Hedmark;Nr. 0439;Folldal
+441;Hedmark;Nr. 0441;Os
+501;Oppland;Nr. 0501;Lillehammer
+502;Oppland;Nr. 0502;Gjøvik
+511;Oppland;Nr. 0511;Dovre
+512;Oppland;Nr. 0512;Lesja
+513;Oppland;Nr. 0513;Skjåk
+514;Oppland;Nr. 0514;Lom
+515;Oppland;Nr. 0515;Vågå
+516;Oppland;Nr. 0516;Nord-Fron
+517;Oppland;Nr. 0517;Sel
+519;Oppland;Nr. 0519;Sør-Fron
+520;Oppland;Nr. 0520;Ringebu
+521;Oppland;Nr. 0521;Øyer
+522;Oppland;Nr. 0522;Gausdal
+528;Oppland;Nr. 0528;Østre Toten
+529;Oppland;Nr. 0529;Vestre Toten
+532;Oppland;Nr. 0532;Jevnaker
+533;Oppland;Nr. 0533;Lunner
+534;Oppland;Nr. 0534;Gran
+536;Oppland;Nr. 0536;Søndre Land
+538;Oppland;Nr. 0538;Nordre Land
+540;Oppland;Nr. 0540;Sør-Aurdal
+541;Oppland;Nr. 0541;Etnedal
+542;Oppland;Nr. 0542;Nord-Aurdal
+543;Oppland;Nr. 0543;Vestre Slidre
+544;Oppland;Nr. 0544;Øystre Slidre
+545;Oppland;Nr. 0545;Vang
+602;Buskerud;Nr. 0602;Drammen
+604;Buskerud;Nr. 0604;Kongsberg
+605;Buskerud;Nr. 0605;Ringerike
+612;Buskerud;Nr. 0612;Hole
+615;Buskerud;Nr. 0615;Flå
+616;Buskerud;Nr. 0616;Nes
+617;Buskerud;Nr. 0617;Gol
+618;Buskerud;Nr. 0618;Hemsedal
+619;Buskerud;Nr. 0619;Ål
+620;Buskerud;Nr. 0620;Hol
+621;Buskerud;Nr. 0621;Sigdal
+622;Buskerud;Nr. 0622;Krødsherad
+623;Buskerud;Nr. 0623;Modum
+624;Buskerud;Nr. 0624;Øvre Eiker
+625;Buskerud;Nr. 0625;Nedre Eiker
+626;Buskerud;Nr. 0626;Lier
+627;Buskerud;Nr. 0627;Røyken
+628;Buskerud;Nr. 0628;Hurum
+631;Buskerud;Nr. 0631;Flesberg
+632;Buskerud;Nr. 0632;Rollag
+633;Buskerud;Nr. 0633;Nore og Uvdal
+701;Vestfold;Nr. 0701;Horten
+702;Vestfold;Nr. 0702;Holmestrand
+704;Vestfold;Nr. 0704;Tønsberg
+706;Vestfold;Nr. 0706;Sandefjord
+709;Vestfold;Nr. 0709;Larvik
+711;Vestfold;Nr. 0711;Svelvik
+713;Vestfold;Nr. 0713;Sande
+714;Vestfold;Nr. 0714;Hof
+716;Vestfold;Nr. 0716;Re
+719;Vestfold;Nr. 0719;Andebu
+720;Vestfold;Nr. 0720;Stokke
+722;Vestfold;Nr. 0722;Nøtterøy
+723;Vestfold;Nr. 0723;Tjøme
+728;Vestfold;Nr. 0728;Lardal
+805;Telemark;Nr. 0805;Porsgrunn
+806;Telemark;Nr. 0806;Skien
+807;Telemark;Nr. 0807;Notodden
+811;Telemark;Nr. 0811;Siljan
+814;Telemark;Nr. 0814;Bamble
+815;Telemark;Nr. 0815;Kragerø
+817;Telemark;Nr. 0817;Drangedal
+819;Telemark;Nr. 0819;Nome
+821;Telemark;Nr. 0821;Bø
+822;Telemark;Nr. 0822;Sauherad
+826;Telemark;Nr. 0826;Tinn
+827;Telemark;Nr. 0827;Hjartdal
+828;Telemark;Nr. 0828;Seljord
+829;Telemark;Nr. 0829;Kviteseid
+830;Telemark;Nr. 0830;Nissedal
+831;Telemark;Nr. 0831;Fyresdal
+833;Telemark;Nr. 0833;Tokke
+834;Telemark;Nr. 0834;Vinje
+901;Aust-Agder;Nr. 0901;Risør
+904;Aust-Agder;Nr. 0904;Grimstad
+906;Aust-Agder;Nr. 0906;Arendal
+911;Aust-Agder;Nr. 0911;Gjerstad
+912;Aust-Agder;Nr. 0912;Vegårshei
+914;Aust-Agder;Nr. 0914;Tvedestrand
+919;Aust-Agder;Nr. 0919;Froland
+926;Aust-Agder;Nr. 0926;Lillesand
+928;Aust-Agder;Nr. 0928;Birkenes
+929;Aust-Agder;Nr. 0929;Åmli
+935;Aust-Agder;Nr. 0935;Iveland
+937;Aust-Agder;Nr. 0937;Evje og Hornnes
+938;Aust-Agder;Nr. 0938;Bygland
+940;Aust-Agder;Nr. 0940;Valle
+941;Aust-Agder;Nr. 0941;Bykle
+1001;Vest-Agder;Nr. 1001;Kristiansand
+1002;Vest-Agder;Nr. 1002;Mandal
+1003;Vest-Agder;Nr. 1003;Farsund
+1004;Vest-Agder;Nr. 1004;Flekkefjord
+1014;Vest-Agder;Nr. 1014;Vennesla
+1017;Vest-Agder;Nr. 1017;Songdalen
+1018;Vest-Agder;Nr. 1018;Søgne
+1021;Vest-Agder;Nr. 1021;Marnardal
+1026;Vest-Agder;Nr. 1026;Åseral
+1027;Vest-Agder;Nr. 1027;Audnedal
+1029;Vest-Agder;Nr. 1029;Lindesnes
+1032;Vest-Agder;Nr. 1032;Lyngdal
+1034;Vest-Agder;Nr. 1034;Hægebostad
+1037;Vest-Agder;Nr. 1037;Kvinesdal
+1046;Vest-Agder;Nr. 1046;Sirdal
+1101;Rogaland;Nr. 1101;Eigersund
+1102;Rogaland;Nr. 1102;Sandnes
+1103;Rogaland;Nr. 1103;Stavanger
+1106;Rogaland;Nr. 1106;Haugesund
+1111;Rogaland;Nr. 1111;Sokndal
+1112;Rogaland;Nr. 1112;Lund
+1114;Rogaland;Nr. 1114;Bjerkreim
+1119;Rogaland;Nr. 1119;Hå
+1120;Rogaland;Nr. 1120;Klepp
+1121;Rogaland;Nr. 1121;Time
+1122;Rogaland;Nr. 1122;Gjesdal
+1124;Rogaland;Nr. 1124;Sola
+1127;Rogaland;Nr. 1127;Randaberg
+1129;Rogaland;Nr. 1129;Forsand
+1130;Rogaland;Nr. 1130;Strand
+1133;Rogaland;Nr. 1133;Hjelmeland
+1134;Rogaland;Nr. 1134;Suldal
+1135;Rogaland;Nr. 1135;Sauda
+1141;Rogaland;Nr. 1141;Finnøy
+1142;Rogaland;Nr. 1142;Rennesøy
+1144;Rogaland;Nr. 1144;Kvitsøy
+1145;Rogaland;Nr. 1145;Bokn
+1146;Rogaland;Nr. 1146;Tysvær
+1149;Rogaland;Nr. 1149;Karmøy
+1151;Rogaland;Nr. 1151;Utsira
+1160;Rogaland;Nr. 1160;Vindafjord
+1201;Hordaland;Nr. 1201;Bergen
+1211;Hordaland;Nr. 1211;Etne
+1216;Hordaland;Nr. 1216;Sveio
+1219;Hordaland;Nr. 1219;Bømlo
+1221;Hordaland;Nr. 1221;Stord
+1222;Hordaland;Nr. 1222;Fitjar
+1223;Hordaland;Nr. 1223;Tysnes
+1224;Hordaland;Nr. 1224;Kvinnherad
+1227;Hordaland;Nr. 1227;Jondal
+1228;Hordaland;Nr. 1228;Odda
+1231;Hordaland;Nr. 1231;Ullensvang
+1232;Hordaland;Nr. 1232;Eidfjord
+1233;Hordaland;Nr. 1233;Ulvik
+1234;Hordaland;Nr. 1234;Granvin
+1235;Hordaland;Nr. 1235;Voss
+1238;Hordaland;Nr. 1238;Kvam
+1241;Hordaland;Nr. 1241;Fusa
+1242;Hordaland;Nr. 1242;Samnanger
+1243;Hordaland;Nr. 1243;Os
+1244;Hordaland;Nr. 1244;Austevoll
+1245;Hordaland;Nr. 1245;Sund
+1246;Hordaland;Nr. 1246;Fjell
+1247;Hordaland;Nr. 1247;Askøy
+1251;Hordaland;Nr. 1251;Vaksdal
+1252;Hordaland;Nr. 1252;Modalen
+1253;Hordaland;Nr. 1253;Osterøy
+1256;Hordaland;Nr. 1256;Meland
+1259;Hordaland;Nr. 1259;Øygarden
+1260;Hordaland;Nr. 1260;Radøy
+1263;Hordaland;Nr. 1263;Lindås
+1264;Hordaland;Nr. 1264;Austrheim
+1265;Hordaland;Nr. 1265;Fedje
+1266;Hordaland;Nr. 1266;Masfjorden
+1401;Sogn og fjordane;Nr. 1401;Flora
+1411;Sogn og fjordane;Nr. 1411;Gulen
+1412;Sogn og fjordane;Nr. 1412;Solund
+1413;Sogn og fjordane;Nr. 1413;Hyllestad
+1416;Sogn og fjordane;Nr. 1416;Høyanger
+1417;Sogn og fjordane;Nr. 1417;Vik
+1418;Sogn og fjordane;Nr. 1418;Balestrand
+1419;Sogn og fjordane;Nr. 1419;Leikanger
+1420;Sogn og fjordane;Nr. 1420;Sogndal
+1421;Sogn og fjordane;Nr. 1421;Aurland
+1422;Sogn og fjordane;Nr. 1422;Lærdal
+1424;Sogn og fjordane;Nr. 1424;Årdal
+1426;Sogn og fjordane;Nr. 1426;Luster
+1428;Sogn og fjordane;Nr. 1428;Askvoll
+1429;Sogn og fjordane;Nr. 1429;Fjaler
+1430;Sogn og fjordane;Nr. 1430;Gaular
+1431;Sogn og fjordane;Nr. 1431;Jølster
+1432;Sogn og fjordane;Nr. 1432;Førde
+1433;Sogn og fjordane;Nr. 1433;Naustdal
+1438;Sogn og fjordane;Nr. 1438;Bremanger
+1439;Sogn og fjordane;Nr. 1439;Vågsøy
+1441;Sogn og fjordane;Nr. 1441;Selje
+1443;Sogn og fjordane;Nr. 1443;Eid
+1444;Sogn og fjordane;Nr. 1444;Hornindal
+1445;Sogn og fjordane;Nr. 1445;Gloppen
+1449;Sogn og fjordane;Nr. 1449;Stryn
+1502;Møre og Romsdal;Nr. 1502;Molde
+1504;Møre og Romsdal;Nr. 1504;Ålesund
+1505;Møre og Romsdal;Nr. 1505;Kristiansund
+1511;Møre og Romsdal;Nr. 1511;Vanylven
+1514;Møre og Romsdal;Nr. 1514;Sande
+1515;Møre og Romsdal;Nr. 1515;Herøy
+1516;Møre og Romsdal;Nr. 1516;Ulstein
+1517;Møre og Romsdal;Nr. 1517;Hareid
+1519;Møre og Romsdal;Nr. 1519;Volda
+1520;Møre og Romsdal;Nr. 1520;Ørsta
+1523;Møre og Romsdal;Nr. 1523;Ørskog
+1524;Møre og Romsdal;Nr. 1524;Norddal
+1525;Møre og Romsdal;Nr. 1525;Stranda
+1526;Møre og Romsdal;Nr. 1526;Stordal
+1528;Møre og Romsdal;Nr. 1528;Sykkylven
+1529;Møre og Romsdal;Nr. 1529;Skodje
+1531;Møre og Romsdal;Nr. 1531;Sula
+1532;Møre og Romsdal;Nr. 1532;Giske
+1534;Møre og Romsdal;Nr. 1534;Haram
+1535;Møre og Romsdal;Nr. 1535;Vestnes
+1539;Møre og Romsdal;Nr. 1539;Rauma
+1543;Møre og Romsdal;Nr. 1543;Nesset
+1545;Møre og Romsdal;Nr. 1545;Midsund
+1546;Møre og Romsdal;Nr. 1546;Sandøy
+1547;Møre og Romsdal;Nr. 1547;Aukra
+1548;Møre og Romsdal;Nr. 1548;Fræna
+1551;Møre og Romsdal;Nr. 1551;Eide
+1554;Møre og Romsdal;Nr. 1554;Averøy
+1557;Møre og Romsdal;Nr. 1557;Gjemnes
+1560;Møre og Romsdal;Nr. 1560;Tingvoll
+1563;Møre og Romsdal;Nr. 1563;Sunndal
+1566;Møre og Romsdal;Nr. 1566;Surnadal
+1567;Møre og Romsdal;Nr. 1567;Rindal
+1571;Møre og Romsdal;Nr. 1571;Halsa
+1573;Møre og Romsdal;Nr. 1573;Smøla
+1576;Møre og Romsdal;Nr. 1576;Aure
+1601;Sør-Trøndelag;Nr. 1601;Trondheim
+1612;Sør-Trøndelag;Nr. 1612;Hemne
+1613;Sør-Trøndelag;Nr. 1613;Snillfjord
+1617;Sør-Trøndelag;Nr. 1617;Hitra
+1620;Sør-Trøndelag;Nr. 1620;Frøya
+1621;Sør-Trøndelag;Nr. 1621;Ørland
+1622;Sør-Trøndelag;Nr. 1622;Agdenes
+1624;Sør-Trøndelag;Nr. 1624;Rissa
+1627;Sør-Trøndelag;Nr. 1627;Bjugn
+1630;Sør-Trøndelag;Nr. 1630;Åfjord
+1632;Sør-Trøndelag;Nr. 1632;Roan
+1633;Sør-Trøndelag;Nr. 1633;Osen
+1634;Sør-Trøndelag;Nr. 1634;Oppdal
+1635;Sør-Trøndelag;Nr. 1635;Rennebu
+1636;Sør-Trøndelag;Nr. 1636;Meldal
+1638;Sør-Trøndelag;Nr. 1638;Orkdal
+1640;Sør-Trøndelag;Nr. 1640;Røros
+1644;Sør-Trøndelag;Nr. 1644;Holtålen
+1648;Sør-Trøndelag;Nr. 1648;Midtre Gauldal
+1653;Sør-Trøndelag;Nr. 1653;Melhus
+1657;Sør-Trøndelag;Nr. 1657;Skaun
+1662;Sør-Trøndelag;Nr. 1662;Klæbu
+1663;Sør-Trøndelag;Nr. 1663;Malvik
+1664;Sør-Trøndelag;Nr. 1664;Selbu
+1665;Sør-Trøndelag;Nr. 1665;Tydal
+1702;Nord-Trøndelag;Nr. 1702;Steinkjer
+1703;Nord-Trøndelag;Nr. 1703;Namsos
+1711;Nord-Trøndelag;Nr. 1711;Meråker
+1714;Nord-Trøndelag;Nr. 1714;Stjørdal
+1717;Nord-Trøndelag;Nr. 1717;Frosta
+1718;Nord-Trøndelag;Nr. 1718;Leksvik
+1719;Nord-Trøndelag;Nr. 1719;Levanger
+1721;Nord-Trøndelag;Nr. 1721;Verdal
+1724;Nord-Trøndelag;Nr. 1724;Verran
+1725;Nord-Trøndelag;Nr. 1725;Namdalseid
+1736;Nord-Trøndelag;Nr. 1736;Snåase - Snåsa
+1738;Nord-Trøndelag;Nr. 1738;Lierne
+1739;Nord-Trøndelag;Nr. 1739;Røyrvik
+1740;Nord-Trøndelag;Nr. 1740;Namsskogan
+1742;Nord-Trøndelag;Nr. 1742;Grong
+1743;Nord-Trøndelag;Nr. 1743;Høylandet
+1744;Nord-Trøndelag;Nr. 1744;Overhalla
+1748;Nord-Trøndelag;Nr. 1748;Fosnes
+1749;Nord-Trøndelag;Nr. 1749;Flatanger
+1750;Nord-Trøndelag;Nr. 1750;Vikna
+1751;Nord-Trøndelag;Nr. 1751;Nærøy
+1755;Nord-Trøndelag;Nr. 1755;Leka
+1756;Nord-Trøndelag;Nr. 1756;Inderøy
+1804;Nordland;Nr. 1804;Bodø
+1805;Nordland;Nr. 1805;Narvik
+1811;Nordland;Nr. 1811;Bindal
+1812;Nordland;Nr. 1812;Sømna
+1813;Nordland;Nr. 1813;Brønnøy
+1815;Nordland;Nr. 1815;Vega
+1816;Nordland;Nr. 1816;Vevelstad
+1818;Nordland;Nr. 1818;Herøy
+1820;Nordland;Nr. 1820;Alstahaug
+1822;Nordland;Nr. 1822;Leirfjord
+1824;Nordland;Nr. 1824;Vefsn
+1825;Nordland;Nr. 1825;Grane
+1826;Nordland;Nr. 1826;Hattfjelldal
+1827;Nordland;Nr. 1827;Dønna
+1828;Nordland;Nr. 1828;Nesna
+1832;Nordland;Nr. 1832;Hemnes
+1833;Nordland;Nr. 1833;Rana
+1834;Nordland;Nr. 1834;Lurøy
+1835;Nordland;Nr. 1835;Træna
+1836;Nordland;Nr. 1836;Rødøy
+1837;Nordland;Nr. 1837;Meløy
+1838;Nordland;Nr. 1838;Gildeskål
+1839;Nordland;Nr. 1839;Beiarn
+1840;Nordland;Nr. 1840;Saltdal
+1841;Nordland;Nr. 1841;Fauske
+1845;Nordland;Nr. 1845;Sørfold
+1848;Nordland;Nr. 1848;Steigen
+1849;Nordland;Nr. 1849;Hamarøy - Hábmer
+1850;Nordland;Nr. 1850;Divtasvuodna - Tysfjord
+1851;Nordland;Nr. 1851;Lødingen
+1852;Nordland;Nr. 1852;Tjeldsund
+1853;Nordland;Nr. 1853;Evenes
+1854;Nordland;Nr. 1854;Ballangen
+1856;Nordland;Nr. 1856;Røst
+1857;Nordland;Nr. 1857;Værøy
+1859;Nordland;Nr. 1859;Flakstad
+1860;Nordland;Nr. 1860;Vestvågøy
+1865;Nordland;Nr. 1865;Vågan
+1866;Nordland;Nr. 1866;Hadsel
+1867;Nordland;Nr. 1867;Bø
+1868;Nordland;Nr. 1868;Øksnes
+1870;Nordland;Nr. 1870;Sortland
+1871;Nordland;Nr. 1871;Andøy
+1874;Nordland;Nr. 1874;Moskenes
+1903;Troms - Romsa;Nr. 1903;Harstad
+1902;Troms - Romsa;Nr. 1902;Tromsø
+1911;Troms - Romsa;Nr. 1911;Kvæfjord
+1913;Troms - Romsa;Nr. 1913;Skånland
+1917;Troms - Romsa;Nr. 1917;Ibestad
+1919;Troms - Romsa;Nr. 1919;Gratangen
+1920;Troms - Romsa;Nr. 1920;Lavangen
+1922;Troms - Romsa;Nr. 1922;Bardu
+1923;Troms - Romsa;Nr. 1923;Salangen
+1924;Troms - Romsa;Nr. 1924;Målselv
+1925;Troms - Romsa;Nr. 1925;Sørreisa
+1926;Troms - Romsa;Nr. 1926;Dyrøy
+1927;Troms - Romsa;Nr. 1927;Tranøy
+1928;Troms - Romsa;Nr. 1928;Torsken
+1929;Troms - Romsa;Nr. 1929;Berg
+1931;Troms - Romsa;Nr. 1931;Lenvik
+1933;Troms - Romsa;Nr. 1933;Balsfjord
+1936;Troms - Romsa;Nr. 1936;Karlsøy
+1938;Troms - Romsa;Nr. 1938;Lyngen
+1939;Troms - Romsa;Nr. 1939;Storfjord
+1940;Troms - Romsa;Nr. 1940;Gáivuotna - Kåfjord
+1941;Troms - Romsa;Nr. 1941;Skjervøy
+1942;Troms - Romsa;Nr. 1942;Nordreisa
+1943;Troms - Romsa;Nr. 1943;Kvænangen
+2002;Finnmark - Finnmárku;Nr. 2002;Vardø
+2003;Finnmark - Finnmárku;Nr. 2003;Vadsø
+2004;Finnmark - Finnmárku;Nr. 2004;Hammerfest
+2011;Finnmark - Finnmárku;Nr. 2011;Guovdageaidnu - Kautokeino
+2012;Finnmark - Finnmárku;Nr. 2012;Alta
+2014;Finnmark - Finnmárku;Nr. 2014;Loppa
+2015;Finnmark - Finnmárku;Nr. 2015;Hasvik
+2017;Finnmark - Finnmárku;Nr. 2017;Kvalsund
+2018;Finnmark - Finnmárku;Nr. 2018;Måsøy
+2019;Finnmark - Finnmárku;Nr. 2019;Nordkapp
+2020;Finnmark - Finnmárku;Nr. 2020;Porsángu - Porsanger - Porsanki
+2021;Finnmark - Finnmárku;Nr. 2021;Kárášjohka - Karasjok
+2022;Finnmark - Finnmárku;Nr. 2022;Lebesby
+2023;Finnmark - Finnmárku;Nr. 2023;Gamvik
+2024;Finnmark - Finnmárku;Nr. 2024;Berlevåg
+2025;Finnmark - Finnmárku;Nr. 2025;Deatnu Tana
+2027;Finnmark - Finnmárku;Nr. 2027;Unjárga - Nesseby
+2028;Finnmark - Finnmárku;Nr. 2028;Båtsfjord
+2030;Finnmark - Finnmárku;Nr. 2030;Sør-Varanger

@@ -1,12 +1,18 @@
-
 angular
     .module('idrettsanlegg', [
         'ngRoute',
         'ngResource',
         'ui.bootstrap',
-        'ngAnimate'
+        'ngAnimate',
+        'uiGmapgoogle-maps'
     ])
-    .config(function ($routeProvider, $locationProvider) {
+    .config(function ($routeProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            //    key: 'your api key',
+            v: '3.20', //defaults to latest 3.X anyhow
+            libraries: ''
+        });
+
         $locationProvider
             .html5Mode(true)
             .hashPrefix('!');
@@ -21,11 +27,18 @@ angular
     })
     // This is the controller for the main route,
     // the scope controls what is visible in the template
-    .controller('MainController', function($scope, Construction) {
-        Construction.query(function(data) {
+    .controller('MainController', function ($scope, Construction, uiGmapGoogleMapApi) {
+        Construction.query(function (data) {
             //$scope.constructions = data.objects etc.
             console.log(data);
         });
+
+        $scope.map = {center: {latitude: 63.4, longitude: 10.29}, zoom: 6};
+        uiGmapGoogleMapApi.then(function (maps) {
+            // uiGmapGoogleMapApi is a promise.
+            // The "then" callback function provides the google.maps object.
+        });
+
         $scope.constructions = ['1', '2', '3'];
 
         // Datepickers
@@ -35,8 +48,8 @@ angular
 
         $scope.dateOpts = {
             datepickerMode: "year",
-            minMode:"year",
-            showWeeks:"false"
+            minMode: "year",
+            showWeeks: "false"
         };
 
         $scope.today = function () {
@@ -47,7 +60,7 @@ angular
             $scope.fromDate = null;
         };
 
-        $scope.openDate = function($event, caller) {
+        $scope.openDate = function ($event, caller) {
             $event.preventDefault();
             $event.stopPropagation();
 
@@ -61,7 +74,7 @@ angular
     // Interface with the REST API, inject Construction and use
     // .query, .get, .delete etc.
     .factory('Construction', function ($resource) {
-        return $resource('http://127.0.0.1:8000/api/v1/Idrettsanlegg/?format=json', { id: '@_id' }, {
+        return $resource('http://127.0.0.1:8000/api/v1/Idrettsanlegg/?format=json', {id: '@_id'}, {
             update: {
                 method: 'PUT'
             },
