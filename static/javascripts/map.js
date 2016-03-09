@@ -2,9 +2,107 @@
 
 angular.module('idrettsanlegg.controllers')
     .controller('MapController', function($scope, uiGmapGoogleMapApi) {
-        $scope.map = {center: {latitude: 63.4, longitude: 10.29}, zoom: 6};
         uiGmapGoogleMapApi.then(function (maps) {
             // uiGmapGoogleMapApi is a promise.
             // The "then" callback function provides the google.maps object.
         });
+
+        // ANGULAR GOOGLE MAPS START
+        $scope.map = {
+            show: true,
+            center: {
+                latitude: 63.4,
+                longitude: 10.29
+            },
+            zoom: 6
+        };
+
+        $scope.mapOptions = {
+            'draggable': true,
+            'fullscreenControl': true,
+            'fullscreenControlOptions': 'TOP_RIGHT',
+            'mapTypeControlOptions': {
+                'mapTypeIds': ['HYBRID', 'ROADMAP', 'SATELLITE', 'TERRAIN'],
+                'position': 'TOP_LEFT',
+                'style': 'DROPDOWN_MENU'
+            },
+            'rotateControl': false,
+            'streetViewControl': true,
+            'panControl': false,
+            'zoomControl': true,
+            'maxZoom': 20
+        };
+
+        $scope.windowOptions = {
+            show: false
+        };
+
+        var staticMarker = {
+            byggeaar: "1983",
+            anleggDriver: "Nordkapp kommune",
+            anleggEier: "Nordkapp kommune",
+            anleggsnavn: "Nordkapp museum",
+            anleggsnummer: "2019-001-601",
+            anleggstype: {
+              id: 1,
+              resource_uri: "/api/v1/Anleggstype/1/",
+              type: "Kulturbygg - Museum"
+            },
+            areal: 0,
+            bredde: 0,
+            id: 451446,
+            inndratt: 0,
+            kartData: {
+              latitude: 63.4,
+              longitude: 10.29,
+              id: 328975,
+              kpunkt: 0,
+              ngoakse: 0,
+              ngoxkoordinat: 7961501,
+              ngoykoordinat: 558466547,
+              resource_uri: "/api/v1/KartData/328975/",
+              utmnord: 1110074,
+              utmost: 659507964,
+              utmsone: 33
+            },
+            lengde: 0,
+            maaldata1: "",
+            maaldata2: "",
+            maaldata3: "",
+            maaldata4: "",
+            nummer1: 2019,
+            ombyggeaar: "",
+            resource_uri: "/api/v1/Idrettsanlegg/451446/",
+            tildelt: 2000000,
+            utbetalt: 1700000,
+            uu: "Ja",
+            show: false,
+            id: 0
+        };
+
+        $scope.markers = [staticMarker];
+
+        $scope.removeMarkers = function () {
+            $scope.markers = [];
+        };
+
+        $scope.addMarkers = function (markers) {
+            for (var m in markers) {
+                markers.push(m);
+            }
+        };
+
+
+        $scope.constructions = ['1', '2', '3']; // Place markers
+        $scope.map_bounds = {'north-east': 0.00, 'south-west': 0.00}; // Calculate and Fit map to result
+
+
+        uiGmapGoogleMapApi.then(function (maps) {
+            // uiGmapGoogleMapApi is a promise.
+            // The "then" callback function provides the google.maps object.
+        });
+
+        // ANGULAR GOOGLE MAPS END
+
+
     });
