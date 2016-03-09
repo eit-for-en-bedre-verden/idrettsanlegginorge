@@ -40,20 +40,7 @@ class Kommune(models.Model):
 
 
 
-class KartData(models.Model):
-    ngoxkoordinat = models.IntegerField(blank=True, default=0)
-    ngoykoordinat = models.IntegerField(blank=True, default=0)
-    ngoakse = models.IntegerField(blank=True, default=0)
-    ngoakse = models.IntegerField(blank=True, default=0)
-    utmnord = models.IntegerField(blank=True, default=0)
-    utmost = models.IntegerField(blank=True, default=0)
-    utmsone = models.IntegerField(blank=True, default=0)
-    kpunkt = models.IntegerField(blank=True, default=0)
-    Latitude = models.DecimalField(max_digits=15,decimal_places=13, blank=True, default=0)
-    Longitude = models.DecimalField(max_digits=15,decimal_places=13, blank=True, default=0)
 
-    def __unicode__(self):
-       return  'Kart-Data'
 
 
 class Idrettsanlegg(models.Model):
@@ -87,7 +74,22 @@ class Idrettsanlegg(models.Model):
     utbetalt = models.IntegerField(blank=True, default=0)
     inndratt = models.IntegerField(blank=True, default=0)
 
-    kartdata = models.OneToOneField(KartData, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __unicode__(self):
         return  self.anleggsnavn
+
+
+class KartData(models.Model):
+    ngoxkoordinat = models.IntegerField(blank=True, default=0)
+    ngoykoordinat = models.IntegerField(blank=True, default=0)
+    ngoakse = models.IntegerField(blank=True, default=0)
+    ngoakse = models.IntegerField(blank=True, default=0)
+    utmnord = models.IntegerField(blank=True, default=0)
+    utmost = models.IntegerField(blank=True, default=0)
+    utmsone = models.IntegerField(blank=True, default=0)
+    kpunkt = models.IntegerField(blank=True, default=0)
+    Latitude = models.DecimalField(max_digits=15,decimal_places=13, blank=True, default=0)
+    Longitude = models.DecimalField(max_digits=15,decimal_places=13, blank=True, default=0)
+    idrettsanlegg = models.OneToOneField(Idrettsanlegg, on_delete=models.SET_NULL, blank=True, null=True)
+    def __unicode__(self):
+       return  'Kart Data'

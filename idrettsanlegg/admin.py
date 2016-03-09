@@ -11,7 +11,17 @@ class HideAdmin(admin.ModelAdmin):
         """
         return {}
 
-admin.site.register(Idrettsanlegg)
+
+class KartDataInline(admin.StackedInline):
+    model = KartData
+
+
+
+class IdrettsanleggAdmin(admin.ModelAdmin):
+    inlines = (KartDataInline,)
+
+
+admin.site.register(Idrettsanlegg, IdrettsanleggAdmin)
 admin.site.register(Fylke, HideAdmin)
 admin.site.register(Kommune, HideAdmin)
 admin.site.register(AnleggsKlasse, HideAdmin)
