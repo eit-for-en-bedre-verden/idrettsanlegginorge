@@ -10,6 +10,7 @@ angular
         'ngResource',
         'ui.bootstrap',
         'ngAnimate',
+        'ui.mask',
         'uiGmapgoogle-maps',
         'idrettsanlegg.directives',
         'idrettsanlegg.controllers',

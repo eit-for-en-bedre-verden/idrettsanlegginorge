@@ -8,12 +8,12 @@ angular.module('idrettsanlegg.directives')
         link : function (scope, elem, attrs, ctrl) {
             if (!ctrl) return;
 
-
+            // input
             ctrl.$formatters.unshift(function () {
                 return $filter(attrs.format)(ctrl.$modelValue)
             });
 
-
+            // output
             ctrl.$parsers.unshift(function (viewValue) {
                 var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
                 elem.val($filter(attrs.format)(plainNumber));

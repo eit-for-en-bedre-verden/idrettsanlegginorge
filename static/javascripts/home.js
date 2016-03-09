@@ -5,6 +5,7 @@ angular.module('idrettsanlegg.controllers')
         Construction.query(function (data) {
             //$scope.constructions = data.objects etc.
             //console.log(data);
+            $scope.count = data.meta.limit;
         });
 
         $scope.viewState = 'Kart';
@@ -18,6 +19,7 @@ angular.module('idrettsanlegg.controllers')
                 "Racingcircuit"
             ],
             selected : undefined,
+            id : undefined,
         };
         $scope.counties = {
             county : [
@@ -46,8 +48,8 @@ angular.module('idrettsanlegg.controllers')
 
         // Datepickers
         $scope.callers = [];
-        $scope.fromDate = undefined;//new Date(0);
-        $scope.toDate = undefined;//new Date();
+        $scope.fromDate = undefined;
+        $scope.toDate = undefined;
 
         $scope.dateOpts = {
             datepickerMode: "year",
