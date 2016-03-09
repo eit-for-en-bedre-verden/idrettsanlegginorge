@@ -113,11 +113,12 @@
     </div>
 
 
-    <div class="col-xs-8 map container-fluid">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-        <div ng-repeat="construction in constructions">
-            {{construction}}
+    <div class="col-xs-8 map">
+        <div class="btn-group">
+            <a ui-sref=".map" class="btn btn-lg btn-primary" ng-model="viewState" uib-btn-radio="'Kart'">Kart</a>
+            <a ui-sref=".table" class="btn btn-lg btn-primary" ng-model="viewState" uib-btn-radio="'Tabell'">Tabell</a>
         </div>
+        <div ui-view></div>
     </div>
 
     <!-- END CONTAINER -->
