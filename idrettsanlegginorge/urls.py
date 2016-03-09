@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from idrettsanlegg import views
 from tastypie.api import Api
-from api.resources import MyModelResource
+from api.resources import IdrettsanleggResource, AnleggTypeResource, KartDataResource
 
 v1_api = Api(api_name='v1')
-v1_api.register(MyModelResource())
+v1_api.register(IdrettsanleggResource())
+v1_api.register(AnleggTypeResource())
+v1_api.register(KartDataResource())
 
 
 urlpatterns = [
