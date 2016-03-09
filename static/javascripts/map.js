@@ -14,26 +14,64 @@ angular.module('idrettsanlegg.controllers')
                 latitude: 63.4,
                 longitude: 10.29
             },
-            zoom: 6
+            zoom: 7
         };
 
+        /*
+            Positions used by google maps api
+            +----------------+
+            + TL    TC    TR +
+            + LT          RT +
+            +                +
+            + LC          RC +
+            +                +
+            + LB          RB +
+            + BL    BC    BR +
+            +----------------+
+        */
         $scope.mapOptions = {
-            'draggable': true,
-            'fullscreenControl': true,
-            'fullscreenControlOptions': 'TOP_RIGHT',
-            'mapTypeControlOptions': {
-                'mapTypeIds': ['HYBRID', 'ROADMAP', 'SATELLITE', 'TERRAIN'],
-                'position': 'TOP_LEFT',
-                'style': 'DROPDOWN_MENU'
+            backgroundColor: '#1C7D9E',
+            disableDefaultUI: false,
+            keyboardShortcuts: false,
+            draggable: true,
+            disableDoubleClickZoom: false,
+            fullscreenControl: true,
+            fullscreenControlOptions: google.maps.FullscreenControlOptions.RIGHT_TOP,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                mapTypeIds: [
+                    google.maps.MapTypeId.HYBRID,
+                    google.maps.MapTypeId.ROADMAP,
+                    google.maps.MapTypeId.SATELLITE,
+                    google.maps.MapTypeId.TERRAIN
+                ],
+                position: google.maps.ControlPosition.TOP_LEFT,
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
             },
-            'rotateControl': false,
-            'streetViewControl': true,
-            'panControl': false,
-            'zoomControl': true,
-            'maxZoom': 20
+            rotateControl: false,
+            rotateControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT
+            },
+            panControl: false,
+            panControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT
+            },
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.StreetViewControlOptions.TOP_LEFT
+            },
+            scaleControl: true,
+            scaleControlOptions: {
+                style: google.maps.ScaleControlStyle.DEFAULT
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ZoomControlOptions.TOP_LEFT
+            },
+            maxZoom: 20
         };
 
-        $scope.windowOptions = {
+        $scope.window = {
             show: false
         };
 
@@ -90,6 +128,19 @@ angular.module('idrettsanlegg.controllers')
             for (var m in markers) {
                 markers.push(m);
             }
+        };
+
+        var createMarker = function(construction){
+            // Takes in a construction and creates a marker
+            marker = {
+                id: 1,
+                coords: {
+                    latitude: 64,
+                    longitude: 10.2
+                },
+
+            };
+
         };
 
 
