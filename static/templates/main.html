@@ -3,7 +3,12 @@
         <div class="container-fluid">
             <a class="navbar-brand navbar-left" href="#"><span class="glyphicon glyphicon-home" style="color: white"></span></a>
             <a class="navbar-brand" href="#" style="color: white">Idrettsanlegg</a>
+            <div class="btn-group navbar-brand navbar-right">
+                <a ui-sref=".map" class="btn btn-primary" ng-model="viewState" uib-btn-radio="'Kart'" style="color: white">Kart</a>
+                <a ui-sref=".table" class="btn btn-primary" ng-model="viewState" uib-btn-radio="'Tabell'" style="color: white">Tabell</a>
+            </div>
         </div>
+
     </nav>
 
     <div class="col-xs-4 filter">
@@ -131,7 +136,7 @@
                 <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Areal</label>
                 <div class="col-xs-6" style="padding-left: 0px">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="funds.lower" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
+                        <input type="text" class="form-control" ng-model="area.lower" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" disabled="true">
                                 <span>m<sup>2</sup></span>
@@ -141,7 +146,7 @@
                 </div>
                 <div class="col-xs-6" style="padding-right: 0px;">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="funds.upper" format="number" placeholder="Til" id="areato" aria-label="Funds To">
+                        <input type="text" class="form-control" ng-model="area.upper" format="number" placeholder="Til" id="areato" aria-label="Funds To">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" disabled="true">
                             <span>m<sup>2</sup></span>
@@ -161,11 +166,8 @@
     </div>
 
 
-    <div class="col-xs-8 map container-fluid">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-        <div ng-repeat="construction in constructions">
-            {{construction}}
-        </div>
+    <div class="col-xs-8 map">
+        <div ui-view></div>
     </div>
 
     <!-- END CONTAINER -->
