@@ -8,19 +8,41 @@
 
     <div class="col-xs-4 filter">
 
-        <div class="form-group row">
-            <div class="col-xs-10 selectContainer">
-                <label class="control-label" for="type">Anleggstype</label>
-                <ui-select ng-model="construction.selected" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
-                    <match placeholder="Velg anleggstype">{{$construction.selected}}</match>
-                    <choices repeat="type in construction.types">
-                        <div ng-bind-html="type"></div>
-                    </choices>
-                </ui-select>
+        <!--div class="row">
+            <div class="col-xs-10">
+                <label>Treff</label>
+                <h4>{{ construction.length }}</h4>
             </div>
             <div class="col-xs-2">
-                <a href="#" uib-tooltip="Velg ønsket annleggstype for filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <!--span class="glyphicon glyphicon-tag" aria-hidden="True"></span-->
+                <a href="#" uib-tooltip="Antall søketreff etter filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div-->
+
+        <div class="form-group row">
+            <div class="col-xs-10 selectContainer">
+                <label class="control-label" for="county">Fylke</label>
+                <input id="county" type="text" ng-model="counties.selected" typeahead-editable="false" placeholder="Fylke"
+                       uib-typeahead="county.name for county in counties.county | filter:$viewValue | limitTo:8"
+                       class="form-control">
+            </div>
+            <div class="col-xs-2">
+                <a href="#" uib-tooltip="Velg ønsket fylke for filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-10 selectContainer">
+                <label class="control-label" for="municipality">Kommune</label>
+                <input id="municipality" type="text" ng-model="counties.county.selected" typeahead-editable="false" placeholder="Kommune"
+                       uib-typeahead="municipality for municipality in counties.county.municipalities | filter:$viewValue | limitTo:8"
+                       class="form-control">
+            </div>
+            <div class="col-xs-2">
+                <a href="#" uib-tooltip="Velg ønsket kommune for filtrering. Kun kommuner for tilhørende fylke vises." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <span class="label label-pill label-default">?</span>
                 </a>
             </div>
@@ -29,45 +51,39 @@
         <div class="form-group row">
             <div class="col-xs-10 selectContainer">
                 <label class="control-label" for="type">Anleggstype</label>
-                <select class="combobox form-control" name="facility-type" id="type">
-                    <option></option>
-                    <option value="rallycross">RallyCross-Bane</option>
-                    <option value="swimming_hall">Svømmehall</option>
-                    <option value="pingpongtable">Pingpong-bord</option>
-                    <option value="racingcircuit">Racingbane</option>
-                </select>
+                <input id="type" type="text" ng-model="construction.selected" typeahead-editable="false" placeholder="Anleggstype"
+                       uib-typeahead="facility for facility in construction.types | filter:$viewValue | limitTo:8"
+                       class="form-control">
             </div>
             <div class="col-xs-2">
                 <a href="#" uib-tooltip="Velg ønsket annleggstype for filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <!--span class="glyphicon glyphicon-tag" aria-hidden="True"></span-->
                     <span class="label label-pill label-default">?</span>
                 </a>
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-xs-5">
-            <label class="control-label" for="fundsfrom">Fra</label>
-            <div class="input-group">
-                <input type="text" class="form-control" ng-model="funds.lower" format="number" placeholder="0" id="fundsfrom" aria-label="Funds From">
-                <div class="input-group-btn">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" disabled="true">
-                            <span>NOK</span>
-                        </button>
-                    </span>
+            <div class="col-xs-10">
+                <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Tildelte midler</label>
+                <div class="col-xs-6" style="padding-left: 0px">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="funds.lower" format="number" placeholder="Fra kr" id="fundsfrom" aria-label="Funds From">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" disabled="true">
+                                <span>NOK</span>
+                            </button>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            </div>
-            <div class="col-xs-5">
-                <label class="control-label" for="fundsto">Til</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="funds.upper" format="number" placeholder="20.000.000" id="fundsto" aria-label="Funds To">
+                <div class="col-xs-6" style="padding-right: 0px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="funds.upper" format="number" placeholder="Til kr" id="fundsto" aria-label="Funds To">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" disabled="true">
                             <span>NOK</span>
                         </button>
                     </span>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-2">
@@ -78,32 +94,64 @@
         </div>
 
         <div class="form-group row">
-            <div class="col-xs-5">
-            <label class="control-label" for="yearfrom">Fra</label>
-            <div class="input-group date">
-                <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="fromDate"
-                       is-open="callers['from']" close-text="Lukk" clear-text="Tøm" datepicker-options="dateOpts" id="yearfrom">
+            <div class="col-xs-10">
+                <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Byggeår</label>
+                <div class="col-xs-6" style="padding-left: 0px">
+                    <div class="input-group date">
+                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="fromDate" placeholder="Fra år"
+                               is-open="callers['from']" close-text="Lukk" clear-text="Tøm" datepicker-options="dateOpts" id="yearfrom">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openDate($event, 'from')">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                     </span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-5">
-                <label class="control-label" for="yearto">Til</label>
-                <div class="input-group date">
-                    <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="toDate"
-                       is-open="callers['to']" close-text="Lukk" clear-text="Tøm" today-text="I år" datepicker-options="dateOpts" id="yearTo">
+                <div class="col-xs-6" style="padding-right: 0px">
+                    <div class="input-group date">
+                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="toDate" placeholder="Til år"
+                               is-open="callers['to']" close-text="Lukk" clear-text="Tøm" today-text="I år" datepicker-options="dateOpts" id="yearTo">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openDate($event, 'to')">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                     </span>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-2">
                 <a href="#" uib-tooltip="Vis treff for byggår." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-10">
+                <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Areal</label>
+                <div class="col-xs-6" style="padding-left: 0px">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="funds.lower" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" disabled="true">
+                                <span>m<sup>2</sup></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding-right: 0px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="funds.upper" format="number" placeholder="Til" id="areato" aria-label="Funds To">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" disabled="true">
+                            <span>m<sup>2</sup></span>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <a href="#" uib-tooltip="Filtrer på areal." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <span class="label label-pill label-default">?</span>
                 </a>
             </div>
