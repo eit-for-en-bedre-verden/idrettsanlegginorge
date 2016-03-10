@@ -114,8 +114,8 @@ angular.module('idrettsanlegg.controllers')
             tildelt: 2000000,
             utbetalt: 1700000,
             uu: "Ja",
-            show: false,
-            id: 0
+
+            show: false
         };
 
         $scope.markers = [staticMarker];
@@ -138,10 +138,18 @@ angular.module('idrettsanlegg.controllers')
                     latitude: 64,
                     longitude: 10.2
                 },
-
+                windowContent: getWindowContent(construction)
             };
 
         };
+
+        var getWindowContent = function(construction){
+            <div id='windowcontent'>
+                <h1 id='firstHeading' class='firstHeading'>construction.anleggsnavn</h1>
+                <div id='bodyContent'>
+
+
+        }
 
 
         $scope.constructions = ['1', '2', '3']; // Place markers

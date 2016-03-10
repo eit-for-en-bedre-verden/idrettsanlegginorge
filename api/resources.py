@@ -56,4 +56,3 @@ class IdrettsanleggResource(ModelResource):
             "type": ALL_WITH_RELATIONS
         }
         serializer = PrettyJSONSerializer()
-

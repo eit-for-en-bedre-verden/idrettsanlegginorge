@@ -47,7 +47,7 @@ def selectianlegg(table, where, whereis):
     return x
 
 def insertidrett(table,variables,query):
-    insert_stmt =("INSERT INTO %s (%s) VALUES ('%s)")% (table, variables, query)
+    insert_stmt =("INSERT INTO %s (%s) VALUES ('%s')")% (table, variables, query)
     data = x.execute(insert_stmt)
     conn.commit()
     return data
