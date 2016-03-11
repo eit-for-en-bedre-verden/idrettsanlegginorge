@@ -1,0 +1,88 @@
+
+.iw-container .iw-title {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0.5em;
+    background-color: #1C7D9E;
+    color: white;
+    margin: 0;
+}
+
+.iw-title {
+    margin: 0 0 0.5em 0;
+}
+
+.iw-container {
+    margin: 1em 0 1em 0;
+    font-size: 10px;
+    max-height: 300px;
+    max-width: 420px;
+}
+
+.iw-container .iw-content {
+	overflow-y: scroll;
+}
+
+.iw-infotable {
+    float: left;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.iw-datatable {
+    float: right;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.gm-style-iw {
+
+}
+
+
+html body {
+    margin: 0 1px 0 1px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  color: #1C7D9E;
+}
+
+th, td {
+  vertical-align: middle;
+  padding: 0.5em;
+}
+
+thead tr:first-child th:first-child {
+    background: #1C7D9E;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+th {
+    font-weight: bolder;
+    text-align: center;
+}
+
+td:first-child {
+  font-weight: bolder;
+  text-align: left;
+  border-left: 1px solid #cecfd5;
+}
+
+td {
+  font-size: 10px;
+  text-align: left;
+  padding: 8px;
+  color: black;
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+
+tbody tr:nth-child(even){
+    background-color: #f2f2f2;
+}
