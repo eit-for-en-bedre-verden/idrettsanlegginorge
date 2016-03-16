@@ -6,11 +6,12 @@ angular.module('idrettsanlegg.controllers')
             //$scope.constructions = data.objects etc.
             //console.log(data);
             $scope.count = data.meta.limit;
+            $scope.constructions = data.objects;
+            $scope.meta = data.meta;
         });
 
         $scope.viewState = 'Kart';
 
-        $scope.constructions = ['1', '2', '3'];
         $scope.construction = {
             types : [
                 "RallyCross-Bane",

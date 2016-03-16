@@ -26,6 +26,52 @@ class AnleggTypeResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
 
+class AnleggsKlasseResource(ModelResource):
+    class Meta:
+        queryset = AnleggsKlasse.objects.all()
+        resource_name = 'Anleggsklasse'
+        allowed_methods = ['post', 'get', 'patch', 'delete']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+
+class AnleggsStatusResource(ModelResource):
+    class Meta:
+        queryset = AnleggStatus.objects.all()
+        resource_name = 'anleggstatus'
+        allowed_methods = ['post', 'get', 'patch', 'delete']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+
+class AnleggsKategoriResource(ModelResource):
+    class Meta:
+        queryset = AnleggsKategori.objects.all()
+        resource_name = 'AnleggsKategori'
+        allowed_methods = ['post', 'get', 'patch', 'delete']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+
+class FylkeResource(ModelResource):
+    class Meta:
+        queryset = Fylke.objects.all()
+        resource_name = 'fylke'
+        allowed_methods = ['post', 'get', 'patch', 'delete']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+
+class KommuneResource(ModelResource):
+    fylke = fields.ToOneField(FylkeResource, 'fylke', full=True)
+    class Meta:
+        queryset = Kommune.objects.all()
+        resource_name = 'Kommune'
+        allowed_methods = ['post', 'get', 'patch', 'delete']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+
 class KartDataResource(ModelResource):
     class Meta:
         queryset = KartData.objects.all()
@@ -36,12 +82,17 @@ class KartDataResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
         filtering = {
-            "Latitude": ALL
+            "Latitude": ALL_WITH_RELATIONS
         }
 
 class IdrettsanleggResource(ModelResource):
     anleggstype = fields.ToOneField(AnleggTypeResource, 'Anleggstype', full=True)
+    anleggsklasse = fields.ToOneField(AnleggsKlasseResource, 'Anleggsklasse', full=True)
+    anleggskategori = fields.ToOneField(AnleggsKategoriResource, 'Anleggskategori', full=True)
     kartData = fields.ToOneField(KartDataResource, 'kartdata', full=True)
+    kommune = fields.ToOneField(KommuneResource, 'kommune', full=True)
+    #anleggstatus = fields.ForeignKey(AnleggsStatusResource, 'status', full=True)
+
     class Meta:
         queryset = Idrettsanlegg.objects.all()
         resource_name = 'Idrettsanlegg'
@@ -51,7 +102,7 @@ class IdrettsanleggResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
         filtering = {
-           "Byggeaar": ALL_WITH_RELATIONS,
+           "byggeaar": ALL_WITH_RELATIONS,
             "tildelt": ALL_WITH_RELATIONS,
             "type": ALL_WITH_RELATIONS
         }
