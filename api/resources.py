@@ -25,6 +25,9 @@ class AnleggTypeResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        filtering= {
+            "type": ALL_WITH_RELATIONS
+        }
 
 class AnleggsKlasseResource(ModelResource):
     class Meta:
@@ -34,15 +37,21 @@ class AnleggsKlasseResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        filtering = {
+            "klasse": ALL_WITH_RELATIONS    #?anleggsklasse__klasse=Nærmiljøanlegg&format=json
+        }
 
-class AnleggsStatusResource(ModelResource):
+class AnleggStatusResource(ModelResource):
     class Meta:
         queryset = AnleggStatus.objects.all()
-        resource_name = 'anleggstatus'
+        resource_name = 'anleggStatus'
         allowed_methods = ['post', 'get', 'patch', 'delete']
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        filtering = {
+            "status": ALL_WITH_RELATIONS    #?anleggstatus__status=Planlagt&format=json
+        }
 
 class AnleggsKategoriResource(ModelResource):
     class Meta:
@@ -52,6 +61,9 @@ class AnleggsKategoriResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        filtering = {
+            "kategori": ALL_WITH_RELATIONS  #?anleggskategori__kategori=Friluftsliv&format=json
+        }
 
 class FylkeResource(ModelResource):
     class Meta:
@@ -99,7 +111,8 @@ class IdrettsanleggResource(ModelResource):
     anleggskategori = fields.ToOneField(AnleggsKategoriResource, 'Anleggskategori', full=True)
     kartData = fields.ToOneField(KartDataResource, 'kartdata', full=True)
     kommune = fields.ToOneField(KommuneResource, 'kommune', full=True)
-    #anleggstatus = fields.ForeignKey(AnleggsStatusResource, 'status', full=True)
+    anleggstatus = fields.ToOneField(AnleggStatusResource, 'anleggStatus', full=True)
+
 
     class Meta:
         queryset = Idrettsanlegg.objects.all()
@@ -111,10 +124,28 @@ class IdrettsanleggResource(ModelResource):
         always_return_data = True
         filtering = {
            "byggeaar": ALL_WITH_RELATIONS,  #?byggeaar__gt=2011&byggeaar__lt=2013&format=json
+            "anleggDriver": ALL_WITH_RELATIONS,
+            "anleggEier": ALL_WITH_RELATIONS,
+            "anleggsNavn": ALL_WITH_RELATIONS,
+            "anleggsNummer": ALL_WITH_RELATIONS,
+            "areal": ALL_WITH_RELATIONS,
+            "bredde": ALL_WITH_RELATIONS,
+            "indratt": ALL_WITH_RELATIONS,
+            "lengde": ALL_WITH_RELATIONS,
+            "nummer1": ALL_WITH_RELATIONS,
+            "ombyggeaar": ALL_WITH_RELATIONS,
             "tildelt": ALL_WITH_RELATIONS,
-            "type": ALL_WITH_RELATIONS,
-            
+            "utbetalt": ALL_WITH_RELATIONS,
+            "uu": ALL_WITH_RELATIONS,
+
+
             "kartData" : ALL_WITH_RELATIONS,
-            "kommune": ALL_WITH_RELATIONS
+            "kommune": ALL_WITH_RELATIONS,
+            "anleggstype": ALL_WITH_RELATIONS,
+            "anleggsklasse": ALL_WITH_RELATIONS,
+            "anleggskategori": ALL_WITH_RELATIONS,
+            "anleggstatus": ALL_WITH_RELATIONS
+
+
         }
         serializer = PrettyJSONSerializer()
