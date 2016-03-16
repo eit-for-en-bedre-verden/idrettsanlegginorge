@@ -7,6 +7,7 @@ angular.module('idrettsanlegg.controllers')
             $scope.meta = data.meta;
         });
 
+        $scope.formData = {};
         $scope.viewState = 'Kart';
 
         $scope.construction = {
@@ -80,5 +81,17 @@ angular.module('idrettsanlegg.controllers')
             lower : null,
             upper : null
         };
+
+        $scope.$watch('formData', function() {
+            Construction.query({
+                    'kommune__fylke__name': $scope.formData.county,
+                    'kommune__name': $scope.formData.municipality
+                },
+                function (data) {
+                    $scope.constructions = data.objects;
+                    $scope.meta = data.meta;
+                }
+            );
+        }, true);
     
     });
