@@ -57,7 +57,7 @@ class Idrettsanlegg(models.Model):
     uu = models.CharField(max_length=75, choices=[('Ja', 'Ja'), ('Nei', 'Nei'), ('Ikke Vurdert','Ikke Vurdert')],
                           default='Ikke Vurdert')
 
-    Byggeaar = models.CharField(max_length=75, blank=True)
+    byggeaar = models.IntegerField(blank=True, default=0)
     ombyggeaar = models.CharField(max_length=75, blank=True)
     maaldata1 = models.CharField(max_length=75, blank=True)
     maaldata2 = models.CharField(max_length=75, blank=True)
