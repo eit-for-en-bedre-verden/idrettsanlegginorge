@@ -1,4 +1,3 @@
-
 angular.module('idrettsanlegg.controllers', []);
 angular.module('idrettsanlegg.filters', []);
 angular.module('idrettsanlegg.services', []);
@@ -47,4 +46,3 @@ angular
                 controller: 'MapController'
             });
     });
-   

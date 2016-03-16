@@ -10,7 +10,7 @@ angular.module('idrettsanlegg.directives')
 
 
             ctrl.$formatters.unshift(function () {
-                return $filter(attrs.format)(ctrl.$modelValue)
+                return $filter(attrs.format)(ctrl.$modelValue);
             });
 
 

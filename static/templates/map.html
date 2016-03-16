@@ -1,1 +1,11 @@
-<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" control="control" bounds = "map.bounds" options="map.options">
+
+    <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="onClick" fit="true">
+
+        <ui-gmap-windows show="window.show">
+            <div ng-non-bindable>{{windowContent}}</div>
+        </ui-gmap-windows>
+
+    </ui-gmap-markers>
+
+</ui-gmap-google-map>
