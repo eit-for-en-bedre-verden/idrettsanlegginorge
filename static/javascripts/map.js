@@ -5,7 +5,6 @@ angular.module('idrettsanlegg.controllers')
 
 
         var mapOptions = {
-            backgroundColor: '#1C7D9E',
             disableDefaultUI: false,
             keyboardShortcuts: false,
             draggable: true,
@@ -33,6 +32,16 @@ angular.module('idrettsanlegg.controllers')
             bounds: {}
         };
 
+        // Contains all the current markers on the map.
+        $scope.markers = [];
+        $scope.constructions = ['1', '2', '3']; // Place markers
+
+
+
+
+
+
+        // KUN FOR TESTING
 
         var staticConstruction1 = {
             byggeaar: "1983",
@@ -82,8 +91,6 @@ angular.module('idrettsanlegg.controllers')
 
             show: false
         };
-
-
 
 
         var staticConstruction2 = {
@@ -137,7 +144,6 @@ angular.module('idrettsanlegg.controllers')
 
 
 
-
         var staticConstruction3 = {
             byggeaar: "1983",
             anleggDriver: "Nordkapp kommune",
@@ -176,6 +182,7 @@ angular.module('idrettsanlegg.controllers')
             resource_uri: "/api/v1/Idrettsanlegg/451446/",
             tildelt: 2000000,
             utbetalt: 1700000,
+
             // DENNE DATAEN VIL JEG HA MED I JSON SOM KOMMER
             uu: "Ja",
             status: "Urealisert",
@@ -188,12 +195,13 @@ angular.module('idrettsanlegg.controllers')
         };
 
 
+        var staticConstructions = [staticConstruction1, staticConstruction2, staticConstruction3];
+        // SLUTT: KUN FOR TESTING
 
 
         $scope.removeMarkers = function () {
             $scope.markers = [];
         };
-
 
 
         // Used to push an array of markers to the scope markers
@@ -204,9 +212,8 @@ angular.module('idrettsanlegg.controllers')
         };
 
 
-
-        // Takes in an array of javascript objects representing constructions
         var createMarkers = function(constructions){
+            // Takes in an array of javascript objects representing constructions
             var markers = [];
             for(var i = 0; i < constructions.length; i++){
                 content = getWindowContent(constructions[i]);
@@ -230,6 +237,7 @@ angular.module('idrettsanlegg.controllers')
             };
             return marker;
         };
+
 
 
         // Use this to add new markers to the map.
@@ -257,7 +265,9 @@ angular.module('idrettsanlegg.controllers')
             $scope.markers = markers;
         };
 
-        $scope.initMarkers = function(){
+
+        // Currently used to add or remove markers using the "Søk" button
+        $scope.showMarkers = function(){
             if($scope.markers.length === 0){
                 $scope.addNewMarkers(staticConstructions);
             }
@@ -266,7 +276,6 @@ angular.module('idrettsanlegg.controllers')
             }
 
         };
-
 
 
         var getWindowContent = function(construction){
@@ -423,10 +432,8 @@ angular.module('idrettsanlegg.controllers')
         };
 
 
-        $scope.constructions = ['1', '2', '3']; // Place markers
-
-
         $scope.onClick = function(markers, eventName, model){
+            // Ha en "currentmarker" i stedet for å sjekke alle markers
             if(model.show === false){
                 for (var i = 0; i < $scope.markers.length; i++){
                     var marker = $scope.markers[i];
@@ -439,14 +446,11 @@ angular.module('idrettsanlegg.controllers')
 
         };
 
-        var staticConstructions = [staticConstruction1, staticConstruction2, staticConstruction3];
-
-        // Contains all the current markers on the map.
-        $scope.markers = [];
 
         uiGmapIsReady.promise().then(function (map_instances){
             // Run when the map is initalized
         });
+
 
         uiGmapGoogleMapApi.then(function (maps) {
             // uiGmapGoogleMapApi is a promise.
