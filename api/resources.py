@@ -61,6 +61,9 @@ class FylkeResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        filtering = {
+            "name": ALL_WITH_RELATIONS  #?kommune__fylke__name=Rogaland&format=json
+        }
 
 class KommuneResource(ModelResource):
     fylke = fields.ToOneField(FylkeResource, 'fylke', full=True)
@@ -71,6 +74,10 @@ class KommuneResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        filtering= {
+            "fylke": ALL_WITH_RELATIONS,
+            "name": ALL_WITH_RELATIONS  #?kommune__name=Hjelmeland&format=json
+        }
 
 class KartDataResource(ModelResource):
     class Meta:
@@ -82,7 +89,8 @@ class KartDataResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
         filtering = {
-            "Latitude": ALL_WITH_RELATIONS
+            "Latitude": ALL_WITH_RELATIONS, #?kartData__Longitude__gt=0&kartData__Latitude__gt=0&format=json
+            "Longitude": ALL_WITH_RELATIONS
         }
 
 class IdrettsanleggResource(ModelResource):
@@ -102,9 +110,12 @@ class IdrettsanleggResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
         filtering = {
-           "byggeaar": ALL_WITH_RELATIONS,
+           "byggeaar": ALL_WITH_RELATIONS,  #?byggeaar__gt=2011&byggeaar__lt=2013&format=json
             "tildelt": ALL_WITH_RELATIONS,
-            "type": ALL_WITH_RELATIONS
+            "type": ALL_WITH_RELATIONS,
+            
+            "kartData" : ALL_WITH_RELATIONS,
+            "kommune": ALL_WITH_RELATIONS
         }
         serializer = PrettyJSONSerializer()
 
