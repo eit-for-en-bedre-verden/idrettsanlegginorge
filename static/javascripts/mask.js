@@ -9,7 +9,7 @@ angular.module('ui.mask', [])
                 '*': /[a-zA-Z0-9]/
             },
             clearOnBlur: true,
-            clearOnBlurPlaceholder: false,
+            clearOnBlurPlaceholder: true,
             eventsToHandle: ['input', 'keyup', 'click', 'focus']
         })
         .provider('uiMask.Config', function() {
