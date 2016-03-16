@@ -35,8 +35,7 @@ angular.module('idrettsanlegg.controllers')
         // Contains all the current markers on the map.
         $scope.markers = [];
         $scope.constructions = ['1', '2', '3']; // Place markers
-
-
+        $scope.current_marker = null;
 
 
 
@@ -434,17 +433,15 @@ angular.module('idrettsanlegg.controllers')
 
         $scope.onClick = function(markers, eventName, model){
             // Ha en "currentmarker" i stedet for å sjekke alle markers
-            if(model.show === false){
-                for (var i = 0; i < $scope.markers.length; i++){
-                    var marker = $scope.markers[i];
-                    if(marker !== model){
-                        marker.show = false;
-                    }
-                }
+            if(model.show === false && model !== $scope.current_marker && $scope.current_marker !== null){
+                $scope.current_marker.show = false;
             }
             model.show = !model.show;
+            $scope.current_marker = model
 
         };
+
+
 
 
         uiGmapIsReady.promise().then(function (map_instances){
