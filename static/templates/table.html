@@ -1,3 +1,24 @@
-<div ng-repeat="construction in constructions">
-    {{construction}}
-</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Anleggsnummer</th>
+            <th>Navn</th>
+            <th>Kommune</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="construction in constructions">
+        <td>{{construction.id}}</td>
+        <td>{{construction.anleggsnummer}}</td>
+        <td>{{construction.anleggsnavn}}</td>
+        <td>{{construction.kommune.name}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<uib-pagination
+    total-items="meta.total_count" ng-model="currentPage" max-size="5"
+    class="pagination-sm" boundary-link-numbers="true"
+    ng-change="pageChanged()" items-per-page="20">
+</uib-pagination>

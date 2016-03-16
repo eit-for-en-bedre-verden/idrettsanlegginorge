@@ -3,13 +3,12 @@
 angular.module('idrettsanlegg.controllers')
     .controller('HomeController', function($scope, Construction) {
         Construction.query(function (data) {
-            //$scope.constructions = data.objects etc.
-            //console.log(data);
+            $scope.constructions = data.objects;
+            $scope.meta = data.meta;
         });
 
         $scope.viewState = 'Kart';
 
-        $scope.constructions = ['1', '2', '3'];
         $scope.construction = {
             types : [
                 "RallyCross-Bane",
