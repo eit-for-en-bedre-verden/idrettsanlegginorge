@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from idrettsanlegg import views
 from tastypie.api import Api
-from api.resources import IdrettsanleggResource, AnleggTypeResource, KartDataResource, AnleggStatusResource, AnleggsKategoriResource, KommuneResource, FylkeResource, AnleggsKlasseResource
+from api.resources import IdrettsanleggResource, AnleggTypeResource, KartDataResource, AnleggStatusResource, AnleggsKategoriResource, KommuneResource, FylkeResource, AnleggsKlasseResource, FreeTextIdrettResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(IdrettsanleggResource())
@@ -28,6 +28,7 @@ v1_api.register(AnleggsKlasseResource())
 v1_api.register(AnleggStatusResource())
 v1_api.register(KommuneResource())
 v1_api.register(FylkeResource())
+v1_api.register(FreeTextIdrettResource())
 
 
 urlpatterns = [

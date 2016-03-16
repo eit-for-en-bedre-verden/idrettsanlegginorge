@@ -38,7 +38,7 @@ class AnleggsKlasseResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
         filtering = {
-            "klasse": ALL_WITH_RELATIONS    #?anleggsklasse__klasse=Nærmiljøanlegg&format=json
+            "klasse": ALL_WITH_RELATIONS    #?anleggsklasse__klasse=Naermiljoanlegg&format=json
         }
 
 class AnleggStatusResource(ModelResource):
@@ -147,5 +147,22 @@ class IdrettsanleggResource(ModelResource):
             "anleggstatus": ALL_WITH_RELATIONS
 
 
+        }
+        serializer = PrettyJSONSerializer()
+
+class FreeTextIdrettResource(ModelResource):
+    # The ID can be used to get the specific idrettsanlegg by: api/v1/Idrettsanlegg/{ID}/?format=json
+    class Meta:
+        queryset = Idrettsanlegg.objects.all()
+        resource_name = 'FreeTextSearch'
+        fields = ['anleggsnavn', 'id']
+        limit = 0
+        max_limit = 0
+        allowed_methods = ['post', 'get', 'patch', 'delete']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+        filtering = {
+            "anleggsnavn" : ALL_WITH_RELATIONS #?anleggsnavn__istartswith=k&limit=10&format=json
         }
         serializer = PrettyJSONSerializer()
