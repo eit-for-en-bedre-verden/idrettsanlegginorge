@@ -1,7 +1,8 @@
 
 
 angular.module('idrettsanlegg.controllers')
-    .controller('MapController', function($scope, uiGmapGoogleMapApi, uiGmapIsReady) {
+    .controller('MapController', function($scope, uiGmapGoogleMapApi, uiGmapIsReady,
+            Construction) {
 
 
         var mapOptions = {
@@ -34,168 +35,15 @@ angular.module('idrettsanlegg.controllers')
 
         // Contains all the current markers on the map.
         $scope.markers = [];
-        $scope.constructions = ['1', '2', '3']; // Place markers
+        Construction.query({
+            kartData__Longitude__gt: 0,
+            kartData__Latitude__gt: 60
+        }, function(data) {
+                $scope.mapConstructions = data.objects;
+                $scope.meta = data.meta;
+                $scope.showMarkers();
+        });
         $scope.current_marker = null;
-
-
-
-
-        // KUN FOR TESTING
-
-        var staticConstruction1 = {
-            byggeaar: "1983",
-            anleggDriver: "Nordkapp kommune",
-            anleggEier: "Nordkapp kommune",
-            anleggsnavn: "Nordkapp museum",
-            anleggsnummer: "2019-001-601",
-            anleggstype: {
-              id: 1,
-              resource_uri: "/api/v1/Anleggstype/1/",
-              type: "Kulturbygg - Museum"
-            },
-            areal: 0,
-            bredde: 0,
-            id: 10010,
-            inndratt: 0,
-            kartData: {
-              latitude: 60.21,
-              longitude: 10.31,
-              id: 328975,
-              kpunkt: 0,
-              ngoakse: 0,
-              ngoxkoordinat: 7961501,
-              ngoykoordinat: 558466547,
-              resource_uri: "/api/v1/KartData/328975/",
-              utmnord: 1110074,
-              utmost: 659507964,
-              utmsone: 33
-            },
-            lengde: 0,
-            maaldata1: "Test",
-            maaldata2: "mål",
-            maaldata3: "data",
-            maaldata4: "200 meter",
-            nummer1: 2019,
-            ombyggeaar: "",
-            resource_uri: "/api/v1/Idrettsanlegg/451446/",
-            tildelt: 2000000,
-            utbetalt: 1700000,
-            // DENNE DATAEN VIL JEG HA MED I JSON SOM KOMMER
-            uu: "Ja",
-            status: "Urealisert",
-            fylke: "Finnmark",
-            kommune: "Nordkapp",
-            anleggsklasse: "Kommunebygg",
-            anleggskategori: "Flerbrukshall",
-
-            show: false
-        };
-
-
-        var staticConstruction2 = {
-            byggeaar: "1983",
-            anleggDriver: "Nordkapp kommune",
-            anleggEier: "Nordkapp kommune",
-            anleggsnavn: "Nordkapp museum",
-            anleggsnummer: "2019-001-601",
-            anleggstype: {
-              id: 1,
-              resource_uri: "/api/v1/Anleggstype/1/",
-              type: "Kulturbygg - Museum"
-            },
-            areal: 0,
-            bredde: 0,
-            id: 13311,
-            inndratt: 0,
-            kartData: {
-              latitude: 60.22,
-              longitude: 10.22,
-              id: 328975,
-              kpunkt: 0,
-              ngoakse: 0,
-              ngoxkoordinat: 7961501,
-              ngoykoordinat: 558466547,
-              resource_uri: "/api/v1/KartData/328975/",
-              utmnord: 1110074,
-              utmost: 659507964,
-              utmsone: 33
-            },
-            lengde: 0,
-            maaldata1: "Test",
-            maaldata2: "data",
-            maaldata3: "50",
-            maaldata4: "meter",
-            nummer1: 2019,
-            ombyggeaar: "",
-            resource_uri: "/api/v1/Idrettsanlegg/451446/",
-            tildelt: 2000000,
-            utbetalt: 1700000,
-            // DENNE DATAEN VIL JEG HA MED I JSON SOM KOMMER
-            uu: "Ja",
-            status: "Urealisert",
-            fylke: "Finnmark",
-            kommune: "Nordkapp",
-            anleggsklasse: "Kommunebygg",
-            anleggskategori: "Flerbrukshall",
-
-            show: false
-        };
-
-
-
-        var staticConstruction3 = {
-            byggeaar: "1983",
-            anleggDriver: "Nordkapp kommune",
-            anleggEier: "Nordkapp kommune",
-            anleggsnavn: "Nordkapp museum",
-            anleggsnummer: "2019-001-601",
-            anleggstype: {
-              id: 1,
-              resource_uri: "/api/v1/Anleggstype/1/",
-              type: "Kulturbygg - Museum"
-            },
-            areal: 0,
-            bredde: 0,
-            id: 2313,
-            inndratt: 0,
-            kartData: {
-              latitude: 62.2,
-              longitude: 10.2,
-              id: 328975,
-              kpunkt: 0,
-              ngoakse: 0,
-              ngoxkoordinat: 7961501,
-              ngoykoordinat: 558466547,
-              resource_uri: "/api/v1/KartData/328975/",
-              utmnord: 1110074,
-              utmost: 659507964,
-              utmsone: 33
-            },
-            lengde: 0,
-            maaldata1: "20",
-            maaldata2: "meter",
-            maaldata3: "100",
-            maaldata4: "meter høy",
-            nummer1: 2019,
-            ombyggeaar: "",
-            resource_uri: "/api/v1/Idrettsanlegg/451446/",
-            tildelt: 2000000,
-            utbetalt: 1700000,
-
-            // DENNE DATAEN VIL JEG HA MED I JSON SOM KOMMER
-            uu: "Ja",
-            status: "Urealisert",
-            fylke: "Finnmark",
-            kommune: "Nordkapp",
-            anleggsklasse: "Kommunebygg",
-            anleggskategori: "Flerbrukshall",
-
-            show: false
-        };
-
-
-        var staticConstructions = [staticConstruction1, staticConstruction2, staticConstruction3];
-        // SLUTT: KUN FOR TESTING
 
 
         $scope.removeMarkers = function () {
@@ -217,7 +65,9 @@ angular.module('idrettsanlegg.controllers')
             for(var i = 0; i < constructions.length; i++){
                 content = getWindowContent(constructions[i]);
                 marker = createMarker(constructions[i], content, i);
-                markers.push(marker);
+                if (marker.latitude && marker.latitude !== '0E-13') {
+                    markers.push(marker);
+                }
             }
             return markers;
         };
@@ -228,8 +78,8 @@ angular.module('idrettsanlegg.controllers')
             // Takes in a construction and creates a marker
             var marker = {
                 id: construction.id,
-                latitude: construction.kartData.latitude,
-                longitude: construction.kartData.longitude,
+                latitude: Number(construction.kartData.Latitude),
+                longitude: Number(construction.kartData.Longitude),
                 windowContent: content,
                 control: {},
                 show: false
@@ -243,7 +93,7 @@ angular.module('idrettsanlegg.controllers')
         // argument should be an array of javascript construction objects
         $scope.addNewMarkers = function(constructions){
             // Create markers
-            var markers = createMarkers(staticConstructions);
+            var markers = createMarkers(constructions);
 
             // Fit map bounds to markers
             var bounds = new google.maps.LatLngBounds();
@@ -268,7 +118,7 @@ angular.module('idrettsanlegg.controllers')
         // Currently used to add or remove markers using the "Søk" button
         $scope.showMarkers = function(){
             if($scope.markers.length === 0){
-                $scope.addNewMarkers(staticConstructions);
+                $scope.addNewMarkers($scope.mapConstructions);
             }
             else {
                 $scope.removeMarkers();
@@ -279,12 +129,6 @@ angular.module('idrettsanlegg.controllers')
 
         var getWindowContent = function(construction){
             windowContent =
-            '<html>' +
-            '<head>' +
-            '<meta charset="utf-8">' +
-            '<link rel="stylesheet" type="text/css" href="/static/css/mapwindow.css">' +
-            '</head>' +
-            '<body>' +
             '<div class="iw-container">' +
                   '<div class="iw-title">' + construction.anleggsnavn + '</div>' +
                   '<div class="iw-content">' +
@@ -309,19 +153,19 @@ angular.module('idrettsanlegg.controllers')
                       '</tr>' +
                       '<tr>' +
                           '<td>Fylke</td>' +
-                          '<td>' + construction.fylke + '</td>' +
+                          '<td>' + construction.kommune.fylke.name + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Kommune</td>' +
-                          '<td>' + construction.kommune + '</td>' +
+                          '<td>' + construction.kommune.name + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Anleggsklasse</td>' +
-                          '<td>' + construction.anleggsklasse + '</td>' +
+                          '<td>' + construction.anleggsklasse.klasse + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Anleggskategori</td>' +
-                          '<td>' + construction.anleggskategori + '</td>' +
+                          '<td>' + construction.anleggskategori.kategori + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Anleggstype</td>' +
@@ -379,15 +223,15 @@ angular.module('idrettsanlegg.controllers')
                       '</tr>' +
                       '<tr>' +
                           '<td>Utbetalt</td>' +
-                          '<td>' + construction.utdelt + '</td>' +
+                          '<td>' + construction.utbetalt + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Latitude</td>' +
-                          '<td>' + construction.kartData.latitude + '</td>' +
+                          '<td>' + construction.kartData.Latitude + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Longitude</td>' +
-                          '<td>' + construction.kartData.longitude + '</td>' +
+                          '<td>' + construction.kartData.Longitude + '</td>' +
                       '</tr>' +
                       '<tr>' +
                           '<td>Anlegg ID</td>' +
@@ -423,9 +267,7 @@ angular.module('idrettsanlegg.controllers')
                   '</table>' +
 
               '</div>' +
-              '</div>' +
-              '</body>' +
-              '</html>';
+              '</div>';
 
           return windowContent;
         };
@@ -440,8 +282,6 @@ angular.module('idrettsanlegg.controllers')
             $scope.current_marker = model
 
         };
-
-
 
 
         uiGmapIsReady.promise().then(function (map_instances){

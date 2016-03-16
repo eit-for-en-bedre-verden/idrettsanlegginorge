@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'idrettsanlegginorge.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eit_idrett',
         'USER': 'root',
         'PASSWORD': 'eit123123',
