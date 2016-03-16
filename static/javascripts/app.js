@@ -39,6 +39,7 @@ angular
             .state('home.table', {
                 url: "/table",
                 templateUrl: "static/templates/table.html",
+                controller: 'TableController'
             })
             .state('home.map', {
                 url: "/map",
