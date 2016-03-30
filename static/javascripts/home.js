@@ -1,10 +1,15 @@
 
 
 angular.module('idrettsanlegg.controllers')
-    .controller('HomeController', function($scope, Construction) {
+    .controller('HomeController', function($scope, Construction,
+        Municipality) {
         Construction.query(function (data) {
             $scope.constructions = data.objects;
             $scope.meta = data.meta;
+        });
+
+        Municipality.query(function (data) {
+            $scope.municipalities = data.objects;
         });
 
         $scope.formData = {};
