@@ -28,7 +28,7 @@
         <div class="form-group row">
             <div class="col-xs-10 selectContainer">
                 <label class="control-label" for="county">Fylke</label>
-                <input id="county" type="text" ng-model="counties.selected" typeahead-editable="false" placeholder="Fylke"
+                <input id="county" type="text" ng-model="formData.county" typeahead-editable="false" placeholder="Fylke"
                        uib-typeahead="county.name for county in counties.county | filter:$viewValue | limitTo:8"
                        class="form-control">
             </div>
@@ -42,8 +42,11 @@
         <div class="form-group row">
             <div class="col-xs-10 selectContainer">
                 <label class="control-label" for="municipality">Kommune</label>
-                <input id="municipality" type="text" ng-model="counties.county.selected" typeahead-editable="false" placeholder="Kommune"
-                       uib-typeahead="municipality for municipality in counties.county.municipalities | filter:$viewValue | limitTo:8"
+                <input id="municipality" type="text" ng-model="formData.municipality"
+                       typeahead-editable="false" placeholder="Kommune"
+                       uib-typeahead="municipality.name for municipality in municipalities
+                        | filter:$viewValue
+                        | municipality: formData.county | limitTo:8"
                        class="form-control">
             </div>
             <div class="col-xs-2">
@@ -56,7 +59,7 @@
         <div class="form-group row">
             <div class="col-xs-10 selectContainer">
                 <label class="control-label" for="type">Anleggstype</label>
-                <input id="type" type="text" ng-model="construction.selected" typeahead-editable="false" placeholder="Anleggstype"
+                <input id="type" type="text" ng-model="formData.constructionType" typeahead-editable="false" placeholder="Anleggstype"
                        uib-typeahead="facility for facility in construction.types | filter:$viewValue | limitTo:8"
                        class="form-control">
             </div>
@@ -72,7 +75,7 @@
                 <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Tildelte midler</label>
                 <div class="col-xs-6" style="padding-left: 0px">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="funds.lower" format="number" placeholder="Fra kr" id="fundsfrom" aria-label="Funds From">
+                        <input type="text" class="form-control" ng-model="formData.funds.lower" format="number" placeholder="Fra kr" id="fundsfrom" aria-label="Funds From">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" disabled="true">
                                 <span>NOK</span>
@@ -82,7 +85,7 @@
                 </div>
                 <div class="col-xs-6" style="padding-right: 0px;">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="funds.upper" format="number" placeholder="Til kr" id="fundsto" aria-label="Funds To">
+                        <input type="text" class="form-control" ng-model="formData.funds.upper" format="number" placeholder="Til kr" id="fundsto" aria-label="Funds To">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" disabled="true">
                             <span>NOK</span>
@@ -103,7 +106,7 @@
                 <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Byggeår</label>
                 <div class="col-xs-6" style="padding-left: 0px">
                     <div class="input-group date">
-                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="fromDate" placeholder="Fra år"
+                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="formData.fromDate" placeholder="Fra år"
                                is-open="callers['from']" close-text="Lukk" clear-text="Tøm" datepicker-options="dateOpts" id="yearfrom">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openDate($event, 'from')">
@@ -114,7 +117,7 @@
                 </div>
                 <div class="col-xs-6" style="padding-right: 0px">
                     <div class="input-group date">
-                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="toDate" placeholder="Til år"
+                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="formData.toDate" placeholder="Til år"
                                is-open="callers['to']" close-text="Lukk" clear-text="Tøm" today-text="I år" datepicker-options="dateOpts" id="yearTo">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openDate($event, 'to')">
@@ -136,7 +139,7 @@
                 <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Areal</label>
                 <div class="col-xs-6" style="padding-left: 0px">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="area.lower" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
+                        <input type="text" class="form-control" ng-model="formData.area.lower" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" disabled="true">
                                 <span>m<sup>2</sup></span>
@@ -146,7 +149,7 @@
                 </div>
                 <div class="col-xs-6" style="padding-right: 0px;">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="area.upper" format="number" placeholder="Til" id="areato" aria-label="Funds To">
+                        <input type="text" class="form-control" ng-model="formData.area.upper" format="number" placeholder="Til" id="areato" aria-label="Funds To">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" disabled="true">
                             <span>m<sup>2</sup></span>

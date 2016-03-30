@@ -1,12 +1,18 @@
 
 
 angular.module('idrettsanlegg.controllers')
-    .controller('HomeController', function($scope, Construction) {
+    .controller('HomeController', function($scope, Construction,
+        Municipality) {
         Construction.query(function (data) {
             $scope.constructions = data.objects;
             $scope.meta = data.meta;
         });
 
+        Municipality.query(function (data) {
+            $scope.municipalities = data.objects;
+        });
+
+        $scope.formData = {};
         $scope.viewState = 'Kart';
 
         $scope.construction = {
@@ -80,5 +86,17 @@ angular.module('idrettsanlegg.controllers')
             lower : null,
             upper : null
         };
+
+        $scope.$watch('formData', function() {
+            Construction.query({
+                    'kommune__fylke__name': $scope.formData.county,
+                    'kommune__name': $scope.formData.municipality
+                },
+                function (data) {
+                    $scope.constructions = data.objects;
+                    $scope.meta = data.meta;
+                }
+            );
+        }, true);
     
     });
