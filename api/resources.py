@@ -95,6 +95,8 @@ class KartDataResource(ModelResource):
     class Meta:
         queryset = KartData.objects.all()
         limit = 0
+        max_limit = 0
+
         resource_name = 'KartData'
         allowed_methods = ['post', 'get', 'patch', 'delete']
         authentication = Authentication()
@@ -104,6 +106,8 @@ class KartDataResource(ModelResource):
             "Latitude": ALL_WITH_RELATIONS, #?kartData__Longitude__gt=0&kartData__Latitude__gt=0&format=json
             "Longitude": ALL_WITH_RELATIONS
         }
+        serializer = PrettyJSONSerializer()
+
 
 class IdrettsanleggResource(ModelResource):
     anleggstype = fields.ToOneField(AnleggTypeResource, 'Anleggstype', full=True)
@@ -118,6 +122,7 @@ class IdrettsanleggResource(ModelResource):
         queryset = Idrettsanlegg.objects.all()
         resource_name = 'Idrettsanlegg'
         limit = 0
+        max_limit = 0
         allowed_methods = ['post', 'get', 'patch', 'delete']
         authentication = Authentication()
         authorization = Authorization()

@@ -86,6 +86,9 @@ def getfromcsv():
     next(reader)
     for row in reader:
         katvar = row[10]
+        if katvar =="Kulturbygg":
+            continue
+
         if katvar in kategoridict:
             kategori_id = kategoridict[katvar]
         else:
@@ -114,6 +117,8 @@ def getfromcsv():
 
 
         statvar = row[6]
+        if statvar != "Eksisterende":
+            continue
         if(statvar in statusdict):
             status_id = statusdict[statvar]
         else:
@@ -200,12 +205,12 @@ def getfromcsv():
 
         Latitude = row[32].replace(',','.')
         if isDec(Latitude):
-            if(float(Latitude) > 58 and float(Latitude) < 90):
+            if(float(Latitude) > 58 and float(Latitude) < 80):
                 pass
             else:
                 if utmnord> 0 and utmost> 0 and utmsone > 0:
                     try:
-                        latlong =  utm.to_latlon(utmost, utmnord, utmsone)
+                        latlong =  utm.to_latlon(utmost, utmnord, utmsone, 'W')
                         Latitude = latlong[1]
 
                     except ValueError:
@@ -215,15 +220,17 @@ def getfromcsv():
                     Latitude = '0.00000000000000'
         else:
             if utmnord > 0 and utmost> 0 and utmsone > 0:
-                    latlong = utm.to_latlon(utmost, utmnord, utmsone)
+                    latlong = utm.to_latlon(utmost, utmnord, utmsone, 'W')
                     Latitude = latlong[1]
             else:
                 Latitude = '0.00000000000000'
         kartvalues.append(Latitude)
+        if Latitude == '0.00000000000000':
+            continue
 
         Longitude = row[33].replace(',','.')
         if isDec(Longitude):
-            if(float(Longitude) > 0 and float(Longitude) < 20):
+            if(float(Longitude) > 0 and float(Longitude) < 30):
                 pass
             else:
                 if utmnord > 0 and utmost > 0 and utmsone > 0:
@@ -243,7 +250,8 @@ def getfromcsv():
              else:
                 Longitude = '0.00000000000000'
         kartvalues.append(Longitude)
-
+        if Longitude == '0.00000000000000':
+            continue
 
         fylke = select('idrettsanlegg_fylke', 'name', row[4])
         f = fylke.fetchone()
