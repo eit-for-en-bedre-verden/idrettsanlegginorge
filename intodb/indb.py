@@ -1,5 +1,6 @@
 import csv
 import decimal
+import utm
 
 import MySQLdb
 import sys
@@ -83,10 +84,7 @@ def getfromcsv():
     statusdict = {}
     typedict = {}
     next(reader)
-    i = 0
     for row in reader:
-        print(row[0] + str(i))
-        i = i+1
         katvar = row[10]
         if katvar in kategoridict:
             kategori_id = kategoridict[katvar]
@@ -202,27 +200,50 @@ def getfromcsv():
 
         Latitude = row[32].replace(',','.')
         if isDec(Latitude):
-            if(float(Latitude) > 90 or float(Latitude) < 40):
-                Latitude = '0.00000000000000'
-            pass
+            if(float(Latitude) > 58 and float(Latitude) < 90):
+                pass
+            else:
+                if utmnord> 0 and utmost> 0 and utmsone > 0:
+                    try:
+                        latlong =  utm.to_latlon(utmost, utmnord, utmsone)
+                        Latitude = latlong[1]
+
+                    except ValueError:
+                        Latitude = '0.00000000000000'
+
+                else:
+                    Latitude = '0.00000000000000'
         else:
-            Latitude = '0.00000000000000'
+            if utmnord > 0 and utmost> 0 and utmsone > 0:
+                    latlong = utm.to_latlon(utmost, utmnord, utmsone)
+                    Latitude = latlong[1]
+            else:
+                Latitude = '0.00000000000000'
         kartvalues.append(Latitude)
 
         Longitude = row[33].replace(',','.')
         if isDec(Longitude):
-            if(float(Longitude) > 20 or float(Longitude) < 0):
-                Longitude = '0.00000000000000'
-            pass
+            if(float(Longitude) > 0 and float(Longitude) < 20):
+                pass
+            else:
+                if utmnord > 0 and utmost > 0 and utmsone > 0:
+                    try:
+                        latlong =  utm.to_latlon(utmost, utmnord, utmsone)
+                        Longitude = latlong[1]
+
+                    except ValueError:
+                        Longitude = '0.00000000000000'
+
+                else:
+                    Longitude = '0.00000000000000'
         else:
-            Longitude = '0.00000000000000'
+             if utmnord > 0 and utmost > 0 and utmsone > 0:
+                    latlong =  utm.to_latlon(utmost, utmnord, utmsone)
+                    Longitude = latlong[2]
+             else:
+                Longitude = '0.00000000000000'
         kartvalues.append(Longitude)
 
-        kartdatavalues = '\', \''.join(kartvalues)
-        insert('idrettsanlegg_kartdata','ngoxkoordinat, ngoykoordinat, ngoakse, utmnord, utmost, utmsone, kpunkt, Latitude, Longitude',
-               kartdatavalues)
-
-        kartdata_id = x.lastrowid
 
         fylke = select('idrettsanlegg_fylke', 'name', row[4])
         f = fylke.fetchone()
@@ -240,8 +261,15 @@ def getfromcsv():
 
 
         data = []
-        data.append(row[13])
-        data.append(row[8])
+
+        byggeaar = row[13]
+        if isInteger(byggeaar):
+            pass
+        else:
+            byggeaar ='0'
+        data.append(byggeaar)#byggeaar
+
+        data.append(row[18])
         data.append(row[7])
         data.append(row[0])
         data.append(row[1])
@@ -311,7 +339,6 @@ def getfromcsv():
         data.append(str(klasse_id))
         data.append(str(type_id))
         data.append(str(status_id))
-        data.append(str(kartdata_id))
         values = '\', \''.join(data)
         if kommune_id:
             values += '\', \'' + str(kommune_id) + '\''
@@ -319,15 +346,20 @@ def getfromcsv():
         else:
             values += '\', NULL'
 
-
+        print(row[0])
 
 
         insertidrett('idrettsanlegg_idrettsanlegg', 'Byggeaar, anleggDriver, anleggEier, anleggsnavn, '
                                                               'anleggsnummer, areal, bredde, inndratt, lengde, maaldata1, '
                                                                 'maaldata2, maaldata3, maaldata4, nummer1, ombyggeaar, '
                                                                 'tildelt, utbetalt, uu, Anleggskategori_id, Anleggsklasse_id, '
-                                                                'Anleggstype_id, anleggStatus_id, kartdata_id, kommune_id', values)
+                                                                'Anleggstype_id, anleggStatus_id, kommune_id', values)
 
+        ianlegg_id = x.lastrowid
+        kartvalues.append(str(ianlegg_id))
+        kartdatavalues = '\', \''.join(kartvalues)
+        insert('idrettsanlegg_kartdata','ngoxkoordinat, ngoykoordinat, ngoakse, utmnord, utmost, utmsone, kpunkt, Latitude, Longitude, idrettsanlegg_id',
+               kartdatavalues)
 getfromcsv()
 
 
