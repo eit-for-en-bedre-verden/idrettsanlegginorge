@@ -16,7 +16,7 @@ angular.module('idrettsanlegg.controllers')
                 offset: $scope.currentPage * 20 - 20}, query),
                 function (data) {
                     $scope.constructions = data.objects;
-                    $scope.meta = data.meta;
+                    $scope.$emit('meta changed', data.meta);
                 }
             );
         };

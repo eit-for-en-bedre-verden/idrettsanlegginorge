@@ -1,12 +1,8 @@
 
 
 angular.module('idrettsanlegg.controllers')
-    .controller('HomeController', function($scope, Construction,
+    .controller('HomeController', function($scope,
         Municipality, ConstructionType, Counties) {
-        Construction.query(function (data) {
-            $scope.constructions = data.objects;
-            $scope.meta = data.meta;
-        });
 
         Municipality.query(function (data) {
             $scope.municipalities = data.objects;
@@ -54,5 +50,9 @@ angular.module('idrettsanlegg.controllers')
         $scope.clearForm = function() {
             $scope.formData = {};
         };
+
+        $scope.$on('meta changed', function(event, meta) {
+            $scope.meta = meta;
+        });
     
     });
