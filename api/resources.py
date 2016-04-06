@@ -106,12 +106,12 @@ class KartDataResource(ModelResource):
         }
 
 class IdrettsanleggResource(ModelResource):
-    anleggstype = fields.ToOneField(AnleggTypeResource, 'anleggstype', full=True)
-    anleggsklasse = fields.ToOneField(AnleggsKlasseResource, 'anleggsklasse', full=True)
-    anleggskategori = fields.ToOneField(AnleggsKategoriResource, 'anleggskategori', full=True)
+    anleggstype = fields.ToOneField(AnleggTypeResource, 'Anleggstype', full=True)
+    anleggsklasse = fields.ToOneField(AnleggsKlasseResource, 'Anleggsklasse', full=True)
+    anleggskategori = fields.ToOneField(AnleggsKategoriResource, 'Anleggskategori', full=True)
     kartData = fields.ToOneField(KartDataResource, 'kartdata', full=True)
     kommune = fields.ToOneField(KommuneResource, 'kommune', full=True)
-    anleggstatus = fields.ToOneField(AnleggStatusResource, 'anleggstatus', full=True)
+    anleggstatus = fields.ToOneField(AnleggStatusResource, 'anleggStatus', full=True)
 
 
     class Meta:
