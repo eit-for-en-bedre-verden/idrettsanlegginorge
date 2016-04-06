@@ -2,7 +2,7 @@
 
 angular.module('idrettsanlegg.controllers')
     .controller('HomeController', function($scope, Construction,
-        Municipality, ConstructionType, Counties, QueryBuilder) {
+        Municipality, ConstructionType, Counties) {
         Construction.query(function (data) {
             $scope.constructions = data.objects;
             $scope.meta = data.meta;
@@ -47,13 +47,8 @@ angular.module('idrettsanlegg.controllers')
         };
 
         $scope.$watch('formData', function() {
-            var query = QueryBuilder($scope.formData);
-            Construction.query(query,
-                function (data) {
-                    $scope.constructions = data.objects;
-                    $scope.meta = data.meta;
-                }
-            );
+            // Alert child scope that a filter is changed
+            $scope.$broadcast('form changed');
         }, true);
     
     });
