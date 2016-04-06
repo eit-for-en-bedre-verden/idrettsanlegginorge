@@ -50,5 +50,9 @@ angular.module('idrettsanlegg.controllers')
             // Alert child scope that a filter is changed
             $scope.$broadcast('form changed');
         }, true);
+
+        $scope.clearForm = function() {
+            $scope.formData = {};
+        };
     
     });
