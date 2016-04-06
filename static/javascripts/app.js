@@ -46,4 +46,10 @@ angular
                 controller: 'MapController'
             });
     })
-    .value('apiUrl', 'http://127.0.0.1:8000/api/v1/');
+    .value('apiUrl', 'http://127.0.0.1:8000/api/v1/')
+    .value('Counties',
+        ["Østfold", "Akershus", "Oslo", "Hedmark",
+            "Oppland", "Buskerud", "Vestfold", "Telemark", "Aust-Agder",
+            "Vest-Agder", "Rogaland", "Hordaland","Sogn og Fjordane",
+            "Møre og Romsdal", "Sør-Trøndelag", "Nord-Trøndelag", "Nordland",
+            "Troms", "Finnmark"]);

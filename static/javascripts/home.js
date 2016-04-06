@@ -2,7 +2,7 @@
 
 angular.module('idrettsanlegg.controllers')
     .controller('HomeController', function($scope, Construction,
-        Municipality) {
+        Municipality, ConstructionType, Counties) {
         Construction.query(function (data) {
             $scope.constructions = data.objects;
             $scope.meta = data.meta;
@@ -12,42 +12,13 @@ angular.module('idrettsanlegg.controllers')
             $scope.municipalities = data.objects;
         });
 
+        ConstructionType.query(function (data) {
+            $scope.constructionTypes = data.objects;
+        });
+
         $scope.formData = {};
         $scope.viewState = 'Kart';
-
-        $scope.construction = {
-            types : [
-                "RallyCross-Bane",
-                "Svømmehall",
-                "Pingpong-bord",
-                "Racingcircuit"
-            ],
-            selected : undefined,
-        };
-        $scope.counties = {
-            county : [
-                { name: "Østfold", municipalities : ["12", "23", "34"], selected : undefined },
-                { name: "Akershus", municipalities : [], selected : undefined },
-                { name: "Insigne", municipalities : [], selected : undefined },
-                { name: "Hedmark", municipalities : [], selected : undefined },
-                { name: "Oppland", municipalities : [], selected : undefined },
-                { name: "Buskerud", municipalities : [], selected : undefined },
-                { name: "Vestfold", municipalities : [], selected : undefined },
-                { name: "Telemark", municipalities : [], selected : undefined },
-                { name: "Aust-Agder", municipalities : [], selected : undefined },
-                { name: "Vest-Agder", municipalities : [], selected : undefined },
-                { name: "Rogaland", municipalities : [], selected : undefined },
-                { name: "Hordaland", municipalities : [], selected : undefined },
-                { name: "Sogn", municipalities : [], selected : undefined },
-                { name: "Møre", municipalities : [], selected : undefined },
-                { name: "Sør-Trøndelag", municipalities : [], selected : undefined },
-                { name: "Nord-Trøndelag", municipalities : [], selected : undefined },
-                { name: "Nordland", municipalities : [], selected : undefined },
-                { name: "Troms", municipalities : [], selected : undefined },
-                { name: "Finnmark", municipalities : [], selected : undefined },
-            ],
-            selected : undefined
-        };
+        $scope.counties = Counties;
 
         // Datepickers
         $scope.callers = [];
