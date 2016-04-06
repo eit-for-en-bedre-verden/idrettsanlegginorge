@@ -2,7 +2,7 @@
 
 angular.module('idrettsanlegg.controllers')
     .controller('HomeController', function($scope, Construction,
-        Municipality, ConstructionType, Counties) {
+        Municipality, ConstructionType, Counties, QueryBuilder) {
         Construction.query(function (data) {
             $scope.constructions = data.objects;
             $scope.meta = data.meta;
@@ -46,23 +46,9 @@ angular.module('idrettsanlegg.controllers')
             placement: 'right-top'
         };
 
-        // Funds
-        $scope.funds = {
-            lower : null,
-            upper : null
-        };
-
-        // Area
-        $scope.area = {
-            lower : null,
-            upper : null
-        };
-
         $scope.$watch('formData', function() {
-            Construction.query({
-                    'kommune__fylke__name': $scope.formData.county,
-                    'kommune__name': $scope.formData.municipality
-                },
+            var query = QueryBuilder($scope.formData);
+            Construction.query(query,
                 function (data) {
                     $scope.constructions = data.objects;
                     $scope.meta = data.meta;

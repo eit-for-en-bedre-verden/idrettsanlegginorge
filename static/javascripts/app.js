@@ -52,4 +52,15 @@ angular
             "Oppland", "Buskerud", "Vestfold", "Telemark", "Aust-Agder",
             "Vest-Agder", "Rogaland", "Hordaland","Sogn og Fjordane",
             "Møre og Romsdal", "Sør-Trøndelag", "Nord-Trøndelag", "Nordland",
-            "Troms", "Finnmark"]);
+            "Troms", "Finnmark"])
+    .value('queryMapping', {
+        county: 'kommune__fylke__name',
+        municipality: 'kommune__name',
+        constructionType: 'anleggstype__type',
+        constructionYearFrom: 'byggeaar__gt',
+        constructionYearTo: 'byggeaar__lt',
+        fundsFrom: 'tildelt__gt',
+        fundsTo: 'tildelt__lt',
+        areaFrom: 'areal__gt',
+        areaTo: 'areal__lt'
+    });
