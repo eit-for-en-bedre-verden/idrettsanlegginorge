@@ -1,17 +1,17 @@
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Anleggsnummer</th>
             <th>Navn</th>
+            <th>Anleggstype</th>
             <th>Kommune</th>
         </tr>
     </thead>
     <tbody>
     <tr ng-repeat="construction in constructions">
         <td>{{construction.id}}</td>
-        <td>{{construction.anleggsnummer}}</td>
-        <td>{{construction.anleggsnavn}}</td>
+        <td><a ui-sref="home.construction({id: construction.id})">{{construction.anleggsnavn}}</a></td>
+        <td>{{construction.anleggstype.type}}</td>
         <td>{{construction.kommune.name}}</td>
     </tr>
     </tbody>
