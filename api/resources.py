@@ -137,7 +137,7 @@ class KartDataResource(ModelResource):
     class Meta:
         queryset = KartData.objects.all()
         limit = 0
-        max_limit = 5000
+        max_limit = 1000
 
         resource_name = 'KartData'
         allowed_methods = ['get']
@@ -151,6 +151,8 @@ class KartDataResource(ModelResource):
             "Latitude": ALL,     #usage: /api/v1/KartData/?format=json
             "Longitude": ALL
         }
+        serializer = PrettyJSONSerializer()
+
     def build_filters(self, filters=None):
         if filters is None:
             filters = {}
