@@ -36,7 +36,7 @@ angular
                 controller: 'HomeController'
             })
             .state('home.table', {
-                url: "/table",
+                url: "/table?page",
                 templateUrl: "static/templates/table.html",
                 controller: 'TableController'
             })
