@@ -12,7 +12,7 @@ angular.module('idrettsanlegg.services')
     // .query, .get, .delete etc.
     .factory('Construction', function ($resource, apiUrl) {
         return $resource(apiUrl + 'Idrettsanlegg/:id',
-            {id: '@id', format: 'json', limit: "20"}, REST_SETTINGS);
+            {id: '@id', format: 'json', limit: "18"}, REST_SETTINGS);
     })
     .factory('County', function ($resource, apiUrl) {
         return $resource(apiUrl + 'Kommune/:id',

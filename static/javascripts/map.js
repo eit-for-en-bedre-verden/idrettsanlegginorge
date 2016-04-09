@@ -1,5 +1,4 @@
 
-
 angular.module('idrettsanlegg.controllers')
     .controller('MapController', function($scope, uiGmapGoogleMapApi, uiGmapIsReady,
             Construction) {
@@ -295,3 +294,4 @@ angular.module('idrettsanlegg.controllers')
         });
 
     });
+

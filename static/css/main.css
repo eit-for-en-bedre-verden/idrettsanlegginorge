@@ -3,4 +3,11 @@
     border-bottom: 1px solid #ccc;
 }
 
-.angular-google-map-container { height: 620px; }
+
+/* 
+    Limited browser support for vh, but percentage does not work with angular-google-maps
+*/
+.angular-google-map-container {
+     height: 88vh;
+}
+
