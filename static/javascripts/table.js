@@ -1,8 +1,9 @@
 
 
 angular.module('idrettsanlegg.controllers')
-    .controller('TableController', function($scope, Construction, QueryBuilder) {
-        $scope.currentPage = 1;
+    .controller('TableController', function($scope, Construction, QueryBuilder,
+        $stateParams, $state) {
+        $scope.currentPage = $stateParams.page || 1;
 
         $scope.$on('form changed', function() {
             $scope.currentPage = 1;
@@ -21,4 +22,8 @@ angular.module('idrettsanlegg.controllers')
             );
         };
         $scope.fetchConstructions();
+
+        $scope.changePage = function() {
+            $state.go('home.table', {page: $scope.currentPage});
+        }
     });
