@@ -93,6 +93,11 @@ class KommuneResource(ModelResource):
         }
 
 class KartAnleggResource(ModelResource):
+    anleggstype = fields.ToOneField(AnleggTypeResource, 'Anleggstype', full=True)
+    anleggsklasse = fields.ToOneField(AnleggsKlasseResource, 'Anleggsklasse', full=True)
+    anleggskategori = fields.ToOneField(AnleggsKategoriResource, 'Anleggskategori', full=True)
+    kommune = fields.ToOneField(KommuneResource, 'kommune', full=True)
+    anleggstatus = fields.ToOneField(AnleggStatusResource, 'anleggStatus', full=True)
     class Meta:
         queryset = Idrettsanlegg.objects.all()
         resource_name = 'idrettsanlegg'
@@ -101,7 +106,28 @@ class KartAnleggResource(ModelResource):
         authorization = Authorization()
         always_return_data = True
         filtering = {
-            'id' : ALL
+            "byggeaar": ALL_WITH_RELATIONS,  #?byggeaar__gt=2011&byggeaar__lt=2013&format=json
+            "anleggDriver": ALL_WITH_RELATIONS,
+            "anleggEier": ALL_WITH_RELATIONS,
+            "anleggsnavn": ALL_WITH_RELATIONS,
+            "anleggsNummer": ALL_WITH_RELATIONS,
+            "areal": ALL_WITH_RELATIONS,
+            "bredde": ALL_WITH_RELATIONS,
+            "indratt": ALL_WITH_RELATIONS,
+            "lengde": ALL_WITH_RELATIONS,
+            "nummer1": ALL_WITH_RELATIONS,
+            "ombyggeaar": ALL_WITH_RELATIONS,
+            "tildelt": ALL_WITH_RELATIONS,
+            "utbetalt": ALL_WITH_RELATIONS,
+            "uu": ALL_WITH_RELATIONS,
+
+
+            "ids" : ALL_WITH_RELATIONS,
+            "kommune": ALL_WITH_RELATIONS,
+            "anleggstype": ALL_WITH_RELATIONS,
+            "anleggsklasse": ALL_WITH_RELATIONS,
+            "anleggskategori": ALL_WITH_RELATIONS,
+            "anleggstatus": ALL_WITH_RELATIONS
         }
         serializer = PrettyJSONSerializer()
 
@@ -111,7 +137,7 @@ class KartDataResource(ModelResource):
     class Meta:
         queryset = KartData.objects.all()
         limit = 0
-        max_limit = 4000
+        max_limit = 1000
 
         resource_name = 'KartData'
         allowed_methods = ['post', 'get', 'patch', 'delete']
