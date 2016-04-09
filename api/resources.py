@@ -137,18 +137,19 @@ class KartDataResource(ModelResource):
     class Meta:
         queryset = KartData.objects.all()
         limit = 0
-        max_limit = 1000
+        max_limit = 5000
 
         resource_name = 'KartData'
-        allowed_methods = ['post', 'get', 'patch', 'delete']
+        allowed_methods = ['get']
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        fields = ('Latitude', 'Longitude')
         filtering = {
             "ianlegg" : ALL_WITH_RELATIONS,
             "ids": ALL,                         #for specific anleggsIDs =  /api/v1/KartData/?ids=800843,800844,800845&format=json
-            "Latitude": ALL_WITH_RELATIONS,     #usage: /api/v1/KartData/?format=json
-            "Longitude": ALL_WITH_RELATIONS
+            "Latitude": ALL,     #usage: /api/v1/KartData/?format=json
+            "Longitude": ALL
         }
     def build_filters(self, filters=None):
         if filters is None:
