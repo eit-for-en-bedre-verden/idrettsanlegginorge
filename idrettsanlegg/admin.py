@@ -19,7 +19,12 @@ class KartDataInline(admin.StackedInline):
 
 class IdrettsanleggAdmin(admin.ModelAdmin):
     inlines = (KartDataInline,)
+    list_display = ('anleggsnavn', 'anleggEier', 'byggeaar', 'kommune', 'get_fylke')
+    search_fields = ['anleggsnavn', 'anleggEier', 'byggeaar', 'anleggsnummer', 'kommune__name', 'kommune__fylke__name']
 
+    def get_fylke(self, obj):
+        return obj.kommune.fylke.name
+    get_fylke.short_description = 'Fylke'
 
 admin.site.register(Idrettsanlegg, IdrettsanleggAdmin)
 admin.site.register(Fylke, HideAdmin)
