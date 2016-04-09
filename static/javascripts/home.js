@@ -13,7 +13,6 @@ angular.module('idrettsanlegg.controllers')
         });
 
         $scope.formData = {};
-        $scope.viewState = 'Kart';
         $scope.counties = Counties;
 
         // Datepickers
