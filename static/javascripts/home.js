@@ -14,6 +14,7 @@ angular.module('idrettsanlegg.controllers')
 
         $scope.formData = {};
         $scope.counties = Counties;
+        $scope.meta = {total_count: 0};
 
         // Datepickers
         $scope.callers = [];
