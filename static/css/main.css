@@ -27,20 +27,26 @@
 /* RESULT TABLE */
 .result-table {
     padding: 0;
-    margin-top: 0;
-    margin-bottom: 1vh;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
     box-shadow: 0 0 5px #d9d9d9;
+}
+
+.result-table tr {
+    height: 4vh;
 }
 
 
 .pagination-bottom {
+    height: 2vh;
     margin-top: 0px;
     box-shadow: 0 0 5px #d9d9d9;
     background-color: #1f8aad;
 }
 
 .pagination-top {
-    margin-top: 1vh;
+    height: 2vh;
+    margin-top: 2vh;
     margin-bottom: 1vh;
     box-shadow: 0 0 5px #d9d9d9;
     background-color: #1f8aad;
