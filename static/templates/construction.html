@@ -1,139 +1,144 @@
-<div class="iw-container"> 
-  <div class="iw-title">{{construction.anleggsnavn}}</div> 
-  <div class="iw-content"> 
-    <table class="iw-infotable"> 
-      <thead> 
-        <tr> 
-        <th colspan="2">Anleggsinfo</th> 
-        </tr> 
-      </thead> 
-      <tbody> 
-        <tr> 
-          <td>Navn</td> 
-          <td>{{construction.anleggsnavn}}</td> 
-        </tr> 
-        <tr> 
-          <td>Driver</td> 
-          <td>{{construction.anleggDriver}}</td> 
-        </tr> 
-        <tr> 
-          <td>Eier</td> 
-          <td>{{construction.anleggEier}}</td> 
-        </tr> 
-        <tr> 
-          <td>Fylke</td> 
-          <td>{{construction.kommune.fylke.name}}</td> 
-        </tr> 
-        <tr> 
-          <td>Kommune</td> 
-          <td>{{construction.kommune.name}}</td> 
-        </tr> 
-        <tr> 
-          <td>Anleggsklasse</td> 
-          <td>{{construction.anleggsklasse.klasse}}</td> 
-        </tr> 
-        <tr> 
-          <td>Anleggskategori</td> 
-          <td>{{construction.anleggskategori.kategori}}</td> 
-        </tr> 
-        <tr> 
-          <td>Anleggstype</td> 
-          <td>{{construction.anleggstype.type}}</td> 
-        </tr> 
-        <tr> 
-          <td>Anleggsnummer</td> 
-          <td>{{construction.anleggsnummer}}</td> 
-        </tr> 
-        <tr> 
-          <td>Status</td> 
-          <td>{{construction.status}}</td> 
-        </tr> 
-        <tr> 
-          <td>uu</td> 
-          <td>{{construction.uu}}</td> 
-        </tr> 
-      </tbody> 
-    </table> 
 
-    <table class="iw-datatable"> 
-      <thead> 
-        <tr> 
-          <th colspan="2">Anleggsdata</th> 
-        </tr> 
-      </thead> 
-      <tbody> 
-        <tr> 
-          <td>Byggeår</td> 
-          <td>{{construction.byggeaar}}</td> 
-        </tr> 
-        <tr> 
-          <td>Ombyggeår</td> 
-          <td>{{construction.ombyggeaar}}</td> 
-        </tr> 
-        <tr> 
-          <td>Areal</td> 
-          <td>{{construction.areal}}</td> 
-        </tr> 
-        <tr> 
-          <td>Bredde</td> 
-          <td>{{construction.bredde}}</td> 
-        </tr> 
-        <tr> 
-          <td>Lengde</td> 
-          <td>{{construction.lengde}}</td> 
-        </tr> 
-        <tr> 
-          <td>Inndratt</td> 
-          <td>{{construction.inndratt}}</td> 
-        </tr> 
-        <tr> 
-          <td>Tildelt</td> 
-          <td>{{construction.tildelt}}</td> 
-        </tr> 
-        <tr> 
-          <td>Utbetalt</td> 
-          <td>{{construction.utbetalt}}</td> 
-        </tr> 
-        <tr> 
-          <td>Latitude</td> 
-          <td>{{construction.kartData.Latitude}}</td> 
-        </tr> 
-        <tr> 
-          <td>Longitude</td> 
-          <td>{{construction.kartData.Longitude}}</td> 
-        </tr> 
-        <tr> 
-          <td>Anlegg ID</td> 
-          <td>{{construction.id}}</td> 
-        </tr> 
-      </tbody> 
-    </table> 
+<button ng-click="goBack()" type="button" class="btn btn-primary btn-md back-button"><span class="glyphicon glyphicon-arrow-left"></span><span class="back-text">Tilbake</span></button>
 
-    <table class="iw-maaldatatable"> 
-      <thead> 
-        <tr> 
-          <th colspan="2">Måldata</th> 
-        </tr> 
-      </thead> 
-      <tbody> 
-        <tr> 
-          <td>Måldata 1</td> 
-          <td>{{construction.maaldata1}}</td> 
-        </tr> 
-        <tr> 
-          <td>Måldata 2</td> 
-          <td>{{construction.maaldata2}}</td> 
-        </tr> 
-        <tr> 
-          <td>Måldata 3</td> 
-          <td>{{construction.maaldata3}}</td> 
-        </tr> 
-        <tr> 
-          <td>Måldata 4</td> 
-          <td>{{construction.maaldata4}}</td> 
-        </tr> 
-      </tbody> 
-    </table> 
 
-  </div> 
+<div id="table-border">
+    <div class="construction-container"> 
+      <div class="construction-title">{{construction.anleggsnavn}}</div> 
+      <div class="construction-content"> 
+        <table class="construction-infotable"> 
+          <thead> 
+            <tr>
+                <th colspan="2">Anleggsinfo</th> 
+            </tr> 
+          </thead> 
+          <tbody> 
+            <tr>
+              <td>Navn</td> 
+              <td>{{construction.anleggsnavn}}</td> 
+            </tr> 
+            <tr> 
+              <td>Driver</td> 
+              <td>{{construction.anleggDriver}}</td> 
+            </tr> 
+            <tr> 
+              <td>Eier</td> 
+              <td>{{construction.anleggEier}}</td> 
+            </tr> 
+            <tr>
+              <td>Fylke</td> 
+              <td>{{construction.kommune.fylke.name}}</td> 
+            </tr> 
+            <tr> 
+              <td>Kommune</td> 
+              <td>{{construction.kommune.name}}</td> 
+            </tr> 
+            <tr> 
+              <td>Anleggsklasse</td> 
+              <td>{{construction.anleggsklasse.klasse}}</td> 
+            </tr> 
+            <tr> 
+              <td>Anleggskategori</td> 
+              <td>{{construction.anleggskategori.kategori}}</td> 
+            </tr> 
+            <tr> 
+              <td>Anleggstype</td> 
+              <td>{{construction.anleggstype.type}}</td> 
+            </tr> 
+            <tr> 
+              <td>Anleggsnummer</td> 
+              <td>{{construction.anleggsnummer}}</td> 
+            </tr> 
+            <tr> 
+              <td>Status</td> 
+              <td>{{construction.status}}</td> 
+            </tr> 
+            <tr> 
+              <td>uu</td> 
+              <td>{{construction.uu}}</td> 
+            </tr> 
+          </tbody> 
+        </table> 
+
+        <table class="construction-datatable"> 
+          <thead> 
+            <tr> 
+              <th colspan="2">Anleggsdata</th> 
+            </tr> 
+          </thead> 
+          <tbody> 
+            <tr> 
+              <td>Byggeår</td> 
+              <td>{{construction.byggeaar}}</td> 
+            </tr> 
+            <tr> 
+              <td>Ombyggeår</td> 
+              <td>{{construction.ombyggeaar}}</td> 
+            </tr> 
+            <tr> 
+              <td>Areal</td> 
+              <td>{{construction.areal}}</td> 
+            </tr> 
+            <tr> 
+              <td>Bredde</td> 
+              <td>{{construction.bredde}}</td> 
+            </tr> 
+            <tr> 
+              <td>Lengde</td> 
+              <td>{{construction.lengde}}</td> 
+            </tr> 
+            <tr> 
+              <td>Inndratt</td> 
+              <td>{{construction.inndratt}}</td> 
+            </tr> 
+            <tr> 
+              <td>Tildelt</td> 
+              <td>{{construction.tildelt}}</td> 
+            </tr> 
+            <tr> 
+              <td>Utbetalt</td> 
+              <td>{{construction.utbetalt}}</td> 
+            </tr> 
+            <tr> 
+              <td>Latitude</td> 
+              <td>{{construction.kartData.Latitude}}</td> 
+            </tr> 
+            <tr> 
+              <td>Longitude</td> 
+              <td>{{construction.kartData.Longitude}}</td> 
+            </tr> 
+            <tr> 
+              <td>Anlegg ID</td> 
+              <td>{{construction.id}}</td> 
+            </tr> 
+          </tbody> 
+        </table> 
+
+        <table class="construction-maaldatatable"> 
+          <thead> 
+            <tr> 
+              <th colspan="2">Måldata</th> 
+            </tr> 
+          </thead> 
+          <tbody> 
+            <tr> 
+              <td>Måldata 1</td> 
+              <td>{{construction.maaldata1}}</td> 
+            </tr> 
+            <tr> 
+              <td>Måldata 2</td> 
+              <td>{{construction.maaldata2}}</td> 
+            </tr> 
+            <tr> 
+              <td>Måldata 3</td> 
+              <td>{{construction.maaldata3}}</td> 
+            </tr> 
+            <tr> 
+              <td>Måldata 4</td> 
+              <td>{{construction.maaldata4}}</td> 
+            </tr> 
+          </tbody> 
+        </table>
+      </div> 
+    </div>
 </div>

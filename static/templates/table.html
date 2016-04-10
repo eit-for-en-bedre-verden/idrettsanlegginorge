@@ -1,4 +1,11 @@
-<table class="table table-bordered table-hover">
+<uib-pagination
+    total-items="meta.total_count" ng-model="currentPage" max-size="5"
+    class="pagination-sm pagination-top" boundary-link-numbers="true"
+    ng-change="changePage()" items-per-page="20">
+</uib-pagination>
+
+
+<table class="table table-bordered table-hover result-table">
     <thead>
         <tr>
             <th>Info</th>
@@ -8,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="construction in constructions">
+    <tr ng-repeat="construction in constructions" class="table-row">
         <td><a ui-sref="home.construction({id: construction.id})">Mer info</td>
         <td>{{construction.anleggsnavn}}</a></td>
         <td>{{construction.anleggstype.type}}</td>
@@ -19,6 +26,6 @@
 
 <uib-pagination
     total-items="meta.total_count" ng-model="currentPage" max-size="5"
-    class="pagination-sm" boundary-link-numbers="true"
+    class="pagination-sm pagination-bottom" boundary-link-numbers="true"
     ng-change="changePage()" items-per-page="20">
 </uib-pagination>

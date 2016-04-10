@@ -1,0 +1,122 @@
+
+#table-border {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0px 2px rgba(0,0,0,0.15);
+    transition: all 0.1s ease-in-out;
+}
+
+
+.back-button {
+    background-color: #1C7D9E;
+    border-color: #1C7D9E;
+    height: 5vh;
+    width: 110px;
+    border-radius: 0;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0px 2px rgba(0,0,0,0.15);
+    transition: all 0.1s ease-in-out;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.back-button:hover {
+    background-color: #13566c;
+}
+
+.back-text {
+    margin-left: 10px;
+    margin-right: 5px;
+    padding-top: 2px;
+    margin-bottom: 2px;
+}
+
+.construction-container .construction-title {
+    font-weight: 400;
+    padding: 0.5em;
+    background-color: #1C7D9E;
+    color: white;
+    margin: 0;
+}
+
+.construction-title {
+    margin: 0 0 0.5em 0;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0px 2px rgba(0,0,0,0.15);
+    transition: all 0.1s ease-in-out;
+}
+
+.construction-container {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+}
+
+.construction-content {
+	overflow-y: scroll;
+    height: 80vh;
+    border-bottom: 2px;
+    border-color: #000;
+}
+
+.construction-infotable {
+    float: left;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.construction-datatable {
+    float: right;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.construction-container table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  color: #1C7D9E;
+}
+
+.construction-container th, td {
+  vertical-align: middle;
+  padding: 0.5em;
+}
+
+.construction-container thead tr:first-child th:first-child {
+    background: #1C7D9E;
+    color: #fff;
+    font-weight: bold;
+}
+
+.construction-container th {
+    font-size: 14px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.construction-container td:first-child {
+  font-weight: bolder;
+  text-align: left;
+  border-left: 1px solid #cecfd5;
+}
+
+.construction-container td {
+  font-size: 12px;
+  text-align: left;
+  padding: 8px;
+  color: black;
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+
+.construction-container tbody tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.construction-container tbody tr:hover {
+    background-color: #cccccc;
+}
+
+.construction-title {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
+
