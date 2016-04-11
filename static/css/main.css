@@ -10,6 +10,7 @@
 
 .filter {
     padding-left: 10px;
+    height: 90vh;
 }
 
 .container {
@@ -28,18 +29,17 @@
 .result-table {
     padding: 0;
     margin-top: 1vh;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     box-shadow: 0 0 5px #d9d9d9;
 }
 
 .result-table tr {
-    height: 4vh;
 }
 
 
 .pagination-bottom {
     height: 2vh;
-    margin-top: 0px;
+    margin-top: 0;
     box-shadow: 0 0 5px #d9d9d9;
     background-color: #1f8aad;
 }
@@ -121,6 +121,7 @@ nav {
 
 .row:not(:last-child) {
     padding-bottom: 3vh;
+    padding-top: 1vh;
     /* border-bottom: 1px solid #ccc; */
 }
 
@@ -167,6 +168,9 @@ nav {
 
 /* FORMS */
 
+.form-group {
+    margin-bottom: 0;
+}
 
 #construction-num {
     padding-bottom: 0vh;
