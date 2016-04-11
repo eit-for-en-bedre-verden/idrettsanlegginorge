@@ -22,9 +22,9 @@ angular
             libraries: ''
         });
 
-        $urlRouterProvider.when("", "/home/map");
-        $urlRouterProvider.when("/", "/home/map");
-        $urlRouterProvider.otherwise("/home/map");
+        $urlRouterProvider.when("", "/home/table");
+        $urlRouterProvider.when("/", "/home/table");
+        $urlRouterProvider.otherwise("/home/table");
 
           //
           // Now set up the states

@@ -24,20 +24,19 @@ angular.module('idrettsanlegg.controllers')
     
         $scope.navs = [
             {
-                'nav_id': 1,
-                'id': 'map-id',
-                'name': 'Kart',
-                'sref': '.map',
-                'class': 'nav-map'
-            },
-            {
                 'nav_id': 2,
                 'id': 'table-id',
                 'name': 'Tabell',
                 'sref': '.table',
                 'class': 'nav-table'
+            },
+            {
+                'nav_id': 1,
+                'id': 'map-id',
+                'name': 'Kart',
+                'sref': '.map',
+                'class': 'nav-map'
             }
-            
         ];
     
         $scope.active = 0;
@@ -46,11 +45,11 @@ angular.module('idrettsanlegg.controllers')
             var path = $location.path().split("/")[2];
             if(path === 'map') {
                 console.log("Map");
-                $scope.active = 0;
+                $scope.active = 1;
             }
             else if(path === 'table' || path === 'construction') {
                 console.log("Table");
-                $scope.active = 1;
+                $scope.active = 0;
             }
         }
         
