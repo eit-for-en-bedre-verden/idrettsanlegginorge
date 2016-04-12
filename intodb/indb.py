@@ -60,18 +60,20 @@ def insert(table,variables,query):
     return data
 
 def getfromcsv():
-    kommuneReader = csv.reader(open('IdrettsanleggKommuner.csv', 'r' ),delimiter=';')
-    fylkedict = {}
-    for row in kommuneReader:
-        fylke = row[1]
-        if(fylkedict.has_key(fylke)):
-            pass
-        else:
-            insert('idrettsanlegg_fylke', 'name', fylke)
-            fylkedict[fylke] = x.lastrowid
+    skom = True
+    if skom:
+        kommuneReader = csv.reader(open('IdrettsanleggKommuner.csv', 'r' ),delimiter=';')
+        fylkedict = {}
+        for row in kommuneReader:
+            fylke = row[1]
+            if(fylkedict.has_key(fylke)):
+                pass
+            else:
+                insert('idrettsanlegg_fylke', 'name', fylke)
+                fylkedict[fylke] = x.lastrowid
 
-        kommuneValues = str(row[3]) +'\', \'' + str(fylkedict[fylke])
-        insert('idrettsanlegg_kommune', 'name, fylke_id', kommuneValues)
+            kommuneValues = str(row[3]) +'\', \'' + str(fylkedict[fylke])
+            insert('idrettsanlegg_kommune', 'name, fylke_id', kommuneValues)
 
     reader = csv.reader(open('utf8.csv', 'r' ),delimiter=';')
     kategori_id = -1
@@ -86,7 +88,7 @@ def getfromcsv():
     next(reader)
     for row in reader:
         katvar = row[10]
-        if katvar =="Kulturbygg":
+        if "kultur" in katvar.lower():
             continue
 
         if katvar in kategoridict:
