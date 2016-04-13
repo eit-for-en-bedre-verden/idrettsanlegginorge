@@ -13,6 +13,11 @@
         <ui-gmap-markers
             models="markers"
             coords="'self'"
+            doCluster="true"
+            typeOptions='{
+                "gridSize": 40,
+                "minimumClusterSize": 5
+            }'
             icon="'icon'"
             click="openWindow"
             fit="true">

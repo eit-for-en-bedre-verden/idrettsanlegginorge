@@ -41,8 +41,8 @@
 .table > tfoot > tr > th, 
 .table > thead > tr > td, 
 .table > thead > tr > th { 
-    padding: 1.1vh;
-    font-size: 1.5vh;
+    padding: 1.0vh;
+    font-size: 1.7vh;
 }
 
 
@@ -116,7 +116,7 @@ nav {
     margin-right: 10px;
 }
 
-.nav-map span{
+.nav-map span {
     margin-left: 8px;
 }
 

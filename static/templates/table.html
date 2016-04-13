@@ -9,12 +9,12 @@
         </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="construction in constructions" class="table-row">
-        <td><a ui-sref="home.construction({id: construction.id})">{{construction.anleggsnavn}}</a></td>
-        <td>{{construction.anleggstype.type}}</td>
-        <td>{{construction.kommune.name}}</td>
-        <td><a ui-sref="home.construction({id: construction.id})">Mer info</a></td>
-    </tr>
+        <tr ng-repeat="construction in constructions" class="table-row">
+            <td><a ui-sref="home.construction({id: construction.id})">{{construction.anleggsnavn}}</a></td>
+            <td>{{construction.anleggstype.type}}</td>
+            <td>{{construction.kommune.name}}</td>
+            <td><a ui-sref="home.construction({id: construction.id})">Mer info</a></td>
+        </tr>
     </tbody>
 </table>
 

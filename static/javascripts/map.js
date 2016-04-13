@@ -16,7 +16,8 @@ angular.module('idrettsanlegg.controllers')
             streetViewControl: true,
             scaleControl: true,
             zoomControl: true,
-            maxZoom: 10
+            maxZoom: 0,
+            doCluster: true
         };
 
     
