@@ -5,7 +5,7 @@
     Limited browser support for vh, but percentage does not work with angular-google-maps
 */
 .angular-google-map-container {
-     height: 90vh;
+     height: 85vh;
 }
 
 .filter {
@@ -68,6 +68,9 @@ html, body{
     padding: 0 10px 0 10px;
 }
 
+.main-content {
+    padding: 15px;
+}
 
 /* NAVBAR */ 
 
@@ -175,7 +178,6 @@ nav {
 #construction-num {
     padding-bottom: 0vh;
     margin-bottom: 1vh;
-    margin-top: 1.5vh;
 }
 
 .form-control {

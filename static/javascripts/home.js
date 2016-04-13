@@ -14,7 +14,6 @@ angular.module('idrettsanlegg.controllers')
 
         $scope.formData = {};
         $scope.counties = Counties;
-        $scope.meta = {total_count: 0};
        
 
         // Datepickers
@@ -38,31 +37,10 @@ angular.module('idrettsanlegg.controllers')
                 'class': 'nav-map'
             }
         ];
-    
-        $scope.active = 0;
-        
-        var setActive = function() {
-            var path = $location.path().split("/")[2];
-            if(path === 'map') {
-                console.log("Map");
-                $scope.active = 1;
-            }
-            else if(path === 'table' || path === 'construction') {
-                console.log("Table");
-                $scope.active = 0;
-            }
-        }
-        
-        $rootScope.$watch(function() { 
-            return $location.path(); 
-        },
-        function(a){
-            setActive();
+
+        $rootScope.$watch('route', function() {
+            $scope.active = $rootScope.route;
         });
-        
-        $scope.activate = function(index) {
-            $scope.active = index;
-        }
     
         $scope.dateOpts = {
             datepickerMode: "year",
@@ -97,7 +75,5 @@ angular.module('idrettsanlegg.controllers')
         $scope.$on('meta changed', function(event, meta) {
             $scope.meta = meta;
         });
-    
-        
     
     });

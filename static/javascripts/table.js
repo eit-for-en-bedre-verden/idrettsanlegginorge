@@ -14,7 +14,7 @@ angular.module('idrettsanlegg.controllers')
             var query = QueryBuilder($scope.formData);
             Construction.query(
                 angular.extend({
-                offset: $scope.currentPage * 20 - 20}, query),
+                offset: $scope.currentPage * 18 - 18}, query),
                 function (data) {
                     $scope.constructions = data.objects;
                     $scope.$emit('meta changed', data.meta);

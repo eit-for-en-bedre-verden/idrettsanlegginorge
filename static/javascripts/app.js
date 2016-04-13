@@ -51,6 +51,11 @@ angular
                 controller: 'ConstructionController'
             });
     })
+    .run(function($rootScope) {
+        $rootScope.$on('$stateChangeSuccess', function(event, toState) {
+            $rootScope.route = toState.name.split('.')[1] === 'map' ? 1 : 0;
+        });
+    })
     .value('apiUrl', 'http://127.0.0.1:8000/api/v1/')
     .value('Counties',
         ["Østfold", "Akershus", "Oslo", "Hedmark",

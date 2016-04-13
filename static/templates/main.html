@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <a class="navbar-brand idrettsanlegg" href="#" style="color: white">Idrettsanlegg</a>  
         <ul class="nav navbar-nav left-nav-buttons">
-            <li ng-repeat="nav in navs" ng-click="activate($index)" ng-class="{active: $index == active}">
+            <li ng-repeat="nav in navs" ng-class="{active: $index == active}">
                 <a style="color: white" id="{{ nav.id }}" class="{{ nav.class }}" ui-sref="{{ nav.sref }}"><span>{{ nav.name }}</span></a>
             </li>
         </ul>
@@ -14,7 +14,7 @@
 </div>
 
 
-<div class="container-fluid">
+<div class="container-fluid main-content">
     <div class="col-xs-4 filter">
 
         <div class="form-group row form1" id="construction-num">
