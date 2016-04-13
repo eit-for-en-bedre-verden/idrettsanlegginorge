@@ -1,7 +1,7 @@
 
 angular.module('idrettsanlegg.controllers')
     .controller('MapController', function($scope, uiGmapGoogleMapApi, uiGmapIsReady,
-            Construction) {
+            MapData, $http, baseUrl, QueryBuilder) {
 
 
         var mapOptions = {
@@ -37,20 +37,39 @@ angular.module('idrettsanlegg.controllers')
 
         // Contains all the current markers on the map.
         $scope.markers = [];
-        Construction.query({
-            kartData__Longitude__gt: 0,
-            kartData__Latitude__gt: 60
-        }, function(data) {
+        $scope.window = {
+          show: false,
+          closeClick: function() {
+            this.show = false;
+          },
+          options: {}
+        };
+
+
+        $scope.openWindow = function(marker, event, model) {
+          $http.get(baseUrl + model.link + '?format=json').then(function(data) {
+            $scope.window.model = model;
+            $scope.window.data = data.data;
+            $scope.window.show = true;
+          });
+        }
+
+        $scope.fetch = function() {
+          MapData.query(angular.extend({
+            Longitude__gt: 0,
+            Latitude__gt: 58
+          }, QueryBuilder($scope.formData, true)), function(data) {
                 $scope.mapConstructions = data.objects;
                 $scope.meta = data.meta;
-                $scope.showMarkers();
-        });
-        $scope.current_marker = null;
-
-
-        $scope.removeMarkers = function () {
-            $scope.markers = [];
+                $scope.addNewMarkers($scope.mapConstructions)
+          });
         };
+
+        $scope.fetch();
+
+        $scope.$on('form changed', function() {
+          $scope.fetch();
+        });
 
 
         // Used to push an array of markers to the scope markers
@@ -65,8 +84,7 @@ angular.module('idrettsanlegg.controllers')
             // Takes in an array of javascript objects representing constructions
             var markers = [];
             for(var i = 0; i < constructions.length; i++){
-                content = getWindowContent(constructions[i]);
-                marker = createMarker(constructions[i], content, i);
+                marker = createMarker(constructions[i], i);
                 if (marker.latitude && marker.latitude !== '0E-13') {
                     markers.push(marker);
                 }
@@ -76,13 +94,13 @@ angular.module('idrettsanlegg.controllers')
 
 
 
-        var createMarker = function(construction, content, id){
+        var createMarker = function(mapData, id){
             // Takes in a construction and creates a marker
             var marker = {
-                id: construction.id,
-                latitude: Number(construction.kartData.Latitude),
-                longitude: Number(construction.kartData.Longitude),
-                windowContent: content,
+                id: mapData.resource_uri,
+                latitude: Number(mapData.Latitude),
+                longitude: Number(mapData.Longitude),
+                link: mapData.ianlegg,
                 control: {},
                 show: false
             };
@@ -114,175 +132,6 @@ angular.module('idrettsanlegg.controllers')
                 }
             };
             $scope.markers = markers;
-        };
-
-
-        // Currently used to add or remove markers using the "Søk" button
-        $scope.showMarkers = function(){
-            if($scope.markers.length === 0){
-                $scope.addNewMarkers($scope.mapConstructions);
-            }
-            else {
-                $scope.removeMarkers();
-            }
-
-        };
-
-
-        var getWindowContent = function(construction){
-            windowContent =
-            '<div class="iw-container">' +
-                  '<div class="iw-title">' + construction.anleggsnavn + '</div>' +
-                  '<div class="iw-content">' +
-                  '<table class="iw-infotable">' +
-                  '<thead>' +
-                      '<tr>' +
-                          '<th colspan="2">Anlegg info</th>' +
-                      '</tr>' +
-                  '</thead>' +
-                  '<tbody>' +
-                      '<tr>' +
-                          '<td>Navn</td>' +
-                          '<td>' + construction.anleggsnavn + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Driver</td>' +
-                          '<td>' + construction.anleggDriver + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Eier</td>' +
-                          '<td>' + construction.anleggEier + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Fylke</td>' +
-                          '<td>' + construction.kommune.fylke.name + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Kommune</td>' +
-                          '<td>' + construction.kommune.name + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Anleggsklasse</td>' +
-                          '<td>' + construction.anleggsklasse.klasse + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Anleggskategori</td>' +
-                          '<td>' + construction.anleggskategori.kategori + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Anleggstype</td>' +
-                          '<td>' + construction.anleggstype.type + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Anleggsnummer</td>' +
-                          '<td>' + construction.anleggsnummer + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Status</td>' +
-                          '<td>' + construction.status + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>uu</td>' +
-                          '<td>' + construction.uu + '</td>' +
-                      '</tr>' +
-                  '</tbody>' +
-                  '</table>' +
-
-                  '<table class="iw-datatable">' +
-                  '<thead>' +
-                      '<tr>' +
-                          '<th colspan="2">Anlegg data</th>' +
-                      '</tr>' +
-                  '</thead>' +
-                  '<tbody>' +
-                      '<tr>' +
-                          '<td>Byggeår</td>' +
-                          '<td>' + construction.byggeaar + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Ombyggeår</td>' +
-                          '<td>' + construction.ombyggeaar + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Areal</td>' +
-                          '<td>' + construction.areal + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Bredde</td>' +
-                          '<td>' + construction.bredde + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Lengde</td>' +
-                          '<td>' + construction.lengde + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Inndratt</td>' +
-                          '<td>' + construction.inndratt + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Tildelt</td>' +
-                          '<td>' + construction.tildelt + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Utbetalt</td>' +
-                          '<td>' + construction.utbetalt + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Latitude</td>' +
-                          '<td>' + construction.kartData.Latitude + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Longitude</td>' +
-                          '<td>' + construction.kartData.Longitude + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Anlegg ID</td>' +
-                          '<td>' + construction.id + '</td>' +
-                      '</tr>' +
-                  '</tbody>' +
-                  '</table>' +
-
-                  '<table class="iw-maaldatatable">' +
-                  '<thead>' +
-                      '<tr>' +
-                          '<th colspan="2">Måldata</th>' +
-                      '</tr>' +
-                  '</thead>' +
-                  '<tbody>' +
-                      '<tr>' +
-                          '<td>Måldata 1</td>' +
-                          '<td>' + construction.maaldata1 + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Måldata 2</td>' +
-                          '<td>' + construction.maaldata2 + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Måldata 3</td>' +
-                           '<td>' + construction.maaldata3 + '</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                          '<td>Måldata 4</td>' +
-                          '<td>' + construction.maaldata4 + '</td>' +
-                      '</tr>' +
-                  '</tbody>' +
-                  '</table>' +
-
-              '</div>' +
-              '</div>';
-
-          return windowContent;
-        };
-
-
-        $scope.onClick = function(markers, eventName, model){
-            // Ha en "currentmarker" i stedet for å sjekke alle markers
-            if(model.show === false && model !== $scope.current_marker && $scope.current_marker !== null){
-                $scope.current_marker.show = false;
-            }
-            model.show = !model.show;
-            $scope.current_marker = model
-
         };
 
 

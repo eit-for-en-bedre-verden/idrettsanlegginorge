@@ -1,0 +1,139 @@
+<div class="iw-container"> 
+  <div class="iw-title">{{parameter.data.anleggsnavn}}</div> 
+  <div class="iw-content"> 
+    <table class="iw-infotable"> 
+      <thead> 
+        <tr>
+        <th colspan="2">Anleggsinfo</th> 
+        </tr> 
+      </thead> 
+      <tbody> 
+        <tr> 
+          <td>Navn</td> 
+          <td>{{parameter.data.anleggsnavn}}</td> 
+        </tr> 
+        <tr> 
+          <td>Driver</td> 
+          <td>{{parameter.data.anleggDriver}}</td> 
+        </tr> 
+        <tr> 
+          <td>Eier</td> 
+          <td>{{parameter.data.anleggEier}}</td> 
+        </tr> 
+        <tr> 
+          <td>Fylke</td> 
+          <td>{{parameter.data.kommune.fylke.name}}</td> 
+        </tr> 
+        <tr> 
+          <td>Kommune</td> 
+          <td>{{parameter.data.kommune.name}}</td> 
+        </tr> 
+        <tr> 
+          <td>Anleggsklasse</td> 
+          <td>{{parameter.data.anleggsklasse.klasse}}</td> 
+        </tr> 
+        <tr> 
+          <td>Anleggskategori</td> 
+          <td>{{parameter.data.anleggskategori.kategori}}</td> 
+        </tr> 
+        <tr> 
+          <td>Anleggstype</td> 
+          <td>{{parameter.data.anleggstype.type}}</td> 
+        </tr> 
+        <tr> 
+          <td>Anleggsnummer</td> 
+          <td>{{parameter.data.anleggsnummer}}</td> 
+        </tr> 
+        <tr> 
+          <td>Status</td> 
+          <td>{{parameter.data.status}}</td> 
+        </tr> 
+        <tr> 
+          <td>uu</td> 
+          <td>{{parameter.data.uu}}</td> 
+        </tr> 
+      </tbody> 
+    </table> 
+
+    <table class="iw-datatable"> 
+      <thead> 
+        <tr> 
+          <th colspan="2">Anleggsdata</th> 
+        </tr> 
+      </thead> 
+      <tbody> 
+        <tr> 
+          <td>Byggeår</td> 
+          <td>{{parameter.data.byggeaar}}</td> 
+        </tr> 
+        <tr> 
+          <td>Ombyggeår</td> 
+          <td>{{parameter.data.ombyggeaar}}</td> 
+        </tr> 
+        <tr> 
+          <td>Areal</td> 
+          <td>{{parameter.data.areal}}</td> 
+        </tr> 
+        <tr> 
+          <td>Bredde</td> 
+          <td>{{parameter.data.bredde}}</td> 
+        </tr> 
+        <tr> 
+          <td>Lengde</td> 
+          <td>{{parameter.data.lengde}}</td> 
+        </tr> 
+        <tr> 
+          <td>Inndratt</td> 
+          <td>{{parameter.data.inndratt}}</td> 
+        </tr> 
+        <tr> 
+          <td>Tildelt</td> 
+          <td>{{parameter.data.tildelt}}</td> 
+        </tr> 
+        <tr> 
+          <td>Utbetalt</td> 
+          <td>{{parameter.data.utbetalt}}</td> 
+        </tr> 
+        <tr> 
+          <td>Latitude</td> 
+          <td>{{parameter.data.kartData.Latitude}}</td> 
+        </tr> 
+        <tr> 
+          <td>Longitude</td> 
+          <td>{{parameter.data.kartData.Longitude}}</td> 
+        </tr> 
+        <tr> 
+          <td>Anlegg ID</td> 
+          <td>{{parameter.data.id}}</td> 
+        </tr> 
+      </tbody> 
+    </table> 
+
+    <table class="iw-maaldatatable"> 
+      <thead> 
+        <tr> 
+          <th colspan="2">Måldata</th> 
+        </tr> 
+      </thead> 
+      <tbody> 
+        <tr> 
+          <td>Måldata 1</td> 
+          <td>{{parameter.data.maaldata1}}</td> 
+        </tr> 
+        <tr> 
+          <td>Måldata 2</td> 
+          <td>{{parameter.data.maaldata2}}</td> 
+        </tr> 
+        <tr> 
+          <td>Måldata 3</td> 
+          <td>{{parameter.data.maaldata3}}</td> 
+        </tr> 
+        <tr> 
+          <td>Måldata 4</td> 
+          <td>{{parameter.data.maaldata4}}</td> 
+        </tr> 
+      </tbody> 
+    </table> 
+
+  </div> 
+</div>
