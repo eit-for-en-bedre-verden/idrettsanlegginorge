@@ -3,6 +3,7 @@ from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource
 from tastypie.resources import ALL_WITH_RELATIONS, ALL
 from idrettsanlegg.models import *
+from operator import __or__ as OR
 from tastypie import fields
 import json
 from django.core.serializers.json import DjangoJSONEncoder
@@ -91,22 +92,93 @@ class KommuneResource(ModelResource):
             "name": ALL_WITH_RELATIONS  #?kommune__name=Hjelmeland&format=json
         }
 
-class KartDataResource(ModelResource):
+class KartAnleggResource(ModelResource):
+    anleggstype = fields.ToOneField(AnleggTypeResource, 'Anleggstype', full=True)
+    anleggsklasse = fields.ToOneField(AnleggsKlasseResource, 'Anleggsklasse', full=True)
+    anleggskategori = fields.ToOneField(AnleggsKategoriResource, 'Anleggskategori', full=True)
+    kommune = fields.ToOneField(KommuneResource, 'kommune', full=True)
+    anleggstatus = fields.ToOneField(AnleggStatusResource, 'anleggStatus', full=True)
     class Meta:
-        queryset = KartData.objects.all()
-        limit = 0
-        max_limit = 0
-
-        resource_name = 'KartData'
+        queryset = Idrettsanlegg.objects.all()
+        resource_name = 'idrettsanlegg'
         allowed_methods = ['post', 'get', 'patch', 'delete']
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
         filtering = {
-            "Latitude": ALL_WITH_RELATIONS, #?kartData__Longitude__gt=0&kartData__Latitude__gt=0&format=json
-            "Longitude": ALL_WITH_RELATIONS
+            "byggeaar": ALL_WITH_RELATIONS,  #?byggeaar__gt=2011&byggeaar__lt=2013&format=json
+            "anleggDriver": ALL_WITH_RELATIONS,
+            "anleggEier": ALL_WITH_RELATIONS,
+            "anleggsnavn": ALL_WITH_RELATIONS,
+            "anleggsNummer": ALL_WITH_RELATIONS,
+            "areal": ALL_WITH_RELATIONS,
+            "bredde": ALL_WITH_RELATIONS,
+            "indratt": ALL_WITH_RELATIONS,
+            "lengde": ALL_WITH_RELATIONS,
+            "nummer1": ALL_WITH_RELATIONS,
+            "ombyggeaar": ALL_WITH_RELATIONS,
+            "tildelt": ALL_WITH_RELATIONS,
+            "utbetalt": ALL_WITH_RELATIONS,
+            "uu": ALL_WITH_RELATIONS,
+
+
+            "ids" : ALL_WITH_RELATIONS,
+            "kommune": ALL_WITH_RELATIONS,
+            "anleggstype": ALL_WITH_RELATIONS,
+            "anleggsklasse": ALL_WITH_RELATIONS,
+            "anleggskategori": ALL_WITH_RELATIONS,
+            "anleggstatus": ALL_WITH_RELATIONS
         }
         serializer = PrettyJSONSerializer()
+
+
+class KartDataResource(ModelResource):
+    ianlegg = fields.ToOneField(KartAnleggResource, 'idrettsanlegg', null=True)
+    class Meta:
+        queryset = KartData.objects.all()
+        limit = 0
+        max_limit = 1000
+
+        resource_name = 'KartData'
+        allowed_methods = ['get']
+        authentication = Authentication()
+        authorization = Authorization()
+        always_return_data = True
+        fields = ('Latitude', 'Longitude')
+        filtering = {
+            "ianlegg" : ALL_WITH_RELATIONS,
+            "ids": ALL,                         #for specific anleggsIDs =  /api/v1/KartData/?ids=800843,800844,800845&format=json
+            "Latitude": ALL,     #usage: /api/v1/KartData/?format=json
+            "Longitude": ALL
+        }
+        serializer = PrettyJSONSerializer()
+
+    def build_filters(self, filters=None):
+        if filters is None:
+            filters = {}
+        orm_filters = super(KartDataResource, self).build_filters(filters)
+
+        if('ids' in filters):
+            query = filters['ids']
+            lst = []
+            ids = query.split(",")
+            for id in ids:
+                lst.append(Q(idrettsanlegg_id=id))
+
+            print(lst)
+
+            orm_filters.update({'custom': reduce(OR, lst)})
+        return orm_filters
+
+    def apply_filters(self, request, applicable_filters):
+        if 'custom' in applicable_filters:
+            custom = applicable_filters.pop('custom')
+        else:
+            custom = None
+
+        semi_filtered = super(KartDataResource, self).apply_filters(request, applicable_filters)
+
+        return semi_filtered.filter(custom) if custom else semi_filtered
 
 
 class IdrettsanleggResource(ModelResource):

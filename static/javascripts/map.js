@@ -1,12 +1,11 @@
 
-
 angular.module('idrettsanlegg.controllers')
     .controller('MapController', function($scope, uiGmapGoogleMapApi, uiGmapIsReady,
             Construction) {
 
 
         var mapOptions = {
-            disableDefaultUI: false,
+            disableDefaultUI: true,
             keyboardShortcuts: false,
             draggable: true,
             disableDoubleClickZoom: false,
@@ -20,6 +19,9 @@ angular.module('idrettsanlegg.controllers')
             maxZoom: 10
         };
 
+    
+        // Contains the google.maps object
+        var google_map = null;
 
         $scope.map = {
             show: true,
@@ -292,6 +294,22 @@ angular.module('idrettsanlegg.controllers')
         uiGmapGoogleMapApi.then(function (maps) {
             // uiGmapGoogleMapApi is a promise.
             // The "then" callback function provides the google.maps object.
+            google_maps = maps;
+            
+            
         });
+    
+        var setControlOptions = function(maps) {
+            mapOptions.zoomControlOptions = {
+                position: maps.ControlPosition.TOP_LEFT
+            }
+            mapOptions.mapTypeControlOptions = {
+                position: maps.ControlPosition.TOP_LEFT
+            }
+            mapOptions.fullScreenControlOptions = {
+                position: maps.ControlPosition.BOTTOM_RIGHT
+            }
+        }
 
     });
+

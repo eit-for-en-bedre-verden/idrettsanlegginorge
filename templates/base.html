@@ -8,12 +8,14 @@
     <base href="/">
     <title>Idrettsanlegg</title>
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/mapwindow.css' %}">
+    <link rel="stylesheet" href="{% static 'css/infowindow.css' %}">
+    <link rel="stylesheet" href="{% static 'css/construction.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
  </head>
  <body>
-    <div ui-view></div>
+    <div class="view" ui-view></div>
     {% block extra_javascript %}{% endblock extra_javascript %}
     {% load staticfiles %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -27,7 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.3.2/angular-google-maps.min.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNnw8_pRYYXajNiZbNO4Nh-N_DVwvbhuk"></script>
-
+   
     <script src="{% static 'javascripts/angular-simple-logger.min.js' %}"></script>
     <script src="{% static 'javascripts/app.js' %}"></script>
     <script src="{% static 'javascripts/home.js' %}"></script>

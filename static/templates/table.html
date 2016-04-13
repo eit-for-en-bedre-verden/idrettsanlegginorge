@@ -1,24 +1,26 @@
-<table class="table table-bordered table-hover">
+
+<table class="table table-bordered table-hover result-table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Navn</th>
             <th>Anleggstype</th>
             <th>Kommune</th>
+            <th>Info</th>
         </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="construction in constructions">
-        <td>{{construction.id}}</td>
+    <tr ng-repeat="construction in constructions" class="table-row">
         <td><a ui-sref="home.construction({id: construction.id})">{{construction.anleggsnavn}}</a></td>
         <td>{{construction.anleggstype.type}}</td>
         <td>{{construction.kommune.name}}</td>
+        <td><a ui-sref="home.construction({id: construction.id})">Mer info</a></td>
     </tr>
     </tbody>
 </table>
 
 <uib-pagination
     total-items="meta.total_count" ng-model="currentPage" max-size="5"
-    class="pagination-sm" boundary-link-numbers="true"
-    ng-change="changePage()" items-per-page="20">
+    class="pagination-sm pagination-bottom" boundary-link-numbers="true"
+    ng-change="changePage()" items-per-page="18"
+    previous-text="Forrige" next-text="Neste">
 </uib-pagination>

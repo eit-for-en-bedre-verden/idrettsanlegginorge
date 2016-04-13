@@ -22,9 +22,9 @@ angular
             libraries: ''
         });
 
-        $urlRouterProvider.when("", "/home/map");
-        $urlRouterProvider.when("/", "/home/map");
-        $urlRouterProvider.otherwise("/home/map");
+        $urlRouterProvider.when("", "/home/table");
+        $urlRouterProvider.when("/", "/home/table");
+        $urlRouterProvider.otherwise("/home/table");
 
           //
           // Now set up the states
@@ -50,6 +50,11 @@ angular
                 templateUrl: 'static/templates/construction.html',
                 controller: 'ConstructionController'
             });
+    })
+    .run(function($rootScope) {
+        $rootScope.$on('$stateChangeSuccess', function(event, toState) {
+            $rootScope.route = toState.name.split('.')[1] === 'map' ? 1 : 0;
+        });
     })
     .value('apiUrl', 'http://127.0.0.1:8000/api/v1/')
     .value('Counties',

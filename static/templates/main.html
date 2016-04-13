@@ -1,48 +1,48 @@
-<div class="container">
-    <nav class="navbar navbar-default" style="background-color: #1C7D9E; margin-top: 1%">
-        <div class="container-fluid">
-            <a class="navbar-brand navbar-left" href="#"><span class="glyphicon glyphicon-home" style="color: white"></span></a>
-            <a class="navbar-brand" href="#" style="color: white">Idrettsanlegg</a>
-            <ul class="nav navbar-nav">
-                <li><a style="color: white" ui-sref=".table">Tabell</a></li>
-                <li><a style="color: white" ui-sref=".map">Kart</a></li>
-                <li><a style="color: white" href="/admin">Admin</a></li>
-            </ul>
-        </div>
 
-    </nav>
+<div id="navbar" class="navbar navbar-custom navbar-static-top">
+    <div class="container-fluid">
+        <a class="navbar-brand idrettsanlegg" href="#" style="color: white">Idrettsanlegg</a>  
+        <ul class="nav navbar-nav left-nav-buttons">
+            <li ng-repeat="nav in navs" ng-class="{active: $index == active}">
+                <a style="color: white" id="{{ nav.id }}" class="{{ nav.class }}" ui-sref="{{ nav.sref }}"><span>{{ nav.name }}</span></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav right-nav-buttons pull-right">
+            <li><a style="color: white" class="admin-nav-btn" href="/admin">Admin</a></li>
+        </ul>
+    </div>
+</div>
 
+
+<div class="container-fluid main-content">
     <div class="col-xs-4 filter">
 
-        <div class="form-group row">
-            <div class="col-xs-10">
-                <label>Antall treff</label>
+        <div class="form-group row form1" id="construction-num">
+            <div class="col-xs-12"  id="num-of-constructions">
+                <h4>Antall treff</h4>
                 <h4>{{ meta.total_count }}</h4>
-            </div>
-            <div class="col-xs-2">
-                <a href="#" uib-tooltip="Antall søketreff etter filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <span class="label label-pill label-default">?</span>
-                </a>
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-xs-10 selectContainer">
+        <div class="form-group row form2">
+            <div class="col-xs-12 selectContainer">
                 <label class="control-label" for="county">Fylke</label>
+                <a href="#" uib-tooltip="Begynn å skrive inn ønsket fylke for å søke." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+                
                 <input id="county" type="text" ng-model="formData.county" typeahead-editable="false" placeholder="Fylke"
                        uib-typeahead="county for county in counties | filter:$viewValue | limitTo:8"
                        class="form-control">
             </div>
-            <div class="col-xs-2">
-                <a href="#" uib-tooltip="Velg ønsket fylke for filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <span class="label label-pill label-default">?</span>
-                </a>
-            </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-xs-10 selectContainer">
+        <div class="form-group row form3">
+            <div class="col-xs-12 selectContainer">
                 <label class="control-label" for="municipality">Kommune</label>
+                <a href="#" uib-tooltip="Begynn å skrive inn ønsket kommune for å søke. Kun kommuner for tilhørende fylke vises." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
                 <input id="municipality" type="text" ng-model="formData.municipality"
                        typeahead-editable="false" placeholder="Kommune"
                        uib-typeahead="municipality.name for municipality in municipalities
@@ -50,122 +50,107 @@
                         | municipality: formData.county | limitTo:8"
                        class="form-control">
             </div>
-            <div class="col-xs-2">
-                <a href="#" uib-tooltip="Velg ønsket kommune for filtrering. Kun kommuner for tilhørende fylke vises." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <span class="label label-pill label-default">?</span>
-                </a>
-            </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-xs-10 selectContainer">
+        <div class="form-group row form4">
+            <div class="col-xs-12 selectContainer">
                 <label class="control-label" for="type">Anleggstype</label>
+                <a href="#" uib-tooltip="Begynn og skrive inn ønsket annleggstype for å søke." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
                 <input id="type" type="text" ng-model="formData.constructionType" typeahead-editable="false" placeholder="Anleggstype"
                        uib-typeahead="constructionType.type for constructionType in constructionTypes | filter:$viewValue | limitTo:8"
                        class="form-control">
             </div>
-            <div class="col-xs-2">
-                <a href="#" uib-tooltip="Velg ønsket annleggstype for filtrering." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <span class="label label-pill label-default">?</span>
-                </a>
-            </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-xs-10">
-                <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Tildelte midler</label>
-                <div class="col-xs-6" style="padding-left: 0px">
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="formData.fundsFrom" format="number" placeholder="Fra kr" id="fundsfrom" aria-label="Funds From">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" disabled="true">
+        <div class="form-group row form5">
+            <div class="col-xs-12 selectContainer">
+                <label class="control-label">Tildelte midler</label>
+                <a href="#" uib-tooltip="Skriv inn en sum for å vise søketreff på bevilgede midler." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="formData.fundsFrom" format="number" placeholder="Fra kr" id="fundsfrom" aria-label="Funds From">
+                            <span class="input-group-addon" id="basic-addon2">
                                 <span>NOK</span>
-                            </button>
-                        </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="formData.fundsTo" format="number" placeholder="Til kr" id="fundsto" aria-label="Funds To">
+                        <span class="input-group-addon" id="basic-addon2">
+                                <span>NOK</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-6" style="padding-right: 0px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="formData.fundsTo" format="number" placeholder="Til kr" id="fundsto" aria-label="Funds To">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" disabled="true">
-                            <span>NOK</span>
-                        </button>
-                    </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <a href="#" uib-tooltip="Vis treff for bevilgede midler." tooltip-placement="{{ tooltip.placement }}" disabled="true">
-                    <span class="label label-pill label-default">?</span>
-                </a>
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-xs-10">
-                <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Byggeår</label>
-                <div class="col-xs-6" style="padding-left: 0px">
-                    <div class="input-group date">
-                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="formData.constructionYearFrom" placeholder="Fra år"
-                               is-open="callers['from']" close-text="Lukk" clear-text="Tøm" datepicker-options="dateOpts" id="yearfrom">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openDate($event, 'from')">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
-                    </div>
-                </div>
-                <div class="col-xs-6" style="padding-right: 0px">
-                    <div class="input-group date">
-                        <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="formData.constructionYearTo" placeholder="Til år"
-                               is-open="callers['to']" close-text="Lukk" clear-text="Tøm" today-text="I år" datepicker-options="dateOpts" id="yearTo">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openDate($event, 'to')">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <a href="#" uib-tooltip="Vis treff for byggår." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+        <div class="form-group row form6">
+            <div class="col-xs-12 selectContainer">
+                <label class="control-label">Byggeår</label>
+                <a href="#" uib-tooltip="Søk ved å skrive inn et byggeår eller velg ett ved å trykke på kalenderen." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <span class="label label-pill label-default">?</span>
                 </a>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-xs-10">
-                <label class="col-xs-10 row" style="padding-bottom: 0px; border-bottom: 0px">Areal</label>
-                <div class="col-xs-6" style="padding-left: 0px">
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="formData.areaFrom" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="input-group date">
+                            <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="formData.constructionYearFrom" placeholder="Fra år"
+                                   is-open="callers['from']" close-text="Lukk" clear-text="Tøm" datepicker-options="dateOpts" id="yearfrom">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" disabled="true">
-                                <span>m<sup>2</sup></span>
+                            <button type="button" class="btn btn-info calendar-btn" ng-click="openDate($event, 'from')">
+                                <i class="glyphicon glyphicon-calendar"></i>
                             </button>
                         </span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6" style="padding-right: 0px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="formData.areaTo" format="number" placeholder="Til" id="areato" aria-label="Funds To">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" disabled="true">
-                            <span>m<sup>2</sup></span>
-                        </button>
-                    </span>
+                    <div class="col-xs-6">
+                        <div class="input-group date">
+                            <input type="text" class="form-control" uib-datepicker-popup="yyyy" ng-model="formData.constructionYearTo" placeholder="Til år"
+                                   is-open="callers['to']" close-text="Lukk" clear-text="Tøm" today-text="I år" datepicker-options="dateOpts" id="yearTo">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-info calendar-btn" ng-click="openDate($event, 'to')">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-2">
+        </div>
+
+        <div class="form-group row form7">
+            <div class="col-xs-12 selectContainer">
+                <label class="control-label">Areal</label>
                 <a href="#" uib-tooltip="Filtrer på areal." tooltip-placement="{{ tooltip.placement }}" disabled="true">
                     <span class="label label-pill label-default">?</span>
                 </a>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="formData.areaFrom" format="number" placeholder="Fra" id="areafrom" aria-label="Funds From">
+                            <span class="input-group-addon" id="basic-addon2">
+                                <span>m<sup>2</sup></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="formData.areaTo" format="number" placeholder="Til" id="areato" aria-label="Funds To">
+                            <span class="input-group-addon" id="basic-addon2">
+                                <span>m<sup>2</sup></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row clear-form-btn">
             <button class="btn btn-danger" ng-click="clearForm()">
                 Tøm alle felter
             </button>
@@ -173,7 +158,7 @@
         <!-- END FILTER -->
     </div>
 
-    <div class="col-xs-8 map">
+    <div class="col-xs-8 container">
         <div ui-view></div>
     </div>
 

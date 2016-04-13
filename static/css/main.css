@@ -1,6 +1,258 @@
-.row:not(:last-child) {
-    padding-bottom: 25px;
-    border-bottom: 1px solid #ccc;
+
+
+/* MAP */
+/* 
+    Limited browser support for vh, but percentage does not work with angular-google-maps
+*/
+.angular-google-map-container {
+     height: 85vh;
 }
 
-.angular-google-map-container { height: 620px; }
+.filter {
+    padding-left: 10px;
+    height: 90vh;
+}
+
+.container {
+    padding-right: 0;
+    height: 90vh;
+}
+
+.map {
+    padding: 0;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    box-shadow: 0 0 5px #d9d9d9;
+}
+
+/* RESULT TABLE */
+.result-table {
+    padding: 0;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    box-shadow: 0 0 5px #d9d9d9;
+}
+
+.result-table tr {
+}
+
+
+.pagination-bottom {
+    height: 2vh;
+    margin-top: 0;
+    box-shadow: 0 0 5px #d9d9d9;
+    background-color: #1f8aad;
+}
+
+.pagination-top {
+    height: 2vh;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    box-shadow: 0 0 5px #d9d9d9;
+    background-color: #1f8aad;
+}
+
+
+/* GLOBAL */
+html, body{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.container-fluid {
+    margin: 0 1px 0 1px;
+    padding: 0 10px 0 10px;
+}
+
+.main-content {
+    padding: 15px;
+}
+
+/* NAVBAR */ 
+
+nav {
+    height: 6vh;
+}
+
+.navbar {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    background-color: #1C7D9E;
+}
+
+.idrettsanlegg {
+    color: white;
+    padding-left: 30px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.navbar-nav a {
+    font-size: 18px;
+}
+
+.left-nav-buttons {
+    margin-left: 25px;
+}
+
+.left-nav-buttons li {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.nav-map span{
+    margin-left: 8px;
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus, 
+.navbar-nav > li > a.active {
+    background-color: #13566c;
+}
+
+.navbar-nav > .active > a {
+    background-color: #13566c;
+}
+
+
+/* FILTERS */
+
+.row:not(:last-child) {
+    padding-bottom: 3vh;
+    padding-top: 1vh;
+    /* border-bottom: 1px solid #ccc; */
+}
+
+.filter .clear-form-btn {
+    padding-left: 15px;
+    margin-top: 1vh;
+}
+
+.filter .clear-form-btn .btn {
+    border-radius: 0px;
+    height: 5vh;
+}
+
+
+#num-of-constructions h4 {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 0px;
+    height: 5vh;
+}
+
+.input-group-btn .calendar-btn {
+    border-radius: 0px;
+    height: 5vh;
+    background-color: #1f8aad;
+    border-color: #1f8aad;
+}
+
+.input-group-btn .calendar-btn:hover {
+    background-color: #13566c;
+}
+
+
+.input-group-addon {
+    background-color: #bfbfbf;
+    border-radius: 0px;
+}
+
+.input-group-addon span {
+    color: #595959;
+}
+
+/* FORMS */
+
+.form-group {
+    margin-bottom: 0;
+}
+
+#construction-num {
+    padding-bottom: 0vh;
+    margin-bottom: 1vh;
+}
+
+.form-control {
+    /* box-shadow: 0 0 5px #d9d9d9; */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0px 2px rgba(0,0,0,0.15);
+    transition: all 0.1s ease-in-out;
+}
+
+/*
+.input-group-addon {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0px 2px rgba(0,0,0,0.15);
+    transition: all 0.1s ease-in-out;
+}
+*/
+
+.form1 {
+    
+}
+
+.form2 {
+    
+}
+
+.form3 {
+    
+}
+
+.form4 .form-control, .form5 .form-control  {
+     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0px 2px rgba(0,0,0,0.15);
+     transition: all 0.1s ease-in-out;
+}
+
+.form5 span {
+    width: 55px;
+}
+
+.form5 {
+    
+}
+
+.form6 .input-group-btn button{
+    width: 55px;
+}
+
+.form7, .form8 {
+    margin-bottom: 0px;
+    padding-bottom: 1vh;
+}
+
+.form7 .input-group-addon {
+    width: 55px;
+}
+
+.form8 {
+    
+}
+
+
+/* ICONS */
+
+.form6 .calendar-btn {
+
+}
+
+.label {
+    padding: 0.1em 0.5em;
+}
+
+.control-label {
+    margin-bottom: 1vh;
+}
+
+.selectContainer .label-pill {
+    margin-left: 15px;
+    margin-bottom: 1vh;
+    font-size: 10px;
+}
+
