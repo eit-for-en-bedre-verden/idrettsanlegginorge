@@ -1,13 +1,7 @@
 import csv
-import decimal
 import utm
 
 import MySQLdb
-import sys
-import datetime, time
-
-from decimal import Decimal
-from numpy import genfromtxt
 
 conn = MySQLdb.connect(host= "localhost",
                   user="root",
