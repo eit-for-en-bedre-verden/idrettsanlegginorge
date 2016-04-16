@@ -41,7 +41,7 @@
 .table > tfoot > tr > th, 
 .table > thead > tr > td, 
 .table > thead > tr > th { 
-    padding: 1.0vh;
+    padding: 1vh;
     font-size: 1.7vh;
 }
 
@@ -68,7 +68,7 @@ html, body{
     padding: 0px;
     margin: 0px;
     border: 0px;
-    height: 100%;
+    height: 100vh;
     font-size: 1.5vh;
     font-family: 'Open Sans', sans-serif;
 }
@@ -86,7 +86,7 @@ html, body{
 /* NAVBAR */ 
 
 nav {
-    height: 6vh;
+    height: 5.7vh;
 }
 
 .navbar {
@@ -100,11 +100,11 @@ nav {
     color: white;
     padding-left: 30px;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 2.7vh;
 }
 
 .navbar-nav a {
-    font-size: 18px;
+    font-size: 2.2vh;
 }
 
 .left-nav-buttons {
@@ -134,9 +134,8 @@ nav {
 /* FILTERS */
 
 .row:not(:last-child) {
-    padding-bottom: 3vh;
+    padding-bottom: 2.7vh;
     padding-top: 1vh;
-    /* border-bottom: 1px solid #ccc; */
 }
 
 .filter .clear-form-btn {
@@ -205,7 +204,7 @@ nav {
     width: 55px;
 }
 
-.form6 .input-group-btn button{
+.form6 .input-group-btn button {
     width: 55px;
 }
 
@@ -224,11 +223,13 @@ nav {
 
 .control-label {
     margin-bottom: 1vh;
+    font-size: 1.7vh;
+    font-weight: bolder;
 }
 
 .selectContainer .label-pill {
     margin-left: 15px;
     margin-bottom: 1vh;
-    font-size: 10px;
+    font-size: 1.1vh;
 }
 
