@@ -1,13 +1,7 @@
 import csv
-import decimal
 import utm
 
 import MySQLdb
-import sys
-import datetime, time
-
-from decimal import Decimal
-from numpy import genfromtxt
 
 conn = MySQLdb.connect(host= "localhost",
                   user="root",
@@ -60,7 +54,7 @@ def insert(table,variables,query):
     return data
 
 def getfromcsv():
-    skom = True
+    skom = False
     if skom:
         kommuneReader = csv.reader(open('IdrettsanleggKommuner.csv', 'r' ),delimiter=';')
         fylkedict = {}
@@ -75,7 +69,7 @@ def getfromcsv():
             kommuneValues = str(row[3]) +'\', \'' + str(fylkedict[fylke])
             insert('idrettsanlegg_kommune', 'name, fylke_id', kommuneValues)
 
-    reader = csv.reader(open('utf8.csv', 'r' ),delimiter=';')
+    reader = csv.reader(open('idrettkart.csv', 'r' ),delimiter=';')
     kategori_id = -1
     klasse_id = -1
     status_id = -1
@@ -197,7 +191,7 @@ def getfromcsv():
             utmsone = '0'
         kartvalues.append(utmsone)
 
-        kpunkt = row[31];
+        kpunkt = row[33];
         if isInteger(kpunkt):
             pass
         else:
@@ -205,7 +199,7 @@ def getfromcsv():
 
         kartvalues.append(kpunkt)
 
-        Latitude = row[32].replace(',','.')
+        Latitude = row[21].replace(',','.')
         if isDec(Latitude):
             if(float(Latitude) > 58 and float(Latitude) < 80):
                 pass
@@ -230,7 +224,7 @@ def getfromcsv():
         if Latitude == '0.00000000000000':
             continue
 
-        Longitude = row[33].replace(',','.')
+        Longitude = row[22].replace(',','.')
         if isDec(Longitude):
             if(float(Longitude) > 0 and float(Longitude) < 30):
                 pass
@@ -283,7 +277,7 @@ def getfromcsv():
         data.append(row[7])
         data.append(row[0])
         data.append(row[1])
-        areal = row[30]
+        areal = row[32]
 
         if isInteger(areal):
             pass
@@ -291,7 +285,7 @@ def getfromcsv():
             areal = '0'
         data.append(areal)#areal
 
-        number = row[29]
+        number = row[31]
         if isInteger(number):
             pass
         else:
@@ -299,7 +293,7 @@ def getfromcsv():
 
         data.append(number)#bredde
 
-        number = row[23]
+        number = row[25]
         if isInteger(number):
             pass
         else:
@@ -307,7 +301,7 @@ def getfromcsv():
 
         data.append(number)#indratt
 
-        number = row[28]
+        number = row[30]
         if isInteger(number):
             pass
         else:
@@ -315,10 +309,10 @@ def getfromcsv():
 
 
         data.append(number)#lengde
-        data.append(row[24])
-        data.append(row[25])
         data.append(row[26])
         data.append(row[27])
+        data.append(row[28])
+        data.append(row[29])
 
         number = row[2]
         if isInteger(number):
@@ -329,7 +323,7 @@ def getfromcsv():
         data.append(number)#nummer1
         data.append(row[14])
 
-        number = row[21]
+        number = row[23]
         if isInteger(number):
             pass
         else:
@@ -337,7 +331,7 @@ def getfromcsv():
 
         data.append(number)#tildelt
 
-        number = row[22]
+        number = row[24]
         if isInteger(number):
             pass
         else:
