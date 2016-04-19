@@ -11,8 +11,13 @@ angular.module('idrettsanlegg.services')
  // Interface with the REST API, inject Construction and use
     // .query, .get, .delete etc.
     .factory('Construction', function ($resource, apiUrl) {
-        return $resource(apiUrl + 'Idrettsanlegg/:id',
-            {id: '@id', format: 'json', limit: "18"}, REST_SETTINGS);
+        return {
+            getResource: function(aborter) {
+                return $resource(apiUrl + 'Idrettsanlegg/:id',
+                    {id: '@id', format: 'json', limit: "18"},
+                    angular.extend(REST_SETTINGS, {timeout: aborter.promise}));
+            }
+        }
     })
     .factory('County', function ($resource, apiUrl) {
         return $resource(apiUrl + 'Kommune/:id',
@@ -23,10 +28,15 @@ angular.module('idrettsanlegg.services')
             {id: '@id', format: 'json', limit: "1000"}, REST_SETTINGS);
     })
     .factory('ConstructionType', function($resource, apiUrl) {
-        return $resource(apiUrl + 'Anleggstype:id',
+        return $resource(apiUrl + 'Anleggstype/:id',
             {id: '@id', format: 'json', limit: "1000"}, REST_SETTINGS);
     })
     .factory('MapData', function($resource, apiUrl) {
-        return $resource(apiUrl + 'KartData:id',
-            {id: '@id', format: 'json', limit: "1000"}, REST_SETTINGS);
+        return {
+            getResource: function(aborter) {
+                return $resource(apiUrl + 'KartData/:id',
+                    {id: '@id', format: 'json', limit: "1000"},
+                    angular.extend(REST_SETTINGS, {timeout: aborter.promise}));
+            }
+        }
     });
