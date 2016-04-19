@@ -16,13 +16,11 @@
 .iw-container {
     margin: 1em 0 1em 0;
     font-size: 10px;
-    max-height: 300px;
+    max-height: 40vh;
     max-width: 420px;
+    overflow-y: auto;
 }
 
-.iw-container .iw-content {
-	overflow-y: scroll;
-}
 
 .iw-infotable {
     float: left;
@@ -62,7 +60,7 @@
 .iw-container td:first-child {
   font-weight: bolder;
   text-align: left;
-  border-left: 1px solid #cecfd5;
+  
 }
 
 .iw-container td {
@@ -72,6 +70,11 @@
   color: black;
   border-bottom: 1px solid #cecfd5;
   border-right: 1px solid #cecfd5;
+  border-left: 1px solid #cecfd5;
+}
+
+.iw-container tbody tr:nth-child(even){
+    background-color: #e6e6e6;
 }
 
 .iw-container tbody tr:nth-child(even){

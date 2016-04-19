@@ -25,4 +25,8 @@ angular.module('idrettsanlegg.services')
     .factory('ConstructionType', function($resource, apiUrl) {
         return $resource(apiUrl + 'Anleggstype:id',
             {id: '@id', format: 'json', limit: "1000"}, REST_SETTINGS);
+    })
+    .factory('MapData', function($resource, apiUrl) {
+        return $resource(apiUrl + 'KartData:id',
+            {id: '@id', format: 'json', limit: "1000"}, REST_SETTINGS);
     });

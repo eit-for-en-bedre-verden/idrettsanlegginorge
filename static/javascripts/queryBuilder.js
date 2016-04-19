@@ -2,7 +2,7 @@
 
 angular.module('idrettsanlegg.services')
     .factory('QueryBuilder', function(queryMapping) {
-        return function(formData) {
+        return function(formData, isMap) {
             var query = {};
             var model = angular.copy(formData); // to not pollute formData...
             for (var key in model) {
@@ -14,6 +14,9 @@ angular.module('idrettsanlegg.services')
                             model[key] = model[key].getFullYear();
                         }
                         var name = queryMapping[key];
+                        if (isMap) {
+                            name = 'ianlegg__' + name;
+                        }
                         query[name] = model[key];
                     }
                 }

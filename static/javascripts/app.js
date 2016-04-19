@@ -57,6 +57,7 @@ angular
         });
     })
     .value('apiUrl', 'http://127.0.0.1:8000/api/v1/')
+    .value('baseUrl', 'http://127.0.0.1:8000')
     .value('Counties',
         ["Østfold", "Akershus", "Oslo", "Hedmark",
             "Oppland", "Buskerud", "Vestfold", "Telemark", "Aust-Agder",
