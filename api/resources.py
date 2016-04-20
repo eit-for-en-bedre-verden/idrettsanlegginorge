@@ -221,11 +221,43 @@ class IdrettsanleggResource(ModelResource):
             "anleggstype": ALL_WITH_RELATIONS,
             "anleggsklasse": ALL_WITH_RELATIONS,
             "anleggskategori": ALL_WITH_RELATIONS,
-            "anleggstatus": ALL_WITH_RELATIONS
+            "anleggstatus": ALL_WITH_RELATIONS,
 
-
+            "query" : ALL_WITH_RELATIONS
         }
         serializer = PrettyJSONSerializer()
+
+    def build_filters(self, filters=None):
+        if filters is None:
+            filters = {}
+        orm_filters = super(IdrettsanleggResource, self).build_filters(filters)
+
+        if('query' in filters):
+            query = filters['query']
+            qset = (
+                    Q(anleggsnavn__icontains=query) |
+                    Q(anleggsnummer__icontains=query) |
+                    Q(kommune__name__icontains=query) |
+                    Q(kommune__fylke__name__icontains=query) |
+                    Q(anleggStatus__status__exact=query) |
+                    Q(Anleggsklasse__klasse__exact=query) |
+                    Q(Anleggskategori__kategori__icontains=query) |
+                    Q(tildelt__icontains=query) |
+                    Q(anleggEier__icontains=query)
+                    )
+            orm_filters.update({'custom': qset})
+
+        return orm_filters
+
+    def apply_filters(self, request, applicable_filters):
+        if 'custom' in applicable_filters:
+            custom = applicable_filters.pop('custom')
+        else:
+            custom = None
+
+        semi_filtered = super(IdrettsanleggResource, self).apply_filters(request, applicable_filters)
+
+        return semi_filtered.filter(custom) if custom else semi_filtered
 
 class FreeTextIdrettResource(ModelResource):
     # The ID can be used to get the specific idrettsanlegg by: api/v1/Idrettsanlegg/{ID}/?format=json
