@@ -1,9 +1,10 @@
 
 
 angular.module('idrettsanlegg.controllers')
-    .controller('ConstructionController', function($scope, Construction, $stateParams,
-            $window) {
-        $scope.construction = Construction.query({id: $stateParams.id});
+    .controller('ConstructionController', function($scope, ConstructionSingle,
+        $stateParams, $window) {
+
+        $scope.construction = ConstructionSingle.query({id: $stateParams.id});
         
         $scope.goBack = function() {
             $window.history.back();

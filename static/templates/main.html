@@ -24,6 +24,19 @@
             </div>
         </div>
 
+        <div class="form-group row">
+            <div class="col-xs-12 selectContainer">
+                <label class="control-label" for="search">Fritekstsøk</label>
+                <a href="#" uib-tooltip="Søk etter hva som helst." tooltip-placement="{{ tooltip.placement }}" disabled="true">
+                    <span class="label label-pill label-default">?</span>
+                </a>
+
+                <input id="search" type="text" ng-model="formData.searchQuery"
+                    placeholder="Skriv inn søketerm" class="form-control"
+                    ng-model-options="{debounce:200}">
+            </div>
+        </div>
+
         <div class="form-group row form2">
             <div class="col-xs-12 selectContainer">
                 <label class="control-label" for="county">Fylke</label>

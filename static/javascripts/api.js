@@ -19,6 +19,10 @@ angular.module('idrettsanlegg.services')
             }
         }
     })
+    .factory('ConstructionSingle', function ($resource, apiUrl) {
+        return $resource(apiUrl + 'idrettsanlegg/:id',
+            {id: '@id', format: 'json'}, REST_SETTINGS);
+    })
     .factory('County', function ($resource, apiUrl) {
         return $resource(apiUrl + 'Kommune/:id',
             {id: '@id', format: 'json', limit: "20"}, REST_SETTINGS);
