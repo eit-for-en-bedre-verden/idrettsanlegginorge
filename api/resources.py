@@ -181,6 +181,8 @@ class KartDataResource(ModelResource):
         return semi_filtered.filter(custom) if custom else semi_filtered
 
 
+
+
 class IdrettsanleggResource(ModelResource):
     anleggstype = fields.ToOneField(AnleggTypeResource, 'Anleggstype', full=True)
     anleggsklasse = fields.ToOneField(AnleggsKlasseResource, 'Anleggsklasse', full=True)
@@ -199,6 +201,7 @@ class IdrettsanleggResource(ModelResource):
         authentication = Authentication()
         authorization = Authorization()
         always_return_data = True
+        exclude = {'query'}
         filtering = {
            "byggeaar": ALL_WITH_RELATIONS,  #?byggeaar__gt=2011&byggeaar__lt=2013&format=json
             "anleggDriver": ALL_WITH_RELATIONS,
@@ -242,6 +245,7 @@ class IdrettsanleggResource(ModelResource):
                     Q(anleggStatus__status__exact=query) |
                     Q(Anleggsklasse__klasse__exact=query) |
                     Q(Anleggskategori__kategori__icontains=query) |
+                    Q(Anleggstype__type__icontains=query) |
                     Q(tildelt__icontains=query) |
                     Q(anleggEier__icontains=query)
                     )
