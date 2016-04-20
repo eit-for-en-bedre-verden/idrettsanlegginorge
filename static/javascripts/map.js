@@ -1,7 +1,7 @@
 
 angular.module('idrettsanlegg.controllers')
     .controller('MapController', function($scope, uiGmapGoogleMapApi, uiGmapIsReady,
-            MapData, $http, baseUrl, QueryBuilder) {
+            MapData, $http, baseUrl, QueryBuilder, $q) {
 
 
         var mapOptions = {
@@ -55,13 +55,16 @@ angular.module('idrettsanlegg.controllers')
           });
         }
 
+        var aborter = $q.defer();
+
         $scope.fetch = function() {
-          MapData.query(angular.extend({
+          MapData.getResource(aborter).query(angular.extend({
             Longitude__gt: 0,
             Latitude__gt: 58
           }, QueryBuilder($scope.formData, true)), function(data) {
                 $scope.mapConstructions = data.objects;
                 $scope.meta = data.meta;
+                $scope.$emit('meta changed', data.meta);
                 $scope.addNewMarkers($scope.mapConstructions)
           });
         };
@@ -69,6 +72,8 @@ angular.module('idrettsanlegg.controllers')
         $scope.fetch();
 
         $scope.$on('form changed', function() {
+          aborter.resolve();
+          aborter = $q.defer();
           $scope.fetch();
         });
 

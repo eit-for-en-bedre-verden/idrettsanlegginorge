@@ -15,12 +15,14 @@ angular
         'idrettsanlegg.services',
         'idrettsanlegg.filters'
     ])
-    .config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, $resourceProvider) {
         uiGmapGoogleMapApiProvider.configure({
             //    key: 'your api key',
             v: '3.20', //defaults to latest 3.X anyhow
             libraries: ''
         });
+
+        $resourceProvider.defaults.stripTrailingSlashes = false;
 
         $urlRouterProvider.when("", "/home/table");
         $urlRouterProvider.when("/", "/home/table");

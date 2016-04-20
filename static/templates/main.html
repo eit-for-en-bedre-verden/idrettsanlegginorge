@@ -33,7 +33,8 @@
                 
                 <input id="county" type="text" ng-model="formData.county" typeahead-editable="false" placeholder="Fylke"
                        uib-typeahead="county for county in counties | filter:$viewValue | limitTo:8"
-                       class="form-control">
+                       class="form-control"
+                       typeahead-wait-ms="100">
             </div>
         </div>
 
@@ -48,7 +49,8 @@
                        uib-typeahead="municipality.name for municipality in municipalities
                         | filter:$viewValue
                         | municipality: formData.county | limitTo:8"
-                       class="form-control">
+                       class="form-control"
+                       typeahead-wait-ms="100">
             </div>
         </div>
 
@@ -60,7 +62,7 @@
                 </a>
                 <input id="type" type="text" ng-model="formData.constructionType" typeahead-editable="false" placeholder="Anleggstype"
                        uib-typeahead="constructionType.type for constructionType in constructionTypes | filter:$viewValue | limitTo:8"
-                       class="form-control">
+                       class="form-control" typeahead-wait-ms="100">
             </div>
         </div>
 
