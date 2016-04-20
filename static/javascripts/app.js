@@ -75,5 +75,6 @@ angular
         fundsFrom: 'tildelt__gt',
         fundsTo: 'tildelt__lt',
         areaFrom: 'areal__gt',
-        areaTo: 'areal__lt'
+        areaTo: 'areal__lt',
+        searchQuery: 'query'
     });
